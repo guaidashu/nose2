@@ -1,0 +1,39 @@
+.ca_nav{
+	background:#fff;
+}
+.ca_contacts_item_1{
+		display:block;
+}
+@media(max-width:1201px){
+	.ca_contacts_item_1{
+		display:none;
+	}
+}
+.ca_contacts_item_2{
+	display:block;
+}
+@media(max-width:992px){
+	.ca_contacts_item_2{
+		display:none;
+	}
+}
+.nav-contain{
+	display:block;
+}
+.topbar{
+	display:block;
+}
+.header-box{
+	display:block;
+}
+@media(max-width:640px){
+	.nav-contain{
+		display:none;
+	}
+	.header-box{
+		display:none;
+	}
+	.topbar{
+		display:none;
+	}
+}

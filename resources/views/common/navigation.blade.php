@@ -1,0 +1,228 @@
+<!-- 顶部信息栏。包括登录信息(top message show(include login message)) -->
+<div class="topbar">
+    <div class="container">
+      <div class="am-g">
+        <div class="am-u-md-3">
+          <div class="topbar-left">
+            <i class="am-icon-globe"></i>
+            <div class="am-dropdown" data-am-dropdown>
+              <button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle>Language <span class="am-icon-caret-down"></span></button>
+              <ul class="am-dropdown-content">
+                <li><a href="#">English</a></li>
+                <li class="am-divider"></li>
+                <li><a href="#">Chinese</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="am-u-md-9">
+          <div class="topbar-right am-text-right am-fr">
+            Follow us
+            <i class="am-icon-facebook"></i>
+            <i class="am-icon-twitter"></i>
+            <i class="am-icon-google-plus"></i>
+            <i class="am-icon-pinterest"></i>
+            <i class="am-icon-instagram"></i>
+            <i class="am-icon-linkedin"></i>
+            <i class="am-icon-youtube-play"></i>
+            <i class="am-icon-rss"></i>
+            <a href="html/login.html">登录</a>
+            <a href="html/register.html">注册</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<!--header start-->
+<div class="header-box" style="border-bottom:1px solid #e9e9e9;">
+        
+          <div class="container">
+            <div class="header">
+              <div class="am-g">
+                <div class="am-u-lg-2 am-u-sm-12">
+                  <div class="logo">
+                    <a href="#" style="display:inline-block;width:100%;height:100%;"><img src="./images/logo.png" alt="logo" /></a>
+                  </div>
+                </div>
+                <div class="am-u-md-10 am-u-sm-12">
+                  <div class="header-right am-fr">
+                    <div class="header-contact">
+                      <div class="header_contacts--item ca_contacts_item_3">
+                                            <div class="contact_mini">
+                                                <i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>
+                                                <strong>13739497421</strong>
+                                                <span>周一~周五, 8:00 - 20:00</span>
+                                            </div>
+                                        </div>
+                      <div class="header_contacts--item ca_contacts_item_2">
+                                            <div class="contact_mini">
+                                                <i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>
+                                                <strong>a1023767856@163.com</strong>
+                                                <span>随时欢迎您的来信！</span>
+                                            </div>
+                                        </div>
+                      <div class="header_contacts--item ca_contacts_item_1">
+                                            <div class="contact_mini">
+                                                <i style="color:#7c6aa6" class="contact-icon am-icon-map-marker"></i>
+                                                <strong>四川理工学院</strong>
+                                                <span>教学楼416</span>
+                                            </div>
+                                        </div>
+                    </div>
+                    <a href="#" class="contact-btn">
+                      <button type="button" class="am-btn am-btn-secondary am-radius">联系我们</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+</div>
+
+<!--header end-->
+
+<!--nav start-->
+        <div class="nav-contain ca_nav" data-am-sticky style="border-top:none;">
+          <div class="nav-inner">
+            <ul class="am-nav am-nav-pills am-nav-justify">
+              <li class=""><a href="./index.html">首页</a></li>
+              <li>
+                <a href="#">项目中心</a>
+                <!-- sub-menu start-->
+                <ul class="sub-menu">
+                  <li class="menu-item"><a href="html/product1.html">产品展示1</a></li>
+                  <li class="menu-item"><a href="html/product2.html">产品展示2</a></li>
+                  <li class="menu-item"><a href="html/product3.html">产品展示3</a></li>
+                </ul>
+                <!-- sub-menu end-->
+              </li>
+              <li><a href="html/example.html">资源共享</a></li>
+              <li><a href="html/solution.html">部门中心</a>
+                  <ul class="sub-menu">
+                      <li class="menu-item"><a href="#">技术部门</a></li>
+                      <li class="menu-item"><a href="#">组织部门</a></li>
+                      <li class="menu-item"><a href="#">外交部门</a></li>
+                  </ul>
+              </li>
+              <li>
+                <a href="#">新闻中心</a>
+                <!-- sub-menu start-->
+                <ul class="sub-menu">
+                  <li class="menu-item"><a href="html/news-content.html">协会动态</a></li>
+                  <li class="menu-item"><a href="html/404-dark.html">行业动态</a></li>
+                  <li class="menu-item"><a href="html/404-light.html">精彩专题</a></li>
+                </ul>
+                <!-- sub-menu end-->
+              </li>
+              <li><a href="html/join.html">协会招新</a></li>
+              <li><a href="html/about.html">关于我们</a></li>
+              <!-- <li><a href="html/contact.html">联系我们</a></li> -->
+            </ul>
+          </div>
+        </div>
+        <!--nav end-->
+     
+
+    <!--mobile header start-->
+    <div class="m-header">
+      <div class="am-g am-show-sm-only">
+        <div class="am-u-sm-2">
+          <div class="menu-bars">
+            <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
+            <!-- 侧边栏内容 -->
+            <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas >
+            <a href="javascript: void(0)" class="am-menu-toggle"></a>
+
+            <div class="am-offcanvas" >
+              <div class="am-offcanvas-bar">
+              <ul class="am-menu-nav am-avg-sm-1">
+                  <li><a href="./index.html" class="" >首页</a></li>
+                  <li class="am-parent">
+                    <a href="#" class="" >项目中心</a>
+                      <ul class="am-menu-sub am-collapse ">
+                          <li class="">
+                            <a href="#" class="" >产品展示1</a>
+                          </li>
+                          <li class="">
+                            <a href="#" class="" >产品展示2</a>
+                          </li>
+                          <li class="">
+                            <a href="#" class="" >产品展示3</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class=""><a href="html/example.html" class="" >资源共享</a></li>
+                  <li class="am-parent"><a href="html/solution.html" class="" >部门中心</a>
+                      <ul class="am-menu-sub am-collapse  ">
+                          <li class="">
+                            <a href="#" class="" >技术部门</a>
+                          </li>
+                          <li class="">
+                            <a href="#" class="" >组织部门</a>
+                          </li>
+                          <li class="">
+                            <a href="#" class="" >外交部门</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class="am-parent">
+                    <a href="#" class="" >新闻中心</a>
+                      <ul class="am-menu-sub am-collapse  ">
+                          <li class="">
+                            <a href="html/news-content.html" class="" >协会动态</a>
+                          </li>
+                          <li class="">
+                            <a href="html/404-dark.html" class="" >行业动态</a>
+                          </li>
+                          <li class="">
+                            <a href="html/404-light.html" class="" >精彩专题</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class=""><a href="html/join.html" class="" >协会招新</a></li>
+                  <li class=""><a href="html/about.html" class="" >关于我们</a></li>
+                  <li class=""><a href="html/contact.html" class="" >联系我们</a></li>
+                  <li class="am-parent">
+                    <a href="" class="nav-icon nav-icon-globe" >Language</a>
+                      <ul class="am-menu-sub am-collapse  ">
+                          <li>
+                            <a href="#" >English</a>
+                          </li>
+                          <li class="">
+                            <a href="#" >Chinese</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class="nav-share-contain">
+                    <div class="nav-share-links">
+                      <i class="am-icon-facebook"></i>
+                      <i class="am-icon-twitter"></i>
+                      <i class="am-icon-google-plus"></i>
+                      <i class="am-icon-pinterest"></i>
+                      <i class="am-icon-instagram"></i>
+                      <i class="am-icon-linkedin"></i>
+                      <i class="am-icon-youtube-play"></i>
+                      <i class="am-icon-rss"></i>
+                    </div>
+                  </li>
+                  <li class=""><a href="html/login.html" class="" >登录</a></li>
+                  <li class=""><a href="html/register.html" class="" >注册</a></li>
+              </ul>
+
+              </div>
+            </div>
+          </nav>
+
+          </div>
+        </div>
+        <div class="am-u-sm-5 am-u-end">
+          <div class="m-logo">
+            <a href=""><img src="./images/logo.png" style="margin-top:-2px;" alt="logo" /></a>
+          </div>
+        </div>
+      </div>
+    <!--mobile header end-->
+    </div>
