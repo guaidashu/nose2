@@ -425,12 +425,6 @@ body{
 	margin-top:35px;
 	text-align:center;
 }
-.ca_association_introduce_bottom{
-	min-height:382px;
-	padding-top:34px;
-	width:100%;
-	background-color:#2a2a2a;
-}
 
 .ca_span_img{
 	display:none;
@@ -439,4 +433,49 @@ body{
 	.ca_span_img{
 		display: block;
 	}
+}
+
+.ca_association_introduce_bottom{
+	min-height:382px;
+	padding-top:34px;
+	width:100%;
+	color:#979797;
+	position:relative;
+	padding-left:15px;
+	padding-right:15px;
+	background-color:#2a2a2a;
+	padding-bottom:60px;
+}
+
+.ca_bottom_container{
+	width:960px;
+	position:relative;
+	margin:0px auto;
+	min-height:282px;
+}
+
+.ca_bottom_welcome{
+	font-size:14px;
+	height:40px;
+	position:relative;
+	line-height:20px;
+	width:100%;
+	color:#666;
+}
+
+.ca_bottom_main_container{
+	width:100%;
+	position:relative;
+	height:auto;
+}
+
+.ca_bottom_record{
+	position: absolute;
+	top:100%;
+	left:0px;
+	width:100%;
+	height:30px;
+	font-size: 15px;
+	text-align: center;
+	line-height: 30px;
 }

@@ -185,6 +185,16 @@
     </div>
 </div>
 <div class="ca_association_introduce_bottom">
+  <div class="ca_bottom_container">
+    <div class="ca_bottom_welcome">
+      计算机技术协会
+    </div>
+    <div class="ca_bottom_main_container">
+    </div>
+    <div class="ca_bottom_record">
+      Copyright &#169; 2016 奕弈的博客 Designed by yy   &nbsp <a target="oo"href="http://www.miitbeian.gov.cn/">蜀ICP备16013626号</a>
+    </div>
+  </div>
 </div>
 
 <!-- 回到顶部 -->
