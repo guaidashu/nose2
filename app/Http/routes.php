@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view('index');
 });
-
+Route::get('index.html',function(){
+	return view('index');
+});
 Route::get('test','TestController@test');
 Route::get('fun','TestController@curlTest');
 /*

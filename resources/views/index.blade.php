@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 @include('common/head')
+
 <link rel="stylesheet" type="text/css" href="{{URL::asset('css/index.css')}}" />
 <title>
 计算机协会官网
@@ -192,7 +193,7 @@
     <div class="ca_bottom_main_container">
     </div>
     <div class="ca_bottom_record">
-      Copyright &#169; 2016 奕弈的博客 Designed by yy   &nbsp <a target="oo"href="http://www.miitbeian.gov.cn/">蜀ICP备16013626号</a>
+      Copyright &#169; 2017 计算机技术协会 Designed by yy   &nbsp <a target="oo"href="http://www.miitbeian.gov.cn/">蜀ICP备16013626号</a>
     </div>
   </div>
 </div>
@@ -204,6 +205,7 @@
 </div> -->
 <!-- <script type="text/javascript" src="./amaze/js/amazeui.js"></script> -->
 @include('common/bottom')
+
 <script type="text/javascript" src="{{URL::asset('js/index.js')}}"></script>
 </body>
 </html>
