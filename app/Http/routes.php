@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('test','TestController@test');
-
+Route::get('fun','TestController@curlTest');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
