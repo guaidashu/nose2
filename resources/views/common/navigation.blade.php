@@ -26,8 +26,12 @@
             <i class="am-icon-linkedin"></i>
             <i class="am-icon-youtube-play"></i>
             <i class="am-icon-rss"></i>
-            <a href="#">登录</a>
-            <a href="#">注册</a>
+            @if(empty($name))
+              <a href="#">登录</a>
+              <a href="#">注册</a>
+            @else
+              <a href="#">{{$name}}</a>
+            @endif
           </div>
         </div>
       </div>
@@ -71,7 +75,7 @@
                                             </div>
                                         </div>
                     </div>
-                    <a href="#" class="contact-btn">
+                    <a class="contact-btn">
                       <button type="button" class="am-btn am-btn-secondary am-radius">联系我们</button>
                     </a>
                   </div>
@@ -88,7 +92,7 @@
         <div class="nav-contain ca_nav" data-am-sticky style="border-top:none;">
           <div class="nav-inner">
             <ul class="am-nav am-nav-pills am-nav-justify">
-              <li class=""><a href="./index.html">首页</a></li>
+              <li class=""><a href="{{url('index.html')}}">首页</a></li>
               <li>
                 <a href="#">项目中心</a>
                 <!-- sub-menu start-->
@@ -117,7 +121,7 @@
                 </ul>
                 <!-- sub-menu end-->
               </li>
-              <li><a href="#">协会招新</a></li>
+              <li><a href="{{url('crn.html')}}">协会招新</a></li>
               <li><a href="#">关于我们</a></li>
               <!-- <li><a href="html/contact.html">联系我们</a></li> -->
             </ul>
@@ -139,7 +143,7 @@
             <div class="am-offcanvas" >
               <div class="am-offcanvas-bar">
               <ul class="am-menu-nav am-avg-sm-1">
-                  <li><a href="./index.html" class="" >首页</a></li>
+                  <li><a href="{{url('index.html')}}" class="" >首页</a></li>
                   <li class="am-parent">
                     <a href="#" class="" >项目中心</a>
                       <ul class="am-menu-sub am-collapse ">
@@ -182,7 +186,7 @@
                           </li>
                       </ul>
                   </li>
-                  <li class=""><a href="#" class="" >协会招新</a></li>
+                  <li class=""><a href="{{url('crn.html')}}" class="" >协会招新</a></li>
                   <li class=""><a href="#" class="" >关于我们</a></li>
                   <li class=""><a href="#" class="" >联系我们</a></li>
                   <li class="am-parent">
