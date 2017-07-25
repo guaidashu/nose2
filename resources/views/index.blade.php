@@ -208,7 +208,6 @@
                 <li><a href="http://www.erzone.cn/" target="_blank">田西秦的博客</a></li>
                 <li><a href="http://blog.gotz9.cn/" target="_blank">gotz9</a></li>
                 <li><a href="http://www.vvlove.cc/" target="_blank">Q1: (V ❤ C) √</a></li>
-                <!-- <li><a href="http://www.wyysdsa.com/" target="_blank">奕弈的博客</a></li> -->
                 <li><a href="https://suse.xsdhy.com/" target="_blank">川理在线</a></li>
             </ul>
         </div>
@@ -221,6 +220,46 @@
                 <li><a href="http://zjc.suse.edu.cn/p/0/?StId=st_app_news_i_x636359688054594682" target="_blank">录取查询</a></li>
             </ul>
         </div>
+        <ul class="ca_bottom_ul am-list admin-sidebar-list" id="collapase-nav-1">
+
+          <li class="am-panel">
+            <a data-am-collapse="{parent: '#collapase-nav-1', target: '#user-nav'}">
+                学习栏目 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+            </a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
+                <li><a href="http://www.imooc.com/" target="_blank">慕课网</a></li>
+                <li><a href="http://www.webhek.com/" target="_blank">web骇客</a></li>
+                <li><a href="http://www.runoob.com/" target="_blank">菜鸟教程</a></li>
+                <li><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰官网</a></li>
+                <li><a href="http://lx.lanqiao.cn/" target="_blank">蓝桥算法练习</a></li>
+            </ul>
+          </li>
+
+          <li class="am-panel">
+            <a data-am-collapse="{parent: '#collapase-nav-1', target: '#company-nav'}">
+                友情链接<i class="am-icon-angle-right am-fr am-margin-right"></i>
+            </a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="company-nav">
+                <li><a href="https://www.xsdhy.com/" target="_blank">消逝的红叶</a></li>
+                <li><a href="http://www.erzone.cn/" target="_blank">田西秦的博客</a></li>
+                <li><a href="http://blog.gotz9.cn/" target="_blank">gotz9</a></li>
+                <li><a href="http://www.vvlove.cc/" target="_blank">Q1: (V ❤ C) √</a></li>
+                <li><a href="https://suse.xsdhy.com/" target="_blank">川理在线</a></li>
+            </ul>
+          </li>
+
+          <li class="am-panel">
+            <a data-am-collapse="{parent: '#collapase-nav-1', target: '#role-nav'}">
+                学校链接<i class="am-icon-angle-right am-fr am-margin-right"></i>
+            </a>
+            <ul class="am-list am-collapse admin-sidebar-sub" id="role-nav">
+                <li><a href="http://www.suse.edu.cn/" target="_blank">四川理工官网</a></li>
+                <li><a href="http://jsj.suse.edu.cn/" target="_blank">计算机学院</a></li>
+                <li><a href="http://lib.suse.edu.cn/">图书馆</a></li>
+                <li><a href="http://zjc.suse.edu.cn/p/0/?StId=st_app_news_i_x636359688054594682" target="_blank">录取查询</a></li>
+            </ul>
+          </li>
+        </ul>
     </div>
     <div class="ca_bottom_record">
       Copyright &#169; 2017 计算机技术协会 Designed by 奕弈   &nbsp; <a target="oo" href="http://www.miitbeian.gov.cn/" style="color:#979797;">蜀ICP备16013626号</a>
