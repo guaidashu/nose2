@@ -12,7 +12,7 @@
 		// 图片的自适应比例
 		this.proportion1;
 		//test为显示屏幕当前宽度，document.width,方便自适应调试,单位px
-		// this.test();
+		this.test();
 		this.caStudyContainerAuto();
 		this.caIntroduceBottomAuto();
 		this.caAimContainerAutoInit();

@@ -191,9 +191,39 @@
       计算机技术协会
     </div>
     <div class="ca_bottom_main_container">
+        <div class="ca_bottom_main_study">
+            <ul class="ca_bottom_main_ul">
+                <li style="margin-bottom:8px;">学习栏目</li>
+                <li><a href="http://www.imooc.com/" target="_blank">慕课网</a></li>
+                <li><a href="http://www.webhek.com/" target="_blank">web骇客</a></li>
+                <li><a href="http://www.runoob.com/" target="_blank">菜鸟教程</a></li>
+                <li><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰官网</a></li>
+                <li><a href="http://lx.lanqiao.cn/" target="_blank">蓝桥算法练习</a></li>
+            </ul>
+        </div>
+        <div class="ca_bottom_main_friend">
+            <ul class="ca_bottom_main_ul">
+                <li style="margin-bottom:8px;">友情链接</li>
+                <li><a href="https://www.xsdhy.com/" target="_blank">消逝的红叶</a></li>
+                <li><a href="http://www.erzone.cn/" target="_blank">田西秦的博客</a></li>
+                <li><a href="http://blog.gotz9.cn/" target="_blank">gotz9</a></li>
+                <li><a href="http://www.vvlove.cc/" target="_blank">Q1: (V ❤ C) √</a></li>
+                <!-- <li><a href="http://www.wyysdsa.com/" target="_blank">奕弈的博客</a></li> -->
+                <li><a href="https://suse.xsdhy.com/" target="_blank">川理在线</a></li>
+            </ul>
+        </div>
+        <div class="ca_bottom_main_school">
+            <ul class="ca_bottom_main_ul">
+                <li style="margin-bottom:8px;">学校链接</li>
+                <li><a href="http://www.suse.edu.cn/" target="_blank">四川理工官网</a></li>
+                <li><a href="http://jsj.suse.edu.cn/" target="_blank">计算机学院</a></li>
+                <li><a href="http://lib.suse.edu.cn/">图书馆</a></li>
+                <li><a href="http://zjc.suse.edu.cn/p/0/?StId=st_app_news_i_x636359688054594682" target="_blank">录取查询</a></li>
+            </ul>
+        </div>
     </div>
     <div class="ca_bottom_record">
-      Copyright &#169; 2017 计算机技术协会 Designed by yy   &nbsp <a target="oo"href="http://www.miitbeian.gov.cn/">蜀ICP备16013626号</a>
+      Copyright &#169; 2017 计算机技术协会 Designed by 奕弈   &nbsp; <a target="oo" href="http://www.miitbeian.gov.cn/" style="color:#979797;">蜀ICP备16013626号</a>
     </div>
   </div>
 </div>
