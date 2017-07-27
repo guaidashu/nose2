@@ -89,144 +89,144 @@
 <!--header end-->
 
 <!--nav start-->
-        <div class="nav-contain ca_nav" data-am-sticky style="border-top:none;">
-          <div class="nav-inner">
-            <ul class="am-nav am-nav-pills am-nav-justify">
-              <li class=""><a href="{{url('index.html')}}">首页</a></li>
-              <li>
-                <a href="#">项目中心</a>
-                <!-- sub-menu start-->
-                <ul class="sub-menu">
-                  <li class="menu-item"><a href="#">产品展示1</a></li>
-                  <li class="menu-item"><a href="#">产品展示2</a></li>
-                  <li class="menu-item"><a href="#">产品展示3</a></li>
-                </ul>
-                <!-- sub-menu end-->
-              </li>
-              <li><a href="#">资源共享</a></li>
-              <li><a href="#">部门中心</a>
-                  <ul class="sub-menu">
-                      <li class="menu-item"><a href="#">技术部门</a></li>
-                      <li class="menu-item"><a href="#">组织部门</a></li>
-                      <li class="menu-item"><a href="#">外交部门</a></li>
+<div class="nav-contain ca_nav" data-am-sticky style="border-top:none;">
+  <div class="nav-inner">
+    <ul class="am-nav am-nav-pills am-nav-justify">
+      <li class=""><a href="{{url('index.html')}}">首页</a></li>
+      <li>
+        <a href="#">项目中心</a>
+        <!-- sub-menu start-->
+        <ul class="sub-menu">
+          <li class="menu-item"><a href="#">产品展示1</a></li>
+          <li class="menu-item"><a href="#">产品展示2</a></li>
+          <li class="menu-item"><a href="#">产品展示3</a></li>
+        </ul>
+        <!-- sub-menu end-->
+      </li>
+      <li><a href="#">资源共享</a></li>
+      <li><a href="#">部门中心</a>
+          <ul class="sub-menu">
+              <li class="menu-item"><a href="#">技术部门</a></li>
+              <li class="menu-item"><a href="#">组织部门</a></li>
+              <li class="menu-item"><a href="#">外交部门</a></li>
+          </ul>
+      </li>
+      <li>
+        <a href="#">新闻中心</a>
+        <!-- sub-menu start-->
+        <ul class="sub-menu">
+          <li class="menu-item"><a href="#">协会动态</a></li>
+          <li class="menu-item"><a href="#">行业动态</a></li>
+          <li class="menu-item"><a href="#">精彩专题</a></li>
+        </ul>
+        <!-- sub-menu end-->
+      </li>
+      <li><a href="{{url('crn.html')}}">协会招新</a></li>
+      <li><a href="#">关于我们</a></li>
+      <!-- <li><a href="html/contact.html">联系我们</a></li> -->
+    </ul>
+  </div>
+</div>
+<!--nav end-->
+ 
+
+<!--mobile header start-->
+<div class="m-header">
+  <div class="am-g am-show-sm-only">
+    <div class="am-u-sm-2">
+      <div class="menu-bars">
+        <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
+        <!-- 侧边栏内容 -->
+        <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas >
+        <a href="javascript: void(0)" class="am-menu-toggle"></a>
+
+        <div class="am-offcanvas" >
+          <div class="am-offcanvas-bar">
+          <ul class="am-menu-nav am-avg-sm-1">
+              <li><a href="{{url('index.html')}}" class="" >首页</a></li>
+              <li class="am-parent">
+                <a href="#" class="" >项目中心</a>
+                  <ul class="am-menu-sub am-collapse ">
+                      <li class="">
+                        <a href="#" class="" >产品展示1</a>
+                      </li>
+                      <li class="">
+                        <a href="#" class="" >产品展示2</a>
+                      </li>
+                      <li class="">
+                        <a href="#" class="" >产品展示3</a>
+                      </li>
                   </ul>
               </li>
-              <li>
-                <a href="#">新闻中心</a>
-                <!-- sub-menu start-->
-                <ul class="sub-menu">
-                  <li class="menu-item"><a href="#">协会动态</a></li>
-                  <li class="menu-item"><a href="#">行业动态</a></li>
-                  <li class="menu-item"><a href="#">精彩专题</a></li>
-                </ul>
-                <!-- sub-menu end-->
+              <li class=""><a href="#" class="" >资源共享</a></li>
+              <li class="am-parent"><a href="#" class="" >部门中心</a>
+                  <ul class="am-menu-sub am-collapse  ">
+                      <li class="">
+                        <a href="#" class="" >技术部门</a>
+                      </li>
+                      <li class="">
+                        <a href="#" class="" >组织部门</a>
+                      </li>
+                      <li class="">
+                        <a href="#" class="" >外交部门</a>
+                      </li>
+                  </ul>
               </li>
-              <li><a href="{{url('crn.html')}}">协会招新</a></li>
-              <li><a href="#">关于我们</a></li>
-              <!-- <li><a href="html/contact.html">联系我们</a></li> -->
-            </ul>
-          </div>
-        </div>
-        <!--nav end-->
-     
-
-    <!--mobile header start-->
-    <div class="m-header">
-      <div class="am-g am-show-sm-only">
-        <div class="am-u-sm-2">
-          <div class="menu-bars">
-            <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
-            <!-- 侧边栏内容 -->
-            <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas >
-            <a href="javascript: void(0)" class="am-menu-toggle"></a>
-
-            <div class="am-offcanvas" >
-              <div class="am-offcanvas-bar">
-              <ul class="am-menu-nav am-avg-sm-1">
-                  <li><a href="{{url('index.html')}}" class="" >首页</a></li>
-                  <li class="am-parent">
-                    <a href="#" class="" >项目中心</a>
-                      <ul class="am-menu-sub am-collapse ">
-                          <li class="">
-                            <a href="#" class="" >产品展示1</a>
-                          </li>
-                          <li class="">
-                            <a href="#" class="" >产品展示2</a>
-                          </li>
-                          <li class="">
-                            <a href="#" class="" >产品展示3</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li class=""><a href="#" class="" >资源共享</a></li>
-                  <li class="am-parent"><a href="#" class="" >部门中心</a>
-                      <ul class="am-menu-sub am-collapse  ">
-                          <li class="">
-                            <a href="#" class="" >技术部门</a>
-                          </li>
-                          <li class="">
-                            <a href="#" class="" >组织部门</a>
-                          </li>
-                          <li class="">
-                            <a href="#" class="" >外交部门</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li class="am-parent">
-                    <a href="#" class="" >新闻中心</a>
-                      <ul class="am-menu-sub am-collapse  ">
-                          <li class="">
-                            <a href="#" class="" >协会动态</a>
-                          </li>
-                          <li class="">
-                            <a href="#" class="" >行业动态</a>
-                          </li>
-                          <li class="">
-                            <a href="#" class="" >精彩专题</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li class=""><a href="{{url('crn.html')}}" class="" >协会招新</a></li>
-                  <li class=""><a href="#" class="" >关于我们</a></li>
-                  <li class=""><a href="#" class="" >联系我们</a></li>
-                  <li class="am-parent">
-                    <a href="" class="nav-icon nav-icon-globe" >Language</a>
-                      <ul class="am-menu-sub am-collapse  ">
-                          <li>
-                            <a href="#" >English</a>
-                          </li>
-                          <li class="">
-                            <a href="#" >Chinese</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li class="nav-share-contain">
-                    <div class="nav-share-links">
-                      <i class="am-icon-facebook"></i>
-                      <i class="am-icon-twitter"></i>
-                      <i class="am-icon-google-plus"></i>
-                      <i class="am-icon-pinterest"></i>
-                      <i class="am-icon-instagram"></i>
-                      <i class="am-icon-linkedin"></i>
-                      <i class="am-icon-youtube-play"></i>
-                      <i class="am-icon-rss"></i>
-                    </div>
-                  </li>
-                  <li class=""><a href="#" class="" >登录</a></li>
-                  <li class=""><a href="#" class="" >注册</a></li>
-              </ul>
-
-              </div>
-            </div>
-          </nav>
+              <li class="am-parent">
+                <a href="#" class="" >新闻中心</a>
+                  <ul class="am-menu-sub am-collapse  ">
+                      <li class="">
+                        <a href="#" class="" >协会动态</a>
+                      </li>
+                      <li class="">
+                        <a href="#" class="" >行业动态</a>
+                      </li>
+                      <li class="">
+                        <a href="#" class="" >精彩专题</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class=""><a href="{{url('crn.html')}}" class="" >协会招新</a></li>
+              <li class=""><a href="#" class="" >关于我们</a></li>
+              <li class=""><a href="#" class="" >联系我们</a></li>
+              <li class="am-parent">
+                <a href="" class="nav-icon nav-icon-globe" >Language</a>
+                  <ul class="am-menu-sub am-collapse  ">
+                      <li>
+                        <a href="#" >English</a>
+                      </li>
+                      <li class="">
+                        <a href="#" >Chinese</a>
+                      </li>
+                  </ul>
+              </li>
+              <li class="nav-share-contain">
+                <div class="nav-share-links">
+                  <i class="am-icon-facebook"></i>
+                  <i class="am-icon-twitter"></i>
+                  <i class="am-icon-google-plus"></i>
+                  <i class="am-icon-pinterest"></i>
+                  <i class="am-icon-instagram"></i>
+                  <i class="am-icon-linkedin"></i>
+                  <i class="am-icon-youtube-play"></i>
+                  <i class="am-icon-rss"></i>
+                </div>
+              </li>
+              <li class=""><a href="#" class="" >登录</a></li>
+              <li class=""><a href="#" class="" >注册</a></li>
+          </ul>
 
           </div>
         </div>
-        <div class="am-u-sm-5 am-u-end">
-          <div class="m-logo">
-            <a href=""><img src="./images/logo.png" style="margin-top:-2px;" alt="logo" /></a>
-          </div>
-        </div>
+      </nav>
+
       </div>
-    <!--mobile header end-->
     </div>
+    <div class="am-u-sm-5 am-u-end">
+      <div class="m-logo">
+        <a href=""><img src="./images/logo.png" style="margin-top:-2px;" alt="logo" /></a>
+      </div>
+    </div>
+  </div>
+<!--mobile header end-->
+</div>

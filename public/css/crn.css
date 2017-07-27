@@ -1,0 +1,26 @@
+body{
+	background-color:#fff;
+}
+.crn_container{
+	width:800px;
+	min-height:0px;
+	padding:50px 0px;
+	padding-top:40px;
+	margin:0px auto;
+	/*border:1px solid #eee;
+	border-top:none;
+	border-bottom:none;*/
+}
+
+@media(max-width: 816px){
+	.crn_container{
+		width:100%;
+	}
+}
+
+@media(max-width: 640px){
+	.crn_container{
+		width:100%;
+		padding-top:10px;
+	}
+}

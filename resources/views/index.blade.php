@@ -186,6 +186,10 @@
     </div>
 </div>
 <div class="ca_association_introduce_bottom">
+  <!-- 回到顶部 -->
+  <!-- <div class="amz-toolbar go_top_index">
+     <a href="" data-am-smooth-scroll title="回到顶部" class="am-icon-btn am-icon-arrow-up" id="amz-go-top"></a> 
+  </div> -->
   <div class="ca_bottom_container">
     <div class="ca_bottom_welcome">
       计算机技术协会
@@ -194,30 +198,30 @@
         <div class="ca_bottom_main_study">
             <ul class="ca_bottom_main_ul">
                 <li style="margin-bottom:8px;">学习栏目</li>
-                <li><a href="http://www.imooc.com/" target="_blank">慕课网</a></li>
-                <li><a href="http://www.webhek.com/" target="_blank">web骇客</a></li>
-                <li><a href="http://www.runoob.com/" target="_blank">菜鸟教程</a></li>
-                <li><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰官网</a></li>
-                <li><a href="http://lx.lanqiao.cn/" target="_blank">蓝桥算法练习</a></li>
+                <li><a href="http://www.imooc.com/" target="_blank" title="慕课网">慕课网</a></li>
+                <li><a href="http://www.webhek.com/" target="_blank" title="web骇客">web骇客</a></li>
+                <li><a href="http://www.runoob.com/" target="_blank" title="菜鸟教程">菜鸟教程</a></li>
+                <li><a href="https://www.liaoxuefeng.com/" target="_blank" title="廖雪峰官网">廖雪峰官网</a></li>
+                <li><a href="http://lx.lanqiao.cn/" target="_blank" title="蓝桥杯算法练习">蓝桥杯算法练习</a></li>
             </ul>
         </div>
         <div class="ca_bottom_main_friend">
             <ul class="ca_bottom_main_ul">
                 <li style="margin-bottom:8px;">友情链接</li>
-                <li><a href="https://www.xsdhy.com/" target="_blank">消逝的红叶</a></li>
-                <li><a href="http://www.erzone.cn/" target="_blank">田西秦的博客</a></li>
-                <li><a href="http://blog.gotz9.cn/" target="_blank">gotz9</a></li>
-                <li><a href="http://www.vvlove.cc/" target="_blank">Q1: (V ❤ C) √</a></li>
-                <li><a href="https://suse.xsdhy.com/" target="_blank">川理在线</a></li>
+                <li><a href="https://www.xsdhy.com/" target="_blank" title="消逝的红叶">消逝的红叶</a></li>
+                <li><a href="http://www.erzone.cn/" target="_blank" title="田西秦的博客">田西秦的博客</a></li>
+                <li><a href="http://blog.gotz9.cn/" target="_blank" title="gotz9">gotz9</a></li>
+                <li><a href="http://www.vvlove.cc/" target="_blank" title="Q1: (V ❤ C) √">Q1: (V ❤ C) √</a></li>
+                <li><a href="https://suse.xsdhy.com/" target="_blank" title="川理在线">川理在线</a></li>
             </ul>
         </div>
         <div class="ca_bottom_main_school">
             <ul class="ca_bottom_main_ul">
                 <li style="margin-bottom:8px;">学校链接</li>
-                <li><a href="http://www.suse.edu.cn/" target="_blank">四川理工官网</a></li>
-                <li><a href="http://jsj.suse.edu.cn/" target="_blank">计算机学院</a></li>
-                <li><a href="http://lib.suse.edu.cn/">图书馆</a></li>
-                <li><a href="http://zjc.suse.edu.cn/p/0/?StId=st_app_news_i_x636359688054594682" target="_blank">录取查询</a></li>
+                <li><a href="http://www.suse.edu.cn/" target="_blank" title="四川理工官网">四川理工官网</a></li>
+                <li><a href="http://jsj.suse.edu.cn/" target="_blank" title="计算机学院">计算机学院</a></li>
+                <li><a href="http://lib.suse.edu.cn/" title="图书馆">图书馆</a></li>
+                <li><a href="http://zjc.suse.edu.cn/p/0/?StId=st_app_news_i_x636359688054594682" target="_blank" title="录取查询">录取查询</a></li>
             </ul>
         </div>
         <ul class="ca_bottom_ul am-list admin-sidebar-list" id="collapase-nav-1">
@@ -227,11 +231,11 @@
                 学习栏目 <i class="am-icon-angle-right am-fr am-margin-right"></i>
             </a>
             <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
-                <li><a href="http://www.imooc.com/" target="_blank">慕课网</a></li>
-                <li><a href="http://www.webhek.com/" target="_blank">web骇客</a></li>
-                <li><a href="http://www.runoob.com/" target="_blank">菜鸟教程</a></li>
-                <li><a href="https://www.liaoxuefeng.com/" target="_blank">廖雪峰官网</a></li>
-                <li><a href="http://lx.lanqiao.cn/" target="_blank">蓝桥算法练习</a></li>
+                <li><a href="http://www.imooc.com/" target="_blank" title="慕课网">慕课网</a></li>
+                <li><a href="http://www.webhek.com/" target="_blank" title="web骇客">web骇客</a></li>
+                <li><a href="http://www.runoob.com/" target="_blank" title="菜鸟教程">菜鸟教程</a></li>
+                <li><a href="https://www.liaoxuefeng.com/" target="_blank" title="廖雪峰官网">廖雪峰官网</a></li>
+                <li><a href="http://lx.lanqiao.cn/" target="_blank" title="蓝桥杯算法练习">蓝桥杯算法练习</a></li>
             </ul>
           </li>
 
@@ -240,11 +244,11 @@
                 友情链接<i class="am-icon-angle-right am-fr am-margin-right"></i>
             </a>
             <ul class="am-list am-collapse admin-sidebar-sub" id="company-nav">
-                <li><a href="https://www.xsdhy.com/" target="_blank">消逝的红叶</a></li>
-                <li><a href="http://www.erzone.cn/" target="_blank">田西秦的博客</a></li>
-                <li><a href="http://blog.gotz9.cn/" target="_blank">gotz9</a></li>
-                <li><a href="http://www.vvlove.cc/" target="_blank">Q1: (V ❤ C) √</a></li>
-                <li><a href="https://suse.xsdhy.com/" target="_blank">川理在线</a></li>
+                <li><a href="https://www.xsdhy.com/" target="_blank" title="消逝的红叶">消逝的红叶</a></li>
+                <li><a href="http://www.erzone.cn/" target="_blank" title="田西秦的博客">田西秦的博客</a></li>
+                <li><a href="http://blog.gotz9.cn/" target="_blank" title="gotz9">gotz9</a></li>
+                <li><a href="http://www.vvlove.cc/" target="_blank" title="Q1: (V ❤ C) √">Q1: (V ❤ C) √</a></li>
+                <li><a href="https://suse.xsdhy.com/" target="_blank" title="川理在线">川理在线</a></li>
             </ul>
           </li>
 
@@ -253,10 +257,10 @@
                 学校链接<i class="am-icon-angle-right am-fr am-margin-right"></i>
             </a>
             <ul class="am-list am-collapse admin-sidebar-sub" id="role-nav">
-                <li><a href="http://www.suse.edu.cn/" target="_blank">四川理工官网</a></li>
-                <li><a href="http://jsj.suse.edu.cn/" target="_blank">计算机学院</a></li>
-                <li><a href="http://lib.suse.edu.cn/">图书馆</a></li>
-                <li><a href="http://zjc.suse.edu.cn/p/0/?StId=st_app_news_i_x636359688054594682" target="_blank">录取查询</a></li>
+                <li><a href="http://www.suse.edu.cn/" target="_blank" title="四川理工官网">四川理工官网</a></li>
+                <li><a href="http://jsj.suse.edu.cn/" target="_blank" title="计算机学院">计算机学院</a></li>
+                <li><a href="http://lib.suse.edu.cn/" title="图书馆">图书馆</a></li>
+                <li><a href="http://zjc.suse.edu.cn/p/0/?StId=st_app_news_i_x636359688054594682" target="_blank" title="录取查询">录取查询</a></li>
             </ul>
           </li>
         </ul>
@@ -268,11 +272,15 @@
 </div>
 
 <!-- 回到顶部 -->
-<!-- <div class="amz-toolbar" id="amz-toolbar">
+<!-- <div class="amz-toolbar" data-am-sticky>
     <a href="" data-am-smooth-scroll title="回到顶部" class="am-icon-btn am-icon-arrow-up" id="amz-go-top"></a> 
-    <a href="/getting-started/faq" title="常见问题" class="am-icon-faq am-icon-btn am-icon-question-circle"></a>
 </div> -->
-<!-- <script type="text/javascript" src="./amaze/js/amazeui.js"></script> -->
+<!-- <div data-am-widget="gotop" class="am-gotop am-gotop-default" >
+    <a href="#top" title="回到顶部">
+        <span class="am-gotop-title">回到顶部</span>
+          <i class="am-gotop-icon am-icon-chevron-up"></i>
+    </a>
+</div> -->
 @include('common/bottom')
 
 <script type="text/javascript" src="{{URL::asset('js/index.js')}}"></script>

@@ -533,3 +533,13 @@ body{
 	text-align: center;
 	line-height: 30px;
 }
+
+
+.go_top_index{
+	position:absolute;
+	top:100%;
+	margin-top:-60px;
+	left:100%;
+	margin-left:-60px;
+	display: block;
+}

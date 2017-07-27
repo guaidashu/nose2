@@ -11,9 +11,15 @@
 |
 */
 
+// 主页面
 Route::get('/', 'IndexController@index');
 Route::get('index.html','IndexController@index');
+
+// 协会招新页面
 Route::get('crn.html','CrnController@index');
+Route::post('crn/handle.html','CrnController@handle');
+
+// 其他测试页面
 Route::get('test','TestController@test');
 Route::get('fun','TestController@curlTest');
 /*

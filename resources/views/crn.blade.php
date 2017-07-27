@@ -18,6 +18,43 @@
 <![endif]-->
 @include('common/navigation')
 
+<div class="crn_container">
+	<div class="am-g">
+	  <div class="am-u-md-8 am-u-sm-centered">
+	    <form class="am-form" action="{{url('crn/handle.html')}}" method="post" data-am-validator>
+	      <fieldset class="am-form-set">
+	        <legend>协会招新</legend>
+
+		    <div class="am-form-group">
+		      <label for="doc-vld-email-2">邮箱：</label>
+		      <input type="email" name="email" id="doc-vld-email-2" placeholder="输入邮箱" required/>
+		    </div>
+
+		     <div class="am-form-group">
+		      <label for="doc-vld-name-2">姓名</label>
+		      <input type="text" name="name" id="doc-vld-name-2" minlength="3" placeholder="你的名字是···" required/>
+		    </div>
+
+		    <div class="am-form-group">
+		      <label for="doc-vld-phone-2">手机号码</label>
+		      <input name="phone" type="text" id="doc-vld-phone-2" placeholder="输入手机号码" required />
+		    </div>
+
+		    <div class="am-form-group">
+			  <label for="doc-select-1">入学年份</label>
+			  <select name="year" id="doc-select-1">
+			    <option value="2015">2015</option>
+			    <option value="2016">2016</option>
+			    <option value="2017">2017</option>
+			  </select>
+			  <span class="am-form-caret"></span>
+			</div>
+	      </fieldset>
+	      <button type="submit" class="am-btn am-btn-primary am-btn-block">提交信息</button>
+	    </form>
+	  </div>
+	</div>
+</div>
 @include('common/bottom')
 
 <script type="text/javascript" src="{{URL::asset('js/crn.js')}}"></script>
