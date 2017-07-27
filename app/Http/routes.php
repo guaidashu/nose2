@@ -13,15 +13,20 @@
 
 // 主页面
 Route::get('/', 'IndexController@index');
-Route::get('index.html','IndexController@index');
+Route::get('index.html', 'IndexController@index');
 
 // 协会招新页面
-Route::get('crn.html','CrnController@index');
-Route::post('crn/handle.html','CrnController@handle');
+Route::get('crn.html', 'CrnController@index');
+Route::post('crn/handle.html', 'CrnController@handle');
 
 // 其他测试页面
-Route::get('test','TestController@test');
-Route::get('fun','TestController@curlTest');
+Route::get('test', 'TestController@test');
+Route::get('fun', 'TestController@curlTest');
+
+// 验证码
+Route::get('validate.html','ValidateController@validate');
+Route::get('getValidateCount.html',"ValidateController@getValidateCount");
+Route::post('validateCheck.html','ValidateController@validateCheck');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

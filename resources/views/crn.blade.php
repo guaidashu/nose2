@@ -21,7 +21,7 @@
 <div class="crn_container">
 	<div class="am-g">
 	  <div class="am-u-md-8 am-u-sm-centered">
-	    <form class="am-form" action="{{url('crn/handle.html')}}" method="post" data-am-validator>
+	    <form class="am-form" data-am-validator>
 	      <fieldset class="am-form-set">
 	        <legend>协会招新</legend>
 
@@ -32,25 +32,26 @@
 
 		     <div class="am-form-group">
 		      <label for="doc-vld-name-2">姓名</label>
-		      <input type="text" name="name" id="doc-vld-name-2" minlength="3" placeholder="你的名字是···" required/>
+		      <input type="text" name="name" id="doc-vld-name-2" minlength="2" placeholder="你的名字是···(至少两个字)" />
 		    </div>
 
 		    <div class="am-form-group">
-		      <label for="doc-vld-phone-2">手机号码</label>
-		      <input name="phone" type="text" id="doc-vld-phone-2" placeholder="输入手机号码" required />
+		      <label for="doc-vld-528">手机号</label>
+		      <input type="text" id="doc-vld-528" name="phone" class="js-pattern-mobile"
+		             placeholder="输入手机号" required/>
 		    </div>
 
 		    <div class="am-form-group">
 			  <label for="doc-select-1">入学年份</label>
 			  <select name="year" id="doc-select-1">
-			    <option value="2015">2015</option>
-			    <option value="2016">2016</option>
 			    <option value="2017">2017</option>
+			    <option value="2016">2016</option>
+			    <option value="2015">2015</option>
 			  </select>
 			  <span class="am-form-caret"></span>
 			</div>
 	      </fieldset>
-	      <button type="submit" class="am-btn am-btn-primary am-btn-block">提交信息</button>
+	      <button type="button" class="handle_btn am-btn am-btn-primary am-btn-block">提交信息</button>
 	    </form>
 	  </div>
 	</div>

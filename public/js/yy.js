@@ -70,7 +70,7 @@ var yy_time_boolean=true;//时间类提示弹出框
 		},
 		validate_change:function(){//验证码刷新
 			var self=this;
-			document.getElementById("validate_img").src="/Public/php/validate.php?r="+Math.random()*10000000;
+			document.getElementById("validate_img").src="/validate.html?r="+Math.random()*10000000;
 		},
 		
 	}
@@ -338,7 +338,7 @@ function validate_show(){//验证码
              '<div class="validate_popup_close">'+
              '</div>'+
              '<div class="validate_img">'+
-             '<img src="/Public/php/validate.php?r=<?php echo rand()*1000000; ?>" width="100px" height="30px" class="cursor_pointer" id="validate_img" />'+
+             '<img src="/validate.html?r='+Math.random()*10000000+'" width="100px" height="30px" class="cursor_pointer" id="validate_img" />'+
              '<span>'+
              '点图换一张'+
              '</span>'+
@@ -357,4 +357,41 @@ function validate_show(){//验证码
 	str.appendTo("body");
 }
 
+function validateClose()
+{
+	$(".validate_envelop").fadeOut(500);
+	$(".validate_popup").fadeOut(500,function(){
+		$(".validate_envelop").remove();
+		$(".validate_popup_container").remove();
+	});
+}
 
+function emailCheck(email)
+{
+	var patternEmail=/^\S([a-zA-Z0-9]*)(@)\S([0-9a-z]*)(\.com)$/;
+	if(!patternEmail.test(email)){
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function phoneCheck(phone)
+{
+	var pattern=/^1([0-9]){10}$/;
+	if(!pattern.test(phone) || phone.length!=11){
+		return false;
+	}else{
+		return true;
+	}
+}
+
+function yearCheck(year)
+{
+	var patternYear=/^([0-9]){4}$/;
+	if(!patternYear.test(year)){
+		return false;
+	}else{
+		return true;
+	}
+}
