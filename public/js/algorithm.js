@@ -1,5 +1,5 @@
 ;(function($){
-	var crn_function=function()
+	var algorithm_function=function()
 	{
 		var self=this;
 		this.body=$(document.body);
@@ -19,7 +19,7 @@
 			self.validateCheck();
 		});
 	};
-	crn_function.prototype={
+	algorithm_function.prototype={
 		test:function()
 		{
 			yy_init($(document).width());
@@ -59,7 +59,7 @@
 			$(".handle_btn").addClass("am-disabled");
 			self.submit=false;
 			$.ajax({
-				url:"/crn/handle.html",
+				url:"/act/algorithmHandle.html",
 				type:"POST",
 				dataType:"json",
 				data:{"name":name, "email":email, "phone":phone, "year":year},
@@ -79,7 +79,6 @@
 				},
 				error:function(data,status,e){
 					console.log(e);
-					self.getValidateCount();
 					$(".handle_btn").removeClass("am-disabled");
 					self.submit=true;
 				}
@@ -133,5 +132,5 @@
 			});
 		}
 	}
-	window['crn_function']=crn_function;
+	window['algorithm_function']=algorithm_function;
 })(jQuery);

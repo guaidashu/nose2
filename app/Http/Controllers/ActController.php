@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
-class CrnController extends Controller
+class ActController extends Controller
 {
 	public function __construct()
 	{
@@ -19,13 +19,14 @@ class CrnController extends Controller
 			$_SESSION['ca_username']=null;
 		}
 	}
-	public function index()
+	// 算法页面控制函数
+	public function algorithm()
 	{
-		return view('crn/index',['name'=>$_SESSION['ca_username']]);
-		//这里有问题?
+		return view('act/algorithm',['name'=>$_SESSION['ca_username']]);
 	}
 
-	public function handle()
+	// 算法入门报名信息提交函数
+	public function algorithmHandle()
 	{
 		// 判断是否提交次数已到
 		if($_SESSION['validate_count']>=3){
@@ -58,7 +59,7 @@ class CrnController extends Controller
 		}
 
 		//我们需要判断邮箱和手机号码是否已被注册
-		$data=DB::select('select phone,email from crn');
+		$data=DB::select('select phone,email from algorithm');
 		foreach ($data as $key => $value) {
 			if($value->email==$email){
 				echo js_arr("re_email");
@@ -78,7 +79,7 @@ class CrnController extends Controller
 			'date'=>date('Y-m-d H:i:s',time())
 			);
 		// 插入数据库 并且获取操作返回值
-		$data=DB::table('crn')->insert($arr);
+		$data=DB::table('algorithm')->insert($arr);
 		//成功返回ok ，否则返回failed
 		if($data){
 			echo js_arr("ok");

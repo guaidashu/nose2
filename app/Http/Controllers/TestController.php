@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use App\TestModel;
 
 class TestController extends Controller
@@ -17,6 +18,15 @@ class TestController extends Controller
 		// $data=$model->dataInsert($arr);
 		$data=$model->getData();
 		debug($data);
+	}
+
+	public function sqlTest()
+	{
+		$data=DB::select('select phone,email from crn');
+		foreach ($data as $key => $value) {
+			debug($key);
+			debug($value->phone);
+		}
 	}
 
 	public function fun($url)

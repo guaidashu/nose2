@@ -13,15 +13,23 @@
 
 // 主页面
 Route::get('/', 'IndexController@index');
-Route::get('index.html', 'IndexController@index');
+Route::get('index', 'IndexController@index');
+Route::get('index/index.html', 'IndexController@index');
 
 // 协会招新页面
-Route::get('crn.html', 'CrnController@index');
+Route::get('crn', 'CrnController@index');
+Route::get('crn/index.html', 'CrnController@index');
 Route::post('crn/handle.html', 'CrnController@handle');
+
+// 协会动态页面组
+	// 算法入门报名页面
+	Route::get('act/algorithm.html','ActController@algorithm');
+	Route::post('act/algorithmHandle.html','ActController@algorithmHandle');
 
 // 其他测试页面
 Route::get('test', 'TestController@test');
 Route::get('fun', 'TestController@curlTest');
+Route::get('sql.html','TestController@sqlTest');
 
 // 验证码
 Route::get('validate.html','ValidateController@validate');

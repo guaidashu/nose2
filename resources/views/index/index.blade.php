@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-@include('common/head')
+@include('./../common/head')
 
 <link rel="stylesheet" type="text/css" href="{{URL::asset('css/index.css')}}" />
 <title>
@@ -16,16 +16,16 @@
     365 安全卫士提醒：你的浏览器太古董了，妹子无爱，<a
     href="http://browsehappy.com/" target="_blank">速速点击换一个</a>！</div></div>
 <![endif]-->
-@include('common/navigation')
+@include('./../common/navigation')
 
 <!-- 图片轮播器 -->
 <div class="rollpic">
     <div class="am-slider am-slider-default" data-am-flexslider id="demo-slider-0">
       <ul class="am-slides">
-        <li><img src="./images/curousel/bing-1.jpg" /></li>
-        <li><img src="./images/curousel/bing-2.jpg" /></li>
-        <li><img src="./images/curousel/bing-3.jpg" /></li>
-        <li><img src="./images/curousel/bing-4.jpg" /></li>
+        <li><img src="{{URL::asset('images/curousel/bing-1.jpg')}}" /></li>
+        <li><img src="{{URL::asset('images/curousel/bing-2.jpg')}}" /></li>
+        <li><img src="{{URL::asset('images/curousel/bing-3.jpg')}}" /></li>
+        <li><img src="{{URL::asset('images/curousel/bing-4.jpg')}}" /></li>
       </ul>
     </div>
 </div>
@@ -40,7 +40,7 @@
 </div>
 
 <!-- 第一张可滚动图片(js实现) -->
-<div class="ca_association_introduce_img_1 ca_bg_img_1" data-background="./images/background/bg_1.jpg">
+<div class="ca_association_introduce_img_1 ca_bg_img_1" data-background="{{URL::asset('images/background/bg_1.jpg')}}">
     <div class="ca_association_introduce_img_1_content_container">
         <div class="ca_association_introduce_img_1_content">
             <div class="ca_association_introduce_img_1_content_1">
@@ -281,7 +281,7 @@
           <i class="am-gotop-icon am-icon-chevron-up"></i>
     </a>
 </div> -->
-@include('common/bottom')
+@include('./../common/bottom')
 
 <script type="text/javascript" src="{{URL::asset('js/index.js')}}"></script>
 </body>

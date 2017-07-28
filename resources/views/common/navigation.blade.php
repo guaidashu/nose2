@@ -47,7 +47,7 @@
               <div class="am-g">
                 <div class="am-u-lg-2 am-u-sm-12">
                   <div class="logo">
-                    <a href="#" style="display:inline-block;width:100%;height:100%;"><img src="./images/logo.png" alt="logo" /></a>
+                    <a href="#" style="display:inline-block;width:100%;height:100%;"><img src="{{URL::asset('images/logo.png')}}" alt="logo" /></a>
                   </div>
                 </div>
                 <div class="am-u-md-10 am-u-sm-12">
@@ -92,7 +92,7 @@
 <div class="nav-contain ca_nav" data-am-sticky style="border-top:none;">
   <div class="nav-inner">
     <ul class="am-nav am-nav-pills am-nav-justify">
-      <li class=""><a href="{{url('index.html')}}">首页</a></li>
+      <li class=""><a href="{{url('index/index.html')}}">首页</a></li>
       <li>
         <a href="#">项目中心</a>
         <!-- sub-menu start-->
@@ -112,16 +112,16 @@
           </ul>
       </li>
       <li>
-        <a href="#">新闻中心</a>
+        <a href="#">协会动态</a>
         <!-- sub-menu start-->
         <ul class="sub-menu">
-          <li class="menu-item"><a href="#">协会动态</a></li>
+          <li class="menu-item"><a href="{{url('act/algorithm.html')}}">算法入门报名</a></li>
           <li class="menu-item"><a href="#">行业动态</a></li>
           <li class="menu-item"><a href="#">精彩专题</a></li>
         </ul>
         <!-- sub-menu end-->
       </li>
-      <li><a href="{{url('crn.html')}}">协会招新</a></li>
+      <li><a href="{{url('crn/index.html')}}">协会招新</a></li>
       <li><a href="#">关于我们</a></li>
       <!-- <li><a href="html/contact.html">联系我们</a></li> -->
     </ul>
@@ -143,7 +143,7 @@
         <div class="am-offcanvas" >
           <div class="am-offcanvas-bar">
           <ul class="am-menu-nav am-avg-sm-1">
-              <li><a href="{{url('index.html')}}" class="" >首页</a></li>
+              <li><a href="{{url('index/index.html')}}" class="" >首页</a></li>
               <li class="am-parent">
                 <a href="#" class="" >项目中心</a>
                   <ul class="am-menu-sub am-collapse ">
@@ -173,10 +173,10 @@
                   </ul>
               </li>
               <li class="am-parent">
-                <a href="#" class="" >新闻中心</a>
+                <a href="#" class="" >协会动态</a>
                   <ul class="am-menu-sub am-collapse  ">
                       <li class="">
-                        <a href="#" class="" >协会动态</a>
+                        <a href="{{url('act/algorithm.html')}}" class="" >算法入门报名</a>
                       </li>
                       <li class="">
                         <a href="#" class="" >行业动态</a>
@@ -186,7 +186,7 @@
                       </li>
                   </ul>
               </li>
-              <li class=""><a href="{{url('crn.html')}}" class="" >协会招新</a></li>
+              <li class=""><a href="{{url('crn/index.html')}}" class="" >协会招新</a></li>
               <li class=""><a href="#" class="" >关于我们</a></li>
               <li class=""><a href="#" class="" >联系我们</a></li>
               <li class="am-parent">
@@ -224,7 +224,7 @@
     </div>
     <div class="am-u-sm-5 am-u-end">
       <div class="m-logo">
-        <a href=""><img src="./images/logo.png" style="margin-top:-2px;" alt="logo" /></a>
+        <a href=""><img src="{{URL::asset('images/logo.png')}}" style="margin-top:-2px;" alt="logo" /></a>
       </div>
     </div>
   </div>

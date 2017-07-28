@@ -20,6 +20,6 @@ class IndexController extends Controller
 	}
 	public function index()
 	{
-		return view('index',['name'=>$_SESSION['ca_username']]);
+		return view('index/index',['name'=>$_SESSION['ca_username']]);
 	}
 }

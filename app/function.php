@@ -9,7 +9,7 @@ function debug($arr, $exit=false)
 	echo "<pre>";
 	if(is_array($arr)||is_object($arr)){
 		var_dump($arr);
-	}else if(empty($arr)){
+	}else if($arr!=0&&empty($arr)){
 		echo "NULL";
 	}else{
 		echo $arr;
