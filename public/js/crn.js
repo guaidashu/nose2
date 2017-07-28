@@ -5,11 +5,16 @@
 		this.body=$(document.body);
 		// validateCount 用来存储提交次数， 三次就要弹出验证码
 		this.validateCount=0;
+		// this.submit用来防止用户在网络不畅的情况下还没有反应的话，多点了就会提交多次
+		this.submit=true;
 		this.getValidateCount();
 		// test()函数用来设置自适应
 		// this.test();
 		this.body.delegate(".handle_btn", "click", function(){
-			self.insert();
+			if(self.submit){
+				self.submit=false;
+				self.insert();
+			}
 		});
 		this.body.delegate(".validate_btn", "click", function(){
 			self.validateCheck();
@@ -61,13 +66,16 @@
 					if(data.text=="ok"){
 						yy_init("提交成功");
 						self.getValidateCount();
+						self.submit=true;
 					}else{
 						yy_init("提交失败，请稍候重试");
 						self.getValidateCount();
+						self.submit=true;
 					}
 				},
 				error:function(data,status,e){
 					console.log(e);
+					self.submit=true;
 				}
 			});
 		},
