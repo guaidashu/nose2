@@ -22,6 +22,7 @@ class CrnController extends Controller
 	public function index()
 	{
 		return view('crn',['name'=>$_SESSION['ca_username']]);
+		//这里有问题?
 	}
 
 	public function handle()
