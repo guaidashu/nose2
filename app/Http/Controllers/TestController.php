@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use App\TestModel;
+use Mail;
 
 class TestController extends Controller
 {
@@ -27,6 +28,14 @@ class TestController extends Controller
 			debug($key);
 			debug($value->phone);
 		}
+	}
+
+	public function emailTest()
+	{
+		Mail::raw('我试试这个能不能发送',function($message){
+			$message->subject('能发送吗');
+			$message->to('1023767856@qq.com');
+		});
 	}
 
 	public function fun($url)

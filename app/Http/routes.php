@@ -27,9 +27,10 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	Route::post('act/algorithmHandle.html','ActController@algorithmHandle');
 
 // 其他测试页面
-Route::get('test', 'TestController@test');
-Route::get('fun', 'TestController@curlTest');
-Route::get('sql.html','TestController@sqlTest');
+Route::get('test/test', 'TestController@test');
+Route::get('test/fun', 'TestController@curlTest');
+Route::get('test/sql.html','TestController@sqlTest');
+Route::get('test/email.html','TestController@emailTest');
 
 // 验证码
 Route::get('validate.html','ValidateController@validate');
