@@ -97,9 +97,9 @@
         <a href="#">项目中心</a>
         <!-- sub-menu start-->
         <ul class="sub-menu">
-          <li class="menu-item"><a href="http://sh.wyysdsa.cn/">超级作业</a></li>
-          <li class="menu-item"><a href="http://www.wyysdsa.com/stucontrol/">查寝系统</a></li>
-          <li class="menu-item"><a href="http://www.wyysdsa.cn:1965">川理在线</a></li>
+          <li class="menu-item"><a href="http://sh.wyysdsa.cn/" target="_blank">超级作业</a></li>
+          <li class="menu-item"><a href="http://www.wyysdsa.com/stucontrol/" target="_blank">查寝系统</a></li>
+          <li class="menu-item"><a href="http://www.wyysdsa.cn:1965" target="_blank">川理在线</a></li>
         </ul>
         <!-- sub-menu end-->
       </li>
@@ -148,13 +148,13 @@
                 <a href="#" class="" >项目忠心</a>
                   <ul class="am-menu-sub am-collapse ">
                       <li class="">
-                        <a href="http://sh.wyysdsa.cn/" class="" >超级作业</a>
+                        <a href="http://sh.wyysdsa.cn/" class="" target="_blank" >超级作业</a>
                       </li>
                       <li class="">
-                        <a href="http://www.wyysdsa.com/stucontrol/" class="" >查寝系统</a>
+                        <a href="http://www.wyysdsa.com/stucontrol/" class="" target="_blank">查寝系统</a>
                       </li>
                       <li class="">
-                        <a href="http://www.wyysdsa.cn:1965" class="" >川理在线</a>
+                        <a href="http://www.wyysdsa.cn:1965" class="" target="_blank">川理在线</a>
                       </li>
                   </ul>
               </li>

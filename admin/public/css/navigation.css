@@ -1,0 +1,37 @@
+.nav_side{
+	width:240px;
+	background-color:#0593d3;
+	overflow-y:auto;
+	position:fixed;
+	z-index:1;
+}
+.ca_admin_spacing{
+	height:20px;
+	width:100%;
+	background-color:transparent;
+}
+.ca_logo_container{
+	height:40px;
+	width:100%;
+	position:relative;
+}
+.ca_logo{
+	height:36px;
+	width:154px;
+	background:url(./../images/logo.png) no-repeat center center;
+	background-size:100% 100%;
+	position:relative;
+	top:10px;
+	left:8px;
+}
+.am-list-self li{
+	background-color:transparent;
+	color:#fff;
+	border:none;
+}
+.am-list-self li > a{
+	color:#fff;
+}
+.am-list-self li > a:hover{
+	color:yellow;
+}
