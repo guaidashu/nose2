@@ -12,7 +12,6 @@
 		// this.test();
 		this.body.delegate(".handle_btn", "click", function(){
 			if(self.submit){
-				self.submit=false;
 				self.insert();
 			}
 		});
@@ -57,6 +56,8 @@
 				validate_show();
 				return;
 			}
+			$(".handle_btn").addClass("am-disabled");
+			self.submit=false;
 			$.ajax({
 				url:"/crn/handle.html",
 				type:"POST",
@@ -66,18 +67,20 @@
 					if(data.text=="ok"){
 						yy_init("提交成功");
 						self.getValidateCount();
-						self.submit=true;
 					}else{
 						yy_init("提交失败，请稍候重试");
 						self.getValidateCount();
-						self.submit=true;
 					}
+					$(".handle_btn").removeClass("am-disabled");
+					self.submit=true;
 				},
 				error:function(data,status,e){
 					console.log(e);
+					$(".handle_btn").removeClass("am-disabled");
 					self.submit=true;
 				}
 			});
+
 		},
 		getValidateCount:function()
 		{
