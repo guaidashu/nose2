@@ -97,9 +97,9 @@
         <a href="#">项目中心</a>
         <!-- sub-menu start-->
         <ul class="sub-menu">
-          <li class="menu-item"><a href="#">产品展示1</a></li>
-          <li class="menu-item"><a href="#">产品展示2</a></li>
-          <li class="menu-item"><a href="#">产品展示3</a></li>
+          <li class="menu-item"><a href="http://sh.wyysdsa.cn/">超级作业</a></li>
+          <li class="menu-item"><a href="http://www.wyysdsa.com/stucontrol/">查寝系统</a></li>
+          <li class="menu-item"><a href="http://www.wyysdsa.cn:1965">川理在线</a></li>
         </ul>
         <!-- sub-menu end-->
       </li>
@@ -145,16 +145,16 @@
           <ul class="am-menu-nav am-avg-sm-1">
               <li><a href="{{url('index/index.html')}}" class="" >首页</a></li>
               <li class="am-parent">
-                <a href="#" class="" >项目中心</a>
+                <a href="#" class="" >项目忠心</a>
                   <ul class="am-menu-sub am-collapse ">
                       <li class="">
-                        <a href="#" class="" >产品展示1</a>
+                        <a href="http://sh.wyysdsa.cn/" class="" >超级作业</a>
                       </li>
                       <li class="">
-                        <a href="#" class="" >产品展示2</a>
+                        <a href="http://www.wyysdsa.com/stucontrol/" class="" >查寝系统</a>
                       </li>
                       <li class="">
-                        <a href="#" class="" >产品展示3</a>
+                        <a href="http://www.wyysdsa.cn:1965" class="" >川理在线</a>
                       </li>
                   </ul>
               </li>
