@@ -36,6 +36,8 @@
 			phone=$.trim(phone);
 			var year=document.getElementById("doc-select-1").value;
 			year=$.trim(year);
+			var content=document.getElementById("doc-vld-ta-2").value;
+			content=$.trim(content);
 			if(name.length<2 || !email || !phone || !year){
 				yy_init("还有内容未完善噢！");
 				return;
@@ -52,6 +54,10 @@
 				yy_init("请输入正确的入学年份");
 				return;
 			}
+			if(content.length>200){
+				yy_init("内容太长了，控制在200字以内噢。");
+				return;
+			}
 			if(self.validateCount>=3){
 				validate_show();
 				return;
@@ -62,7 +68,7 @@
 				url:"/crn/handle.html",
 				type:"POST",
 				dataType:"json",
-				data:{"name":name, "email":email, "phone":phone, "year":year},
+				data:{"name":name, "email":email, "phone":phone, "year":year,"content":content},
 				success:function(data){
 					if(data.text=="ok"){
 						yy_init("提交成功");

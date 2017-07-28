@@ -50,6 +50,11 @@
 			  </select>
 			  <span class="am-form-caret"></span>
 			</div>
+
+			<div class="am-form-group">
+		      <label for="doc-vld-ta-2">简单介绍一下你自己</label>
+		      <textarea id="doc-vld-ta-2" minlength="0" placeholder="随便说点什么···"></textarea>
+		    </div>
 	      </fieldset>
 	      <button type="button" class="handle_btn am-btn am-btn-primary am-btn-block">提交信息</button>
 	    </form>

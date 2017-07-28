@@ -37,7 +37,8 @@ class CrnController extends Controller
 		$email=htmlspecialchars($_POST['email']);
 		$year=htmlspecialchars($_POST['year']);
 		$phone=htmlspecialchars($_POST['phone']);
-		if(strlen($name)<2 || !$phone || !$email || !$year){
+		$content=htmlspecialchars($_POST['content']);
+		if(strlen($name)<2 || !$phone || !$email || !$year || strlen($content)>200){
 			echo js_arr("failed");
 			exit;
 		}
@@ -75,7 +76,8 @@ class CrnController extends Controller
 			"email"=>$email,
 			"year"=>$year,
 			"phone"=>$phone,
-			'date'=>date('Y-m-d H:i:s',time())
+			'date'=>date('Y-m-d H:i:s',time()),
+			"content"=>$content
 			);
 		// 插入数据库 并且获取操作返回值
 		$data=DB::table('crn')->insert($arr);

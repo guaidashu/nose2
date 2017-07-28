@@ -32,10 +32,11 @@ class TestController extends Controller
 
 	public function emailTest()
 	{
-		Mail::raw('我试试这个能不能发送',function($message){
-			$message->subject('能发送吗');
+		$data=Mail::raw('恭喜你成为了咱们协会成员的一份子！',function($message){
+			$message->subject('恭喜你');
 			$message->to('1023767856@qq.com');
 		});
+		debug($data);
 	}
 
 	public function fun($url)
