@@ -210,8 +210,12 @@
                   <i class="am-icon-rss"></i>
                 </div>
               </li>
-              <li class=""><a href="#" class="" >登录</a></li>
-              <li class=""><a href="#" class="" >注册</a></li>
+              @if(empty($name))
+                <li class=""><a href="#" class="">登录</a></li>
+                <li class=""><a href="#" class="">注册</a></li>
+              @else
+                <li class=""><a href="#" class="">{{$name}}</a></li>
+              @endif
           </ul>
 
           </div>

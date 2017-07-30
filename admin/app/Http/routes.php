@@ -15,6 +15,14 @@
 Route::get('/', 'IndexController@index');
 Route::get('index/index.html', 'IndexController@index');
 
+// 算法报名名单
+Route::get('algorithm/index.html','AlgorithmController@index');
+Route::get('algorithm','AlgorithmController@index');
+Route::get('algorithm/delete.html','AlgorithmController@delete');
+
+// 测试模块
+Route::get('test/test.html','TestController@test');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

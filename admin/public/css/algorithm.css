@@ -1,0 +1,11 @@
+.ca_admin_algorithm{
+	width:100%;
+	overflow:auto;
+	padding:15px 20px;
+}
+
+@media(max-width: 680px){
+	.ca_admin_algorithm{
+		overflow:none;
+	}
+}

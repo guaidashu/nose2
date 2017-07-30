@@ -42,7 +42,19 @@
 	  </li>
 
 	  <li class="am-panel">
-	    <a href="#"><i class="am-icon-wpforms am-margin-left-sm"></i> 算法报名名单</a>
+	    <a href="{{url('algorithm/index.html')}}"><i class="am-icon-wpforms am-margin-left-sm"></i> 算法报名名单</a>
+	  </li>
+
+	  <div class="ca_admin_spacing"></div>
+
+	  <li class="am-panel">
+		  <div class="admin_login">
+		  @if(empty($name))
+			  <a href="{{url('login/index.html')}}">登录</a>
+		  @else
+			  <a href="#">{{$name}}</a>
+		  @endif
+		  </div>
 	  </li>
 	</ul>
 </div>
@@ -100,7 +112,17 @@
 			  </li>
 
 			  <li class="am-panel">
-			    <a href="#"><i class="am-icon-wpforms am-margin-left-sm"></i> 算法报名名单</a>
+			    <a href="{{url('algorithm/index.html')}}"><i class="am-icon-wpforms am-margin-left-sm"></i> 算法报名名单</a>
+			  </li>
+			  <div class="ca_admin_spacing"></div>
+			  <li class="am-panel">
+				  <div class="admin_login">
+				  @if(empty($name))
+					  <a href="{{url('login/index.html')}}">登录</a>
+				  @else
+					  <a href="#">{{$name}}</a>
+				  @endif
+				  </div>
 			  </li>
 			</ul>
 

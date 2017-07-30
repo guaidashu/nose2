@@ -357,6 +357,7 @@ function validate_show(){//验证码
 	str.appendTo("body");
 }
 
+// 验证码框关闭
 function validateClose()
 {
 	$(".validate_envelop").fadeOut(500);
@@ -366,6 +367,7 @@ function validateClose()
 	});
 }
 
+// 检查邮箱格式是否正确
 function emailCheck(email)
 {
 	var patternEmail=/^\S([a-zA-Z0-9]*)(@)\S([0-9a-z]*)(\.com)$/;
@@ -376,6 +378,7 @@ function emailCheck(email)
 	}
 }
 
+// 检查电话号码是否为1开头且全为数字
 function phoneCheck(phone)
 {
 	var pattern=/^1([0-9]){10}$/;
@@ -386,6 +389,8 @@ function phoneCheck(phone)
 	}
 }
 
+
+// 检查出生年份是否为4位纯数字
 function yearCheck(year)
 {
 	var patternYear=/^([0-9]){4}$/;
