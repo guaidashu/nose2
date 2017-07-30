@@ -12,3 +12,13 @@
 <script type="text/javascript" src="{{URL::asset('assets/js/amazeui.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('js/yy.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('js/navigation.js')}}"></script>
+
+<script>
+  $(function() {
+    var id = '#doc-oc-demo1';
+    var $myOc = $(id);
+    $('.doc-oc-js').on('click', function() {
+      $myOc.offCanvas('open');
+    });
+  });
+</script>

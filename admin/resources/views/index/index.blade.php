@@ -19,7 +19,14 @@
 @include('./../common/navigation')
 
 <div class="admin_index_container">
-	<div>
+	<div class="admin_index_welcome_container">
+		<div class="admin_index_introduce">
+			<div class="admin_index_introduce_nav">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
 	</div>
 </div>
 @include('./../common/bottom')

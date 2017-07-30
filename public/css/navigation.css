@@ -1,8 +1,19 @@
+.m-header{
+	background-color:rgba(0,0,0,0.8);
+	padding:4px 0px;
+	z-index:10000;
+}
+.m-header .am-icon-bars{
+	color:#fff;
+}
+.am-u-sm-2{
+	float:right;
+}
 .ca_nav{
 	background:#fff;
 }
 .ca_contacts_item_1{
-		display:block;
+	display:block;
 }
 @media(max-width:1201px){
 	.ca_contacts_item_1{

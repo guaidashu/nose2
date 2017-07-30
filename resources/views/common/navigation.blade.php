@@ -128,19 +128,17 @@
   </div>
 </div>
 <!--nav end-->
- 
 
 <!--mobile header start-->
 <div class="m-header">
   <div class="am-g am-show-sm-only">
     <div class="am-u-sm-2">
       <div class="menu-bars">
-        <a href="#doc-oc-demo1" data-am-offcanvas="{effect: 'push'}"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
+        <a data-rel="open" class="doc-oc-js cursor_pointer"><i class="am-menu-toggle-icon am-icon-bars"></i></a>
         <!-- 侧边栏内容 -->
         <nav data-am-widget="menu" class="am-menu  am-menu-offcanvas1" data-am-menu-offcanvas >
-        <a href="javascript: void(0)" class="am-menu-toggle"></a>
 
-        <div class="am-offcanvas" >
+        <div id="doc-oc-demo1" class="am-offcanvas" >
           <div class="am-offcanvas-bar">
           <ul class="am-menu-nav am-avg-sm-1">
               <li><a href="{{url('index/index.html')}}" class="" >首页</a></li>
@@ -224,7 +222,7 @@
     </div>
     <div class="am-u-sm-5 am-u-end">
       <div class="m-logo">
-        <a href=""><img src="{{URL::asset('images/logo.png')}}" style="margin-top:-2px;" alt="logo" /></a>
+        <a href="{{url('index/index.html')}}" ><img src="{{URL::asset('images/logo.png')}}" style="margin-top:-2px;" alt="logo" /></a>
       </div>
     </div>
   </div>

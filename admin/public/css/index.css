@@ -1,0 +1,13 @@
+.admin_index_welcome_container{
+	width:100%;
+	min-height:0px;
+	padding:8px 15px;
+	position:relative;
+	background-image:url(./../images/index_bg/bg_1.jpg);
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+.admin_index_introduce_nav{
+	width:100%;
+}
