@@ -1,7 +1,9 @@
 .m-header{
 	background-color:rgba(0,0,0,0.8);
-	padding:4px 0px;
 	z-index:10000;
+}
+.ca_m_header{
+	padding:0px 0px;
 }
 .m-header .am-icon-bars{
 	color:#fff;
@@ -43,6 +45,9 @@
 	}
 	.header-box{
 		display:none;
+	}
+	.ca_m_header{
+		padding:4px 0px;
 	}
 	.topbar{
 		display:none;

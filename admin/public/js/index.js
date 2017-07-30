@@ -3,7 +3,7 @@
 	{
 		var self=this;
 		this.body=$(document.body);
-		this.heightCheck=window.innerHeight;
+		this.heightCheck=0;
 		this.autoNavHeight();
 		this.autoContainerWidth();
 		this.autoWelcomeHeight();
@@ -44,7 +44,7 @@
 		{
 			var self=this;
 			var screenHeight=window.innerHeight;
-			if(self.heightCheck<=screenHeight){
+			if(self.heightCheck<screenHeight){
 				$(".admin_index_introduce").css("height",screenHeight);
 				screenHeight=screenHeight;
 			}
