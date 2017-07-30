@@ -46,7 +46,7 @@
 			var screenHeight=window.innerHeight;
 			if(self.heightCheck<screenHeight){
 				$(".admin_index_introduce").css("height",screenHeight);
-				screenHeight=screenHeight;
+				self.heightCheck=screenHeight;
 			}
 		}
 	}
