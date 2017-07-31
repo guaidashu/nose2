@@ -400,3 +400,14 @@ function yearCheck(year)
 		return true;
 	}
 }
+
+// 检查是否为纯数字
+function numCheck(num)
+{
+	var pattern=/^([0-9]*)$/;
+	if(!pattern.test(num)){
+		return false;
+	}else{
+		return true;
+	}
+}
