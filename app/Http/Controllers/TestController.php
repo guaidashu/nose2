@@ -39,7 +39,7 @@ class TestController extends Controller
 		// });
 		$name="宋节";
 		$email='1023767856@qq.com';
-		$img='/images/curousel/bing-1.jpg';
+		$img='http://nose.wyysdsa.cn/images/curousel/bing-1.jpg';
 		$data=Mail::send('test',['name'=>$name,'email'=>$email,'img'=>$img],function($message) use ($email){
 			$message->subject('测试');
 			echo $email;
