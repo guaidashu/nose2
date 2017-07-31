@@ -25,10 +25,19 @@ Route::get('algorithm/delete.html','AlgorithmController@delete');
 Route::get('pm/memApp.html','PmController@memApp');
 Route::get('pm/memApp/delete.html','PmController@delete');
 
+// 登录模块
+Route::get('login','LoginController@login');
+Route::get('login/index.html','LoginController@login');
+Route::post('login/loginHandle.html','LoginController@loginHandle');
 
 // 测试模块
 Route::get('test/test.html','TestController@test');
 
+
+// 验证码
+Route::get('validate.html','ValidateController@validate');
+Route::get('getValidateCount.html',"ValidateController@getValidateCount");
+Route::post('validateCheck.html','ValidateController@validateCheck');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

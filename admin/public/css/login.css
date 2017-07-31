@@ -1,0 +1,333 @@
+.log_body{
+	  height:100%;
+	  width:100%;
+	  background:url(./../images/log_images/log3.jpeg);
+	  background-repeat:no-repeat;
+	  background-size:cover;
+	  background-position:center center;
+	  position:fixed;
+	  top:0px;
+	  left:0px;
+	  z-index:0;
+}
+@media(min-width : 500px){
+	.log_body{
+	  height:100%;
+	  width:100%;
+	  background:url(./../images/log_images/log2.jpeg);
+	  background-repeat:no-repeat;
+	  background-size:cover;
+	  background-position:center center;
+	  position:fixed;
+	  top:0px;
+	  left:0px;
+    }
+}
+@media(min-width : 800px){
+	.log_body{
+	  height:100%;
+	  width:100%;
+	  background:url(./../images/log_images/log4.jpeg);
+	  background-repeat:no-repeat;
+	  background-size:cover;
+	  background-position:center center;
+	  position:fixed;
+	  top:0px;
+	  left:0px;
+    }
+}
+@media(min-width : 1000px){
+	.log_body{
+	  height:100%;
+	  width:100%;
+	  background-image:url(./../images/log_images/log.jpeg);
+	  background-repeat:no-repeat;
+	  background-size:cover;
+	  background-position:center center;
+	  position:fixed;
+	  top:0px;
+	  left:0px;
+    }
+}
+
+
+.log_container{
+	padding:50px 15px;
+	width:100%;
+	height:100%;
+	position:fixed;
+	overflow-y:auto;
+	overflow-x:hidden;
+	top:0px;
+	left:0px;
+	z-index:1;
+}
+.log_form{
+	padding:0px 45px;
+	width:100%;
+	height:400px;
+	background-color:#fff;
+	position:relative;
+	top:0px;
+	float:right;
+	border:none;
+	left:0px;
+	z-index:1;
+	margin-bottom:40px;
+}
+
+div{
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;	
+}
+
+div :before,
+div :after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input{
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;	
+}
+
+input:before,
+input:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media(min-width : 380px){
+	.log_container{
+	  padding:50px 40px;
+	  width:100%;
+	  height:100%;
+	  position:fixed;
+	  overflow-y:auto;
+	  overflow-x:hidden;
+	  top:0px;
+	  left:0px;
+	  z-index:1;
+    }
+	.log_form{
+	  padding:0px 45px;
+	  width:100%;
+	  height:400px;
+	  background-color:#fff;
+	  position:relative;
+	  top:0px;
+	  border:none;
+	  left:0px;
+    }
+}
+
+@media(min-width : 430px){
+	.log_container{
+	  padding:50px 60px;
+	  width:100%;
+	  height:100%;
+	  position:fixed;
+	  overflow-y:auto;
+	  overflow-x:hidden;
+	  top:0px;
+	  left:0px;
+	  z-index:1;
+    }
+	.log_form{
+	  padding:0px 45px;
+	  width:100%;
+	  height:400px;
+	  background-color:#fff;
+	  position:relative;
+	  top:0px;
+	  border:none;
+	  left:0px;
+    }
+}
+
+
+
+
+@media(min-width : 480px){
+	.log_container{
+	  padding:50px 80px;
+	  width:100%;
+	  height:100%;
+	  position:fixed;
+	  overflow-y:auto;
+	  overflow-x:hidden;
+	  top:0px;
+	  left:0px;
+	  z-index:1;
+    }
+	.log_form{
+	  padding:0px 45px;
+	  width:100%;
+	  height:400px;
+	  background-color:#fff;
+	  position:relative;
+	  top:0px;
+	  border:none;
+	  left:0px;
+    }
+}
+
+@media(min-width : 564px){
+.log_container{
+	padding:50px 100px;
+	width:100%;
+	height:100%;
+	position:fixed;
+	overflow-y:auto;
+	overflow-x:hidden;
+	top:0px;
+	left:0px;
+	z-index:1;
+}
+.log_form{
+	padding:0px 45px;
+	width:350px;
+	height:400px;
+	background-color:#fff;
+	position:relative;
+	top:0px;
+	border:none;
+	left:0px;
+}
+}
+
+.log_btn{
+	margin-top:15px;
+	background-color:#86ce2f;
+	width:100%;
+	height:40px;
+	text-align:center;
+	color:#fff;
+	font-size:18px;
+	line-height:40px;
+	letter-spacing:5px;
+	position:relative;
+}
+.log_btn:hover{
+	opacity:0.9;
+}
+
+.log_remind{
+	height:40px;
+	margin-top:30px;
+	width:100%;
+	line-height:40px;
+	text-align:center;
+	letter-spacing:0px;
+	font-size:18px;
+}
+.log_user_container{
+	width:100%;
+	height:39px;
+	margin-top:20px;
+}
+#log_user{
+	width:100%;
+	padding:0px 8px;
+	height:37px;
+	border-radius:4px;
+	border:1px solid #d6d9db;
+}
+#log_user:focus{
+	border-color:skyblue;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  -o-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  -ms-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.log_password_container{
+	width:100%;
+	height:39px;
+	margin-top:15px;
+}
+#log_password{
+	width:100%;
+	padding:0px 8px;
+	height:37px;
+	border-radius:4px;
+	border:1px solid #d6d9db;
+}
+#log_password:focus{
+	border-color:skyblue;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  -o-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  -ms-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.log_other{
+	width:100%;
+	height:40px;
+	margin-top:20px;
+	line-height:40px;
+	letter-spacing:3px;
+}
+.log_other p{
+	font-size:15px;
+	color:#666;
+	overflow:hidden;
+}
+.log_qq{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	position:relative;
+	top:8px;
+	background:url(./../images/k+DpBAAAAAElFTkSuQmCC.png) no-repeat center -82px;
+	background-size:100% 112px;
+}
+.log_weibo{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	margin-left:15px;
+	position:relative;
+	top:8px;
+	background:url(./../images/k+DpBAAAAAElFTkSuQmCC.png) no-repeat center -44px;
+	background-size:100% 112px;
+}
+.log_weixin{
+	display:inline-block;
+	width:30px;
+	height:30px;
+	margin-left:15px;
+	position:relative;
+	top:8px;
+	background:url(./../images/icon64_appwx_logo.png) no-repeat center center;
+	background-size:100% 30px;
+}
+.log_bottom{
+	width:100%;
+	margin-top:15px;
+	height:40px;
+	overflow:hidden;
+}
+.log_bottom p{
+	float:right;
+	line-height:40px;
+	height:40px;
+	min-width:0px;
+	text-align:center;
+	letter-spacing:2px;
+	font-size:12px;
+	cursor:pointer;
+	margin-left:15px;
+	color:#666;
+}
+.log_bottom a{
+	color:#666;
+}
+.log_bottom p:hover{
+	text-decoration:underline;
+}

@@ -47,7 +47,7 @@
               <div class="am-g">
                 <div class="am-u-lg-2 am-u-sm-12">
                   <div class="logo">
-                    <a href="#" style="display:inline-block;width:100%;height:100%;"><img src="{{URL::asset('images/logo.png')}}" alt="logo" /></a>
+                    <a href="#" style="display:inline-block;width:100%;height:100%;"><img src="{{URL::asset('images/logo_1.png')}}" alt="logo" /></a>
                   </div>
                 </div>
                 <div class="am-u-md-10 am-u-sm-12">

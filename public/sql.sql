@@ -29,6 +29,7 @@ create table `algorithm`(
 create table `user`(
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户主键',
 	`name` varchar(16) NOT NULL COMMENT '姓名',
+	`password` text NOT NULL COMMENT '密码',
 	`phone` varchar(11) NOT NULL COMMENT '手机号码',
 	`date` datetime NOT NULL COMMENT '注册日期',
 	`email` varchar(40) NOT NULL COMMENT '邮箱',
