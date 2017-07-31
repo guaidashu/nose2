@@ -48,6 +48,9 @@
 				yy_init("请输入正确的手机号");
 				return;
 			}
+			if(subject.length>4){
+				yy_init("专业名不能超过四个字噢");
+			}
 			if(self.validateCount>=3){
 				validate_show();
 				return;

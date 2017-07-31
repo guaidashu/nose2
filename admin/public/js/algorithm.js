@@ -9,6 +9,9 @@
 		this.body.delegate(".ca_admin_algorithm_delete", "click", function(){
 			self.algorithm_delete($(this));
 		});
+		this.body.delegate(".ca_admin_algorithm_more", "click", function(){
+			self.algorithm_more($(this));
+		});
 		// test用来设置自适应查看屏幕宽度
 		// this.test();
 		window.onresize=function()
@@ -73,6 +76,21 @@
 					console.log(e);
 				}
 			});
+		},
+		algorithm_more:function(id)
+		{
+			var self=this;
+			var name=id.attr("data-name");
+			var subject=id.attr("data-subject");
+			var date=id.attr("data-date");
+			var phone=id.attr("data-phone");
+			var email=id.attr("data-email");
+			var str="姓名："+name
+					+"<br />专业："+subject
+					+"<br />电话："+phone
+					+"<br/ >邮箱："+email
+					+"<br />报名时间："+date;
+			yy_time_init(str,"详细信息");
 		}
 	}
 	window['algorithm_function']=algorithm_function;

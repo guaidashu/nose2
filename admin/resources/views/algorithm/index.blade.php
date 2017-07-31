@@ -24,9 +24,8 @@
 			    <thead>
 			        <tr>
 			            <th>姓名</th>
-			            <th>电话</th>
-			            <th>入学年份</th>
-			            <th>报名时间</th>
+			            <th>专业</th>
+			            <th>更多</th>
 			            <th>删除</th>
 			        </tr>
 			    </thead>
@@ -35,9 +34,8 @@
 
 				<tr>
 				  <td>{{$value->name}}</td>
-				  <td>{{$value->phone}}</td>
-				  <td>{{$value->year}}</td>
-				  <td>{{date('m-d',strtotime($value->date))}}</td>
+				  <td>{{$value->subject}}</td>
+				  <td><a class="cursor_pointer ca_admin_algorithm_more" data-name="{{$value->name}}" data-subject="{{$value->subject}}" data-date="{{date('Y-m-d',strtotime($value->date))}}" data-phone="{{$value->phone}}" data-email="{{$value->email}}">更多</a></td>
 				  <td><a class="cursor_pointer ca_admin_algorithm_delete" data-id="{{$value->id}}">删除</a></td>
 				</tr>
 					@endforeach

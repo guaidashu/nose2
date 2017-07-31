@@ -44,7 +44,7 @@
 		    <div class="am-form-group">
 			  <label for="doc-subject-1">专业</label>
 			  <input type="text" id="doc-subject-1" name="subject" class="js-pattern-mobile"
-		             placeholder="输入你的专业名" required />
+		             placeholder="输入你的专业名（最多四个字噢）" required />
 			  <span class="am-form-caret"></span>
 			</div>
 	      </fieldset>
