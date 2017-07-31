@@ -6,5 +6,5 @@
 	{{$email}}
 	<br />
     Here is an image:
-    <img src="{{$message->embedData($img, '2.jpg')}}" />
+    <img src="<?php echo $message->embed($img); ?>" />
 </body>
