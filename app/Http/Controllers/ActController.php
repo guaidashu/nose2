@@ -52,11 +52,6 @@ class ActController extends Controller
 			echo js_arr("phone");
 			exit;
 		}
-		// 判断入学年份是否正常
-		if(!subjectCheck($subject)){
-			echo js_arr("subject");
-			exit;
-		}
 
 		//我们需要判断邮箱和手机号码是否已被注册
 		$data=DB::select('select phone,email from algorithm');
