@@ -16,7 +16,7 @@
 	        <i class="am-icon-users am-margin-left-sm"></i> 人员管理 <i class="am-icon-angle-right am-fr am-margin-right"></i>
 	    </a>
 	    <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
-	        <li><a href="#"><i class="am-icon-user am-margin-left-sm"></i> 入会申请 </a></li>
+	        <li><a href="{{url('pm/memApp.html')}}"><i class="am-icon-user am-margin-left-sm"></i> 入会申请 </a></li>
 	        <li><a href="#"><i class="am-icon-user am-margin-left-sm"></i> 人员列表 </a></li>
 	    </ul>
 	  </li>
@@ -86,7 +86,7 @@
 			        <i class="am-icon-users am-margin-left-sm"></i> 人员管理 <i class="am-icon-angle-right am-fr am-margin-right"></i>
 			    </a>
 			    <ul class="am-list am-collapse admin-sidebar-sub" id="m-user-nav">
-			        <li><a href="#"><i class="am-icon-user am-margin-left-sm"></i> 入会申请 </a></li>
+			        <li><a href="{{url('pm/memApp.html')}}"><i class="am-icon-user am-margin-left-sm"></i> 入会申请 </a></li>
 			        <li><a href="#"><i class="am-icon-user am-margin-left-sm"></i> 人员列表 </a></li>
 			    </ul>
 			  </li>

@@ -20,6 +20,12 @@ Route::get('algorithm/index.html','AlgorithmController@index');
 Route::get('algorithm','AlgorithmController@index');
 Route::get('algorithm/delete.html','AlgorithmController@delete');
 
+// 人员管理模块
+	// 入会申请
+Route::get('pm/memApp.html','PmController@memApp');
+Route::get('pm/memApp/delete.html','PmController@delete');
+
+
 // 测试模块
 Route::get('test/test.html','TestController@test');
 

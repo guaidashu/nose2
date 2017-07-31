@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
-class AlgorithmController extends Controller
+class PmController extends Controller
 {
 	public function __construct()
 	{
@@ -14,16 +14,14 @@ class AlgorithmController extends Controller
 			$_SESSION['ca_admin_username']=null;
 		}
 	}
-	public function index()
+
+	// 入会申请 英文 为 Membership Application 所以函数简写为memApp
+	public function memApp()
 	{
-		// if(empty($_SESSION['ca_admin_username'])){
-		// 	return redirect('login/index.html');
-		// }
-		// 这里是算法报名的名单，所以，我们是需要那个什么喃
-		// 嗯，就是算法报名的表的数据
-		$data=DB::table('algorithm')->get();
-		return view('algorithm/index',['name'=>$_SESSION['ca_admin_username'],'data'=>$data]);
+		$data=DB::table('crn')->get();
+		return view('pm/memApp',['name'=>$_SESSION['ca_admin_username'],'data'=>$data]);
 	}
+
 	public function delete()
 	{
 		//接受参数并过滤
@@ -33,7 +31,7 @@ class AlgorithmController extends Controller
 			echo js_arr("failed");
 			exit;
 		}
-		$data=DB::table('algorithm')->where('id',$id)->delete();
+		$data=DB::table('crn')->where('id',$id)->delete();
 		if($data){
 			echo js_arr("ok");
 		}else{
