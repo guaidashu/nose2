@@ -7,7 +7,9 @@
 		this.autoContainerWidth();
 		this.autoAlgorithmHeight();
 		this.body.delegate(".ca_admin_algorithm_delete", "click", function(){
-			self.algorithm_delete($(this));
+			if(confirm("确定删除？")){
+				self.algorithm_delete($(this));
+			}
 		});
 		this.body.delegate(".ca_admin_algorithm_more", "click", function(){
 			self.algorithm_more($(this));
