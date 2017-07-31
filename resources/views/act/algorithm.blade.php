@@ -26,8 +26,8 @@
 	        <legend>算法入门报名</legend>
 
 		    <div class="am-form-group">
-		      <label for="doc-vld-email-2">邮箱：</label>
-		      <input type="email" name="email" id="doc-vld-email-2" placeholder="输入邮箱" required/>
+		      <label for="doc-vld-email-2">邮箱</label>
+		      <input type="email" name="email" id="doc-vld-email-2" placeholder="请填写正确，我们会有一些资料和通知发送" required/>
 		    </div>
 
 		     <div class="am-form-group">
@@ -42,12 +42,9 @@
 		    </div>
 
 		    <div class="am-form-group">
-			  <label for="doc-select-1">入学年份</label>
-			  <select name="year" id="doc-select-1">
-			    <option value="2017">2017</option>
-			    <option value="2016">2016</option>
-			    <option value="2015">2015</option>
-			  </select>
+			  <label for="doc-subject-1">专业</label>
+			  <input type="text" id="doc-subject-1" name="subject" class="js-pattern-mobile"
+		             placeholder="输入你的专业名" required />
 			  <span class="am-form-caret"></span>
 			</div>
 	      </fieldset>

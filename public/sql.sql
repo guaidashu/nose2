@@ -21,6 +21,6 @@ create table `algorithm`(
 	`phone` varchar(11) NOT NULL COMMENT '电话号码',
 	`date` datetime NOT NULL COMMENT '提交时间',
  	`email` varchar(40) NOT NULL COMMENT 'email邮箱',
-	`year` int(4) NOT NULL COMMENT '入学年份',
+	`subject` varchar(40) NOT NULL COMMENT '专业',
 	PRIMARY KEY(`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

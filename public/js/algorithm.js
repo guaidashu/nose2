@@ -34,9 +34,9 @@
 			email=$.trim(email);
 			var phone=document.getElementById("doc-vld-528").value;
 			phone=$.trim(phone);
-			var year=document.getElementById("doc-select-1").value;
-			year=$.trim(year);
-			if(name.length<2 || !email || !phone || !year){
+			var subject=document.getElementById("doc-subject-1").value;
+			subject=$.trim(subject);
+			if(name.length<2 || !email || !phone || !subject){
 				yy_init("还有内容未完善噢！");
 				return;
 			}
@@ -46,10 +46,6 @@
 			}
 			if(!phoneCheck(phone)){
 				yy_init("请输入正确的手机号");
-				return;
-			}
-			if(!yearCheck(year)){
-				yy_init("请输入正确的入学年份");
 				return;
 			}
 			if(self.validateCount>=3){
@@ -62,7 +58,7 @@
 				url:"/act/algorithmHandle.html",
 				type:"POST",
 				dataType:"json",
-				data:{"name":name, "email":email, "phone":phone, "year":year},
+				data:{"name":name, "email":email, "phone":phone, "subject":subject},
 				success:function(data){
 					if(data.text=="ok"){
 						yy_init("提交成功");

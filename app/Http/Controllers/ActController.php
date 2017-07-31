@@ -36,9 +36,9 @@ class ActController extends Controller
 		// 首先接收传递post的内容
 		$name=htmlspecialchars($_POST['name']);
 		$email=htmlspecialchars($_POST['email']);
-		$year=htmlspecialchars($_POST['year']);
+		$subject=htmlspecialchars($_POST['subject']);
 		$phone=htmlspecialchars($_POST['phone']);
-		if(strlen($name)<2 || !$phone || !$email || !$year){
+		if(strlen($name)<2 || !$phone || !$email || !$subject){
 			echo js_arr("failed");
 			exit;
 		}
@@ -53,8 +53,8 @@ class ActController extends Controller
 			exit;
 		}
 		// 判断入学年份是否正常
-		if(!yearCheck($year)){
-			echo js_arr("year");
+		if(!subjectCheck($subject)){
+			echo js_arr("subject");
 			exit;
 		}
 
@@ -74,7 +74,7 @@ class ActController extends Controller
 		$arr=array(
 			"name"=>$name,
 			"email"=>$email,
-			"year"=>$year,
+			"subject"=>$subject,
 			"phone"=>$phone,
 			'date'=>date('Y-m-d H:i:s',time())
 			);
