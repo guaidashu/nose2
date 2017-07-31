@@ -38,7 +38,7 @@ class ActController extends Controller
 		$email=htmlspecialchars($_POST['email']);
 		$subject=htmlspecialchars($_POST['subject']);
 		$phone=htmlspecialchars($_POST['phone']);
-		if(strlen($name)<2 || !$phone || !$email || strlen($subject)>4){
+		if((strlen($name)/3)<2 || !$phone || !$email || (strlen($subject)/3)>4){
 			echo js_arr("failed");
 			exit;
 		}
