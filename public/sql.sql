@@ -24,3 +24,15 @@ create table `algorithm`(
 	`subject` varchar(40) NOT NULL COMMENT '专业',
 	PRIMARY KEY(`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+/* 用户表user */
+create table `user`(
+	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户主键',
+	`name` varchar(16) NOT NULL COMMENT '姓名',
+	`phone` varchar(11) NOT NULL COMMENT '手机号码',
+	`date` datetime NOT NULL COMMENT '注册日期',
+	`email` varchar(40) NOT NULL COMMENT '邮箱',
+	`type` int(1) NOT NULL COMMENT '用户识别，超级用户为3，管理员2，普通用户1',
+	`qq_openid` text NOT NULL COMMENT 'qq_openid qq返回的唯一用户标识',
+	PRIMARY KEY(`id`)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
