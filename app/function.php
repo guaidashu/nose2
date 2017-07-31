@@ -36,7 +36,7 @@ function js_arr($content, $id=0, $reply=0)
 // 邮箱判断函数，检查是否为一个正确的邮箱
 function emailCheck($email)
 {
-	$pattern="/^\S([a-zA-Z0-9]*)(@)\S([0-9a-z]*)(\.com)$/";
+	$pattern="/^\S([a-zA-Z0-9]*)(@)(163|126|sina|sohu|139|gmail|hotmail|21cn|qq)(\.com)$/";
 	if(!preg_match($pattern, $email)){
 		return false;
 	}else{

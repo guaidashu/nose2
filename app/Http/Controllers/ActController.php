@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Mail;
 
 class ActController extends Controller
 {
@@ -35,7 +36,7 @@ class ActController extends Controller
 		}
 		// 首先接收传递post的内容
 		$name=htmlspecialchars($_POST['name']);
-		$email=htmlspecialchars($_POST['email']);
+		$email=$_POST['email'];
 		$subject=htmlspecialchars($_POST['subject']);
 		$phone=htmlspecialchars($_POST['phone']);
 		if((strlen($name)/3)<2 || !$phone || !$email || (strlen($subject)/3)>4){
@@ -65,7 +66,15 @@ class ActController extends Controller
 				exit;
 			}
 		}
-
+		$str="假如你收到了这封邮件，那么恭喜你已经录入算法基础课程的名单，请8月15号晚准时来参加，群号稍后会发给大家，谢谢支持。";
+		$data=Mail::raw($str,function($message) use ($email){
+			$message->subject("算法报名通知");
+			$message->to($email);
+		});
+		if(!$data){
+			echo js_arr("error_email");
+			exit;
+		}
 		$arr=array(
 			"name"=>$name,
 			"email"=>$email,

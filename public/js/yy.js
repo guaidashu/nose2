@@ -368,7 +368,7 @@ function validateClose()
 
 function emailCheck(email)
 {
-	var patternEmail=/^\S([a-zA-Z0-9]*)(@)\S([0-9a-z]*)(\.com)$/;
+	var patternEmail=/^\S([a-zA-Z0-9]*)(@)(163|126|sina|sohu|139|gmail|hotmail|21cn|qq)(\.com)$/;
 	if(!patternEmail.test(email)){
 		return false;
 	}else{

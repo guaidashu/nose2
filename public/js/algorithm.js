@@ -69,6 +69,8 @@
 						yy_init("该手机号已被注册");
 					}else if(data.text=="re_email"){
 						yy_init("该邮箱已被注册");
+					}else if(data.text=="error_email"){
+						yy_init("你这个邮箱无效呦");
 					}else{
 						yy_init("提交失败，请稍候重试");
 					}

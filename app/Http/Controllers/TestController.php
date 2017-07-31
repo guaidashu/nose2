@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use App\TestModel;
 use Mail;
+use App\User;
 
 class TestController extends Controller
 {
@@ -32,9 +33,17 @@ class TestController extends Controller
 
 	public function emailTest()
 	{
-		$data=Mail::raw('恭喜你成为了咱们协会成员的一份子！',function($message){
-			$message->subject('恭喜你');
-			$message->to('1023767856@qq.com');
+		// $data=Mail::raw('恭喜你成为了咱们协会成员的一份子！',function($message){
+		// 	$message->subject('恭喜你');
+		// 	$message->to('1023767856@qq.com');
+		// });
+		$name="宋节";
+		$email='1023767856@qq.com';
+		$img='/images/curousel/bing-1.jpg';
+		$data=Mail::send('test',['name'=>$name,'email'=>$email,'img'=>$img],function($message) use ($email){
+			$message->subject('测试');
+			echo $email;
+			$message->to($email);
 		});
 		debug($data);
 	}
