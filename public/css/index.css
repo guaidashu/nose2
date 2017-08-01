@@ -627,6 +627,11 @@ body{
 		width:100%;
 	}
 }
+@media(max-width:610px){
+	.act_show_left_container ul{
+		padding:0px 15px;
+	}
+}
 .act_show_left_container ul li{
 	width:100%;
 	margin:0px;
@@ -638,6 +643,7 @@ body{
 	position:relative;
 	font-size:15px;
 }
+
 .act_show_left_container ul li dl{
 	font-size:20px;
 	color:#262626;
