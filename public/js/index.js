@@ -227,9 +227,12 @@
 		actShowContainerAuto:function()
 		{
 			var self=this;
+			var screenWidth=parseInt($(document).width());
+			var height=parseInt($(".act_show_left_container").css("height"));
 			$(".act_show_container").css({
-				"min-height":parseInt($(".act_show_left_container").css("height"))+"px"
+				"min-height":height+"px"
 			});
+			$(".act_show_right_container").css("min-height",height-50+"px");
 		}
 	}
 	window['index_function']=index_function;

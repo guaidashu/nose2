@@ -76,3 +76,44 @@ function numCheck($num)
 		return true;
 	}
 }
+
+// 图片转换函数
+/*
+// 创建一个空图像并在其上加入一些文字
+$im = imagecreatetruecolor(120, 20);
+$text_color = imagecolorallocate($im, 233, 14, 91);
+
+imagestring($im, 1, 5, 5,  'WebP with PHP', $text_color);
+
+// 保存图像
+imagewebp($im, '../superhomework/php.webp');
+
+// 释放内存
+imagedestroy($im);
+*/
+//$src为图片路径和名称  $path为移动到的位置
+function imagesChange($src,$path)
+{
+	$imagesSize=getimagesize($src);
+	//获取图片名字，没有后缀
+	$imagesName=pathinfo($src,PATHINFO_FILENAME);
+	//获取图片宽度
+	$width=$imagesSize[0];
+	//获取图片高度
+	$height=$imagesSize[1];
+	//debug($imagesSize);
+	//echo $height." ".$width;
+	//debug($imagesName);
+	$images=imagecreatetruecolor($width,$height);//创建一张图片
+	$type=image_type_to_extension($imagesSize[2],false);//获取图片的后缀，第二个参数为false表示不取 点(.)
+	$fun="imagecreatefrom".$type;
+	$oldImages=$fun($src);//创建一张原图的内存临时资源图,格式为jpeg
+	imagecopyresampled($images,$oldImages,0,0,0,0,$width,$height,$width,$height);//将原图拷贝到新的图像上
+	imagedestroy($oldImages);//销毁原图
+	header("Content-type:image/jpeg");
+	//imagejpeg($images);
+	////移动图片到指定位置
+	imagejpeg($images,$path);
+	//销毁原图释放资源
+	imagedestroy($images);
+}

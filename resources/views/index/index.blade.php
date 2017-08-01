@@ -30,7 +30,7 @@
     </div>
 </div>
 <!-- 协会介绍 -->
-<div class="ca_association_introduce ">
+<div class="ca_association_introduce" >
     <div class="ca_association_introduce_title">
         协会简介
     </div>
@@ -40,16 +40,39 @@
 </div>
 
 <!-- 协会简介的一些活动介绍之类的 -->
-<!-- <div class="ca_study_container">
+<div class="ca_study_container">
     <div class="act_show_container">
         <div class="act_show_left_container">
             <ul>
+                <li>
+                    <sapn class="ca_icon_span"><i class="am-icon-battery-full ca_icon_size"></i></sapn>
+                    <dl>
+                        <dt>我们时刻充满活力</dt>
+                        <dd>我们勤于学习，乐于助人，同时还积极向上，争取为自己打拼出一个未来，为学校做出力所能及的贡献</dd>
+                    </dl>
+                </li>
+                <li>
+                    <sapn class="ca_icon_span"><i class="am-icon-television ca_icon_size" style="margin-left:-17px;"></i></sapn>
+                    <dl>
+                        <dt>怀着不屈的心研究</dt>
+                        <dd>技术难题总会困扰大家，但是我们从来不会因此而停住脚步。</dd>
+                    </dl>
+                </li>
+                <li>
+                    <sapn class="ca_icon_span"><i class="am-icon-wifi ca_icon_size" style="margin-left:-18px;"></i></sapn>
+                    <dl>
+                        <dt>技术总监的小心思</dt>
+                        <dd>赶快来加入我大项目部把，嘿嘿。办公室有免费wifi随便你用。</dd>
+                    </dl>
+                </li>
             </ul>
         </div>
         <div class="act_show_right_container">
+            <div class="">
+            </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <!-- 第一张可滚动图片(js实现) -->
 <div class="ca_association_introduce_img_1 ca_bg_img_1" data-background="{{URL::asset('images/background/bg_1.jpg')}}">
