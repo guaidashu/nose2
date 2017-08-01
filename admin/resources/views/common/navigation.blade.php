@@ -120,7 +120,7 @@
 				  @if(empty($name))
 					  <a href="{{url('login/index.html')}}">登录</a>
 				  @else
-					  <a href="#">{{$name}}</a>
+					  <a href="#" style="font-size:15px;">{{$name}}</a>&nbsp;<a href="#" class="ca_admin_exit" style="font-size:15px;">退出</a>
 				  @endif
 				  </div>
 			  </li>
