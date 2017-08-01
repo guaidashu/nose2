@@ -1,5 +1,6 @@
 ;(function($){
-	var index_function=function(){
+	var index_function=function()
+	{
 		var self=this;
 		this.pageY;
 		this.body=$(document.body);
@@ -13,10 +14,17 @@
 		this.proportion1;
 		//test为显示屏幕当前宽度，document.width,方便自适应调试,单位px
 		// this.test();
+		// 以下的函数都将在window.onresize再次调用防止用户伸缩网页
+		// 学习方向自适应
 		this.caStudyContainerAuto();
+		// 底部最后的介绍容器自适应
 		this.caIntroduceBottomAuto();
+		// 协会目标容器自适应初始化
 		this.caAimContainerAutoInit();
+		// 最后的介绍容器里的小图标自适应
 		this.caIntroduceBottomFigsAuto();
+		// 协会活动容器自适应
+		this.actShowContainerAuto();
 		// var obj=document.getElementById("ac_index_body");
 		// 触屏事件测试
 		// obj.addEventListener("touchmove",function(event){
@@ -39,6 +47,7 @@
 			self.caAimContainerAutoInit();
 			self.caIntroduceBottomAuto();
 			self.caIntroduceBottomFigsAuto();
+			self.actShowContainerAuto();
 		}
 		$(".am-control-nav").css("display","none");
 	};
@@ -47,11 +56,13 @@
 		//调用直接在index_function里面通过self.函数名()就可以直接调用
 		
 		// 用来设计自适应的时候查看宽度
-		test:function(id){
+		test:function(id)
+		{
 			yy_init($(document).width());
 		},
 		// 展示图片自适应
-		caAssociationImgAuto:function(){
+		caAssociationImgAuto:function()
+		{
 			var self=this;
 			//获取屏幕高度
 			var screenHeight=window.innerHeight;
@@ -70,7 +81,8 @@
 			
 		},
 		// 获取图片尺寸，用创建一张新图的方式获取图片真实尺寸
-		getImgSize:function(){
+		getImgSize:function()
+		{
 			var self=this;
 			var img1Width;
 			var img1Height;
@@ -90,7 +102,8 @@
 			// return load;
 		},
 		// 学习方向段列表自适应
-		caStudyContainerAuto:function(){
+		caStudyContainerAuto:function()
+		{
 			var self=this;
 			var screenWidth=parseInt($(document).width());
 			var marginWidth;
@@ -159,7 +172,8 @@
 			}
 		},
 		//底部最后的介绍容器自适应初始化
-		caAimContainerAutoInit:function(){
+		caAimContainerAutoInit:function()
+		{
 			var self=this;
 			//获取屏幕宽度
 			var screenWidth=parseInt($(document).width());
@@ -176,7 +190,8 @@
 			}
 		},
 		//底部最后的展示，左侧图片top自适应函数，保证一直占据完整个容器
-		caIntroduceBottomAuto:function(){
+		caIntroduceBottomAuto:function()
+		{
 			var self=this;
 			//获取屏幕宽度
 			var screenWidth=parseInt($(document).width());
@@ -187,7 +202,8 @@
 			}
 		},
 		//底部最后的展示，三个小图标的left自适应，以及right那边的left
-		caIntroduceBottomFigsAuto:function(){
+		caIntroduceBottomFigsAuto:function()
+		{
 			var self=this;
 			//获取屏幕宽度
 			var screenWidth=parseInt($(document).width());
@@ -206,7 +222,14 @@
 			});
 			$(".ca_association_introduce_container_right").css({
 				"left":width+130+"px"
-			})
+			});
+		},
+		actShowContainerAuto:function()
+		{
+			var self=this;
+			$(".act_show_container").css({
+				"min-height":parseInt($(".act_show_left_container").css("height"))+"px"
+			});
 		}
 	}
 	window['index_function']=index_function;

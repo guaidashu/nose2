@@ -30,7 +30,7 @@
     </div>
 </div>
 <!-- 协会介绍 -->
-<div class="ca_association_introduce ca_association_introduce_first">
+<div class="ca_association_introduce ">
     <div class="ca_association_introduce_title">
         协会简介
     </div>
@@ -41,6 +41,14 @@
 
 <!-- 协会简介的一些活动介绍之类的 -->
 <!-- <div class="ca_study_container">
+    <div class="act_show_container">
+        <div class="act_show_left_container">
+            <ul>
+            </ul>
+        </div>
+        <div class="act_show_right_container">
+        </div>
+    </div>
 </div> -->
 
 <!-- 第一张可滚动图片(js实现) -->
