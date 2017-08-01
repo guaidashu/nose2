@@ -40,6 +40,7 @@
 			self.caIntroduceBottomAuto();
 			self.caIntroduceBottomFigsAuto();
 		}
+		$(".am-control-nav").css("display","none");
 	};
 	index_function.prototype={
 		//函数定义方式  函数名:function(可传参数，也可以为空){}大括号后面记得习惯性的打上一个逗号

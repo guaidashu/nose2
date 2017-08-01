@@ -40,7 +40,7 @@
 </div>
 
 <!-- 协会简介的一些活动介绍之类的 -->
-<!-- <div class="ca_association_introduce">
+<!-- <div class="ca_study_container">
 </div> -->
 
 <!-- 第一张可滚动图片(js实现) -->
