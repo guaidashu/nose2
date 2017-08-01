@@ -72,4 +72,9 @@ class TestController extends Controller
 		debug($result);
 		// echo $result;
 	}
+
+	public function testFrame()
+	{
+		return view('test/test');
+	}
 }

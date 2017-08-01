@@ -39,6 +39,10 @@
     </div>
 </div>
 
+<!-- 协会简介的一些活动介绍之类的 -->
+<!-- <div class="ca_association_introduce">
+</div> -->
+
 <!-- 第一张可滚动图片(js实现) -->
 <div class="ca_association_introduce_img_1 ca_bg_img_1" data-background="{{URL::asset('images/background/bg_1.jpg')}}">
     <div class="ca_association_introduce_img_1_content_container">
@@ -54,7 +58,7 @@
 </div>
 
 <!-- 学习方向 -->
-<div class="ca_association_introduce" style="border-bottom:none;background-color:#f2f2f5;padding-bottom:15px;">
+<div class="ca_association_introduce" style="background-color:#f2f2f5;padding-bottom:15px;">
     <div class="ca_association_introduce_title">
         学习方向
     </div>

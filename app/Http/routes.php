@@ -31,6 +31,11 @@ Route::get('test/test', 'TestController@test');
 Route::get('test/fun', 'TestController@curlTest');
 Route::get('test/sql.html','TestController@sqlTest');
 Route::get('test/email.html','TestController@emailTest');
+Route::get('test/testFrame.html','TestController@testFrame');
+
+// 关于我们页面模块
+Route::get('about','AboutController@index');
+Route::get('about/index.html','AboutController@index');
 
 // 验证码
 Route::get('validate.html','ValidateController@validate');

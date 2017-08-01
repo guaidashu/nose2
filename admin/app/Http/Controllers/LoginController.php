@@ -44,7 +44,7 @@ class LoginController extends Controller
 		$password=md5($password);
 		$data=DB::table('user')->get();
 		foreach ($data as $key => $value) {
-			if($value->phone==$username || $value->email==$username){
+			if(($value->phone==$username || $value->email==$username) && $value->type>1){
 				if($value->password==$password){
 					$_SESSION['ca_admin_username']=$value->name;
 					$_SESSION['ca_admin_type']=$value->type;
@@ -59,5 +59,12 @@ class LoginController extends Controller
 		}
 		$_SESSION['validate_count']+=1;
 		echo js_arr("error_user");
+	}
+
+	public function signOut()
+	{
+		$_SESSION['ca_admin_username']=null;
+		$_SESSION['ca_admin_type']=null;
+		echo js_arr("ok");
 	}
 }

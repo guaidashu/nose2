@@ -122,7 +122,7 @@
         <!-- sub-menu end-->
       </li>
       <li><a href="{{url('crn/index.html')}}">协会招新</a></li>
-      <li><a href="#">关于我们</a></li>
+      <li><a href="{{url('about/index.html')}}">关于我们</a></li>
       <!-- <li><a href="html/contact.html">联系我们</a></li> -->
     </ul>
   </div>
@@ -185,7 +185,7 @@
                   </ul>
               </li>
               <li class=""><a href="{{url('crn/index.html')}}" class="" >协会招新</a></li>
-              <li class=""><a href="#" class="" >关于我们</a></li>
+              <li class=""><a href="{{url('about/index.html')}}" class="" >关于我们</a></li>
               <li class=""><a href="#" class="" >联系我们</a></li>
               <li class="am-parent">
                 <a href="" class="nav-icon nav-icon-globe" >Language</a>

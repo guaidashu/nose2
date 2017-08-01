@@ -9,6 +9,6 @@ class TestController extends Controller
 {
 	public function test()
 	{
-		echo md5("wyysdsa!");
+		echo md5("123701");
 	}
 }

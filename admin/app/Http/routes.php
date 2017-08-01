@@ -29,6 +29,8 @@ Route::get('pm/memApp/delete.html','PmController@delete');
 Route::get('login','LoginController@login');
 Route::get('login/index.html','LoginController@login');
 Route::post('login/loginHandle.html','LoginController@loginHandle');
+	// 退出
+	Route::get('login/signOut.html','LoginController@signOut');
 
 // 测试模块
 Route::get('test/test.html','TestController@test');
