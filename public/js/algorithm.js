@@ -56,6 +56,7 @@
 				return;
 			}
 			$(".handle_btn").addClass("am-disabled");
+			$(".handle_btn").html("请稍候···");
 			self.submit=false;
 			$.ajax({
 				url:"/act/algorithmHandle.html",
@@ -74,6 +75,7 @@
 					}else{
 						yy_init("提交失败，请稍候重试");
 					}
+					$(".handle_btn").html("提交信息");
 					self.getValidateCount();
 					$(".handle_btn").removeClass("am-disabled");
 					self.submit=true;
