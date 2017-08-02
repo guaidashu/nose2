@@ -66,8 +66,9 @@ class ActController extends Controller
 				exit;
 			}
 		}
-		$str="亲爱的".$name."：\n假如你收到了这封邮件，\n那么恭喜你已经录入算法基础课程的名单，\n请8月15号晚8点准时来参加，群号稍后会发给大家，\n谢谢支持。";
-		$data=Mail::raw($str,function($message) use ($email){
+		// 二维码地址
+		$img="http://nose.wyysdsa.cn/images/weixin.png";
+		$data=Mail::send('email/algorithm',['name'=>$name,'img'=>$img],function($message) use ($email){
 			$message->subject("算法报名通知");
 			$message->to($email);
 		});
