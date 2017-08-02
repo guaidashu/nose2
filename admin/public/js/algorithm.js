@@ -88,11 +88,11 @@
 			var phone=id.attr("data-phone");
 			var email=id.attr("data-email");
 			var str="姓名："+name
-					+"<br />专业："+subject
-					+"<br />电话："+phone
-					+"<br/ >邮箱："+email
-					+"<br />报名时间："+date;
-			yy_time_init(str,"详细信息");
+					+"\n专业："+subject
+					+"\n电话："+phone
+					+"\n邮箱："+email
+					+"\n报名时间："+date;
+			yy_time_init(str,"详细信息",true);
 		}
 	}
 	window['algorithm_function']=algorithm_function;

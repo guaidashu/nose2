@@ -87,7 +87,6 @@ var yy_time_boolean=true;//时间类提示弹出框
 			$(".login_statement").fadeOut();
 			$(".login_statement_envelop").fadeOut();
 		}
-		
 	}
 	window['yy_function']=yy_function;
 })(jQuery);
@@ -176,8 +175,15 @@ function yy_alert(str){//弹出框样式设置及其弹出动画
 	}
 }
 
-
-function yy_time_init(content,title){
+// 使用自定义可变标题弹出框时，content为内容。title为标题，
+// flag为是否进行字符过滤 ，true为过滤，false或不填为不过滤
+function yy_time_init(content,title,flag){
+	if(flag){
+		content = content.replace(/\ /g,'&nbsp;');
+		content = content.replace(/\</g,'&lt;');
+	    content = content.replace(/\>/g,'&gt;');
+		content = content.replace(/\n/g,'<br/>');
+	}
 	var str=$('<div class="time_remind_envelop">'+
              '</div>'+
              '<div class="time_remind" id="yy_alert">'+
