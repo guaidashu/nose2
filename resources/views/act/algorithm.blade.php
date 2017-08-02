@@ -53,6 +53,29 @@
 	  </div>
 	</div>
 </div>
+<!-- 注册声明 -->
+<div class="login_statement">
+	<div class="login_statement_remind">
+	&nbsp;报名需知
+	</div>
+	<div class="login_statement_close">
+	</div>
+	<div class="login_statement_content">
+		1.&nbsp;目的<br/>
+		本次编程基础入门和算法入门培训，第一是为大家做好编程兴趣的培养，此外有一些小小的私心就是希望为协会培养一批新一届的扛把子。<br /><br />
+		2.&nbsp;原因<br />
+		除此之外，学校方面，因为计算机学院从此都是大一大二大三一起的了，所以学院方面想要培养一批算法种子团队。<br />
+		争取在每年的各种算法比赛中为校为学院争光。<br /><br />
+		3.&nbsp;目标<br />
+		在协会与算法比赛负责的老师沟通下，特此从新生开始抓起。为大家开展此培训。<br />
+		希望大家积极参与，提高自己，也为未来打下良好的基础。
+	</div>
+	<div class="login_statement_btn">
+	&nbsp;确定
+	</div>
+</div>
+<div class="login_statement_envelop">
+</div>
 @include('./../common/bottom')
 
 <script type="text/javascript" src="{{URL::asset('js/algorithm.js')}}"></script>

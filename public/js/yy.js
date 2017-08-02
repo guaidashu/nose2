@@ -2,7 +2,8 @@
 var alert_boolean=true;//普通弹出框
 var yy_time_boolean=true;//时间类提示弹出框
 ;(function($){//自定义包装函数
-	var yy_function=function(){
+	var yy_function=function()
+	{
 		var self=this;
 		this.body=$(document.body);
 		this.body.delegate(".yy_alert_exit,.yy_alert_close","click",function(){
@@ -17,9 +18,13 @@ var yy_time_boolean=true;//时间类提示弹出框
 		this.body.delegate("#validate_img","click",function(){
 			self.validate_change();
 		});
+		this.body.delegate(".login_statement_btn,.login_statement_close", "click", function(){
+			self.envelopFadeOut();
+		})
 		this.body.delegate(".content_input","focus",function(){
 			$(".self_placeholder").css("display","none");
 		});
+		// 自定义富文本编辑器多余标签处理
 		this.body.delegate(".content_input","blur",function(){
 			var content=document.getElementById("content_input").innerHTML;
 			content=$.trim(content);
@@ -31,16 +36,17 @@ var yy_time_boolean=true;//时间类提示弹出框
 				//yy_init(content);
 				$(".self_placeholder").css("display","none");
 			}
-			
 		});
 		$(document).keydown(function(e){
 			if(e.keyCode==13){
 				self.alert_exit();
+				self.yy_time_exit();
 			}
 		});
 	};
 	yy_function.prototype={//继承
-		alert_exit:function(){//自定义弹出框退出函数
+		alert_exit:function()
+		{//自定义弹出框退出函数
 			var self=this;
 			$(".yy_envelop").fadeOut(500);
 			$(".yy_alert").fadeOut(500,function(){
@@ -50,7 +56,8 @@ var yy_time_boolean=true;//时间类提示弹出框
 				sleep_boolean=true;
 			});
 		},
-		yy_time_exit:function(){
+		yy_time_exit:function()
+		{
 			var self=this;
 			$(".time_remind_envelop").fadeOut(500);
 			$(".time_remind").fadeOut(500,function(){
@@ -60,7 +67,8 @@ var yy_time_boolean=true;//时间类提示弹出框
 				sleep_boolean=true;
 			});
 		},
-		validate_close:function(){//验证码关闭函数
+		validate_close:function()
+		{//验证码关闭函数
 			var self=this;
 			$(".validate_envelop").fadeOut(500);
 			$(".validate_popup").fadeOut(500,function(){
@@ -68,10 +76,17 @@ var yy_time_boolean=true;//时间类提示弹出框
 				$(".validate_popup_container").remove();
 			});
 		},
-		validate_change:function(){//验证码刷新
+		validate_change:function()
+		{//验证码刷新
 			var self=this;
 			document.getElementById("validate_img").src="/validate.html?r="+Math.random()*10000000;
 		},
+		envelopFadeOut:function()
+		{
+			var self=this;
+			$(".login_statement").fadeOut();
+			$(".login_statement_envelop").fadeOut();
+		}
 		
 	}
 	window['yy_function']=yy_function;
