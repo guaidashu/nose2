@@ -99,4 +99,9 @@ class ActController extends Controller
 	{
 		return view('act/success',['name'=>$_SESSION['ca_username']]);
 	}
+
+	public function codeOnline()
+	{
+		return view('act/code',['name'=>$_SESSION['ca_username']]);
+	}
 }
