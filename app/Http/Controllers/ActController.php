@@ -94,4 +94,9 @@ class ActController extends Controller
 			$_SESSION['validate_count']+=1;
 		}
 	}
+
+	public function success()
+	{
+		return view('act/success',['name'=>$_SESSION['ca_username']]);
+	}
 }

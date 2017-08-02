@@ -66,6 +66,7 @@
 				success:function(data){
 					if(data.text=="ok"){
 						yy_init("提交成功，若是没收到邮件请在邮箱垃圾箱里查看，很重要，有群号噢！");
+						location.href="/act/success.html";
 					}else if(data.text=="re_phone"){
 						yy_init("该手机号已被注册");
 					}else if(data.text=="re_email"){

@@ -25,6 +25,7 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	// 算法入门报名页面
 	Route::get('act/algorithm.html','ActController@algorithm');
 	Route::post('act/algorithmHandle.html','ActController@algorithmHandle');
+	Route::get('act/success.html','ActController@success');
 
 // 其他测试页面
 Route::get('test/test', 'TestController@test');

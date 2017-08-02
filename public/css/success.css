@@ -1,0 +1,13 @@
+.ca_success_container{
+	width:500px;
+	min-height:500px;
+	background-color:transparent;
+	margin:0px auto; 
+	padding-top:50px;
+}
+
+@media (max-width: 520px) {
+	.ca_success_container{
+		width:100%;
+	}
+}
