@@ -19,7 +19,8 @@
 @include('./../common/navigation')
 
 <div class="ca_code_container">
-	<iframe src="http://sh.wyysdsa.cn/Home/Code/" width="100%" height="100%" style="border:none;"></iframe>
+	<!-- <iframe src="http://sh.wyysdsa.cn/Home/Code/" width="100%" height="100%" style="border:none;"></iframe> -->
+	<iframe src="http://ideone.com/" width="100%" height="100%" style="border:none;"></iframe>
 </div>
 @include('./../common/bottom')
 
