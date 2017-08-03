@@ -117,7 +117,7 @@
         <ul class="sub-menu">
           <li class="menu-item"><a href="{{url('act/algorithm.html')}}">算法入门报名</a></li>
           <li class="menu-item"><a href="#">行业动态</a></li>
-          <li class="menu-item"><a href="#">精彩专题</a></li>
+          <li class="menu-item"><a href="{{url('act/code.html')}}">在线代码编译</a></li>
         </ul>
         <!-- sub-menu end-->
       </li>
@@ -180,7 +180,7 @@
                         <a href="#" class="" >行业动态</a>
                       </li>
                       <li class="">
-                        <a href="#" class="" >精彩专题</a>
+                        <a href="#" class="{{url('act/code.html')}}" >在线代码编译</a>
                       </li>
                   </ul>
               </li>
