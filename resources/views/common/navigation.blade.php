@@ -180,7 +180,7 @@
                         <a href="#" class="" >行业动态</a>
                       </li>
                       <li class="">
-                        <a href="#" class="{{url('act/code.html')}}" >在线代码编译</a>
+                        <a href="{{url('act/code.html')}}" class="" >在线代码编译</a>
                       </li>
                   </ul>
               </li>
