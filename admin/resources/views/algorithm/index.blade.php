@@ -33,7 +33,7 @@
 			        @foreach($data as $value)
 
 				<tr>
-				  <td>{{$value->id-$id+1}}.&nbsp;{{$value->name}}</td>
+				  <td>{{$id++}}.&nbsp;{{$value->name}}</td>
 				  <td>{{$value->subject}}</td>
 				  <td><a class="cursor_pointer ca_admin_algorithm_more" data-name="{{$value->name}}" data-subject="{{$value->subject}}" data-date="{{date('Y-m-d',strtotime($value->date))}}" data-phone="{{$value->phone}}" data-email="{{$value->email}}">更多</a></td>
 				  <td><a class="cursor_pointer ca_admin_algorithm_delete" data-id="{{$value->id}}">删除</a></td>

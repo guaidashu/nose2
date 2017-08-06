@@ -22,7 +22,7 @@ class AlgorithmController extends Controller
 		// 这里是算法报名的名单，所以，我们是需要那个什么喃
 		// 嗯，就是算法报名的表的数据
 		$data=DB::table('algorithm')->get();
-		$id=$data[0]->id;
+		$id=1;
 		return view('algorithm/index',['name'=>$_SESSION['ca_admin_username'],'data'=>$data,'id'=>$id]);
 	}
 	public function delete()
