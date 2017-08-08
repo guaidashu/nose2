@@ -238,13 +238,14 @@
 
 			//第二个act处
 		    var height_2=parseInt($(".act_show_left_container_2").css("height"));
+		    var height_3=parseInt($(".act_show_right_container_2").css("height"));
 			if(screenWidth>650){
 				$(".act_show_container_2").css({
 					"height":height_2+"px"
 				});
 			}else{
 				$(".act_show_container_2").css({
-					"height":height_2*2+"px"
+					"height":height_2+height_3+"px"
 				});
 			}
 		}
