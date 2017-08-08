@@ -699,7 +699,7 @@ body{
 .act_show_left_container_2{
 	float:left;
 	width:48%;
-	min-height:339px;
+	min-height:408px;
 	position:relative;
 	padding:50px 0px;
 	padding-left:50px;
@@ -761,4 +761,7 @@ body{
 	line-height:23px;
 	font-size: 15px;
 	min-height: 0px;
+}
+.act_show_content img{
+	display:block;
 }

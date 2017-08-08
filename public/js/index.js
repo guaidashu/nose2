@@ -240,11 +240,11 @@
 		    var height_2=parseInt($(".act_show_left_container_2").css("height"));
 			if(screenWidth>650){
 				$(".act_show_container_2").css({
-					"min-height":height_2+"px"
+					"height":height_2+"px"
 				});
 			}else{
 				$(".act_show_container_2").css({
-					"min-height":height_2*2+"px"
+					"height":height_2*2+"px"
 				});
 			}
 		}
