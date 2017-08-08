@@ -13,7 +13,7 @@
 		// 图片的自适应比例
 		this.proportion1;
 		//test为显示屏幕当前宽度，document.width,方便自适应调试,单位px
-		this.test();
+		// this.test();
 		// 以下的函数都将在window.onresize再次调用防止用户伸缩网页
 		// 学习方向自适应
 		this.caStudyContainerAuto();
