@@ -719,7 +719,7 @@ body{
 @media(max-width: 650px){
 	.act_show_left_container_2{
 		float:none;
-		padding:15px 50px;
+		padding:30px 50px;
 		padding-top:0px;
 		width:100%;
 	}
@@ -733,7 +733,7 @@ body{
 
 @media(max-width: 610px){
 	.act_show_left_container_2{
-		padding:15px 15px;
+		padding:30px 15px;
 		padding-top:0px;
 	}
 	.act_show_right_container_2{
