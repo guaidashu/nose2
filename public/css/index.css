@@ -699,7 +699,7 @@ body{
 .act_show_left_container_2{
 	float:left;
 	width:48%;
-	min-height:408px;
+	min-height:0px;
 	position:relative;
 	padding:50px 0px;
 	padding-left:50px;
