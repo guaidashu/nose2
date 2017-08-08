@@ -165,6 +165,34 @@
         我们坚持不抛弃不放弃的基本原则，给每一个会员公平的参与项目和学习的机会，只要你愿意，都可以来技术部或者其他部门施展你的才华，挥洒你的青春。
     </div>
 </div>
+
+<!-- 协会简介的一些活动介绍之类的 2 -->
+<div class="ca_study_container">
+    <div class="act_show_container_2">
+        <div class="act_show_left_container_2">
+            <div class="act_show_title">
+                总是持之以恒
+            </div>
+            <div class="act_show_content">
+                计算机技术协会是由计算机学院主办，计算机学院党团总支直接领导管理的面向全校的专业技术型学生社团。开展学术讨论，普及计算机技术知识，传播计算机文化和相关理念，扶植计算机技术爱好者，培养更多计算机技术方面的人才。
+                <br /><br />
+                <img src="{{URL::asset('images/introduce_bottom/xpic8326.jpg')}}" width="100%" />
+            </div>
+        </div>
+        <div class="act_show_right_container_2">
+            <div class="act_show_title">
+                我们长远的目标
+            </div>
+            <div class="act_show_content">
+                为确保计算机技术协会能够更加健康茁壮的发展，使之运转高效化，规范化，制度化，并朝着专业化战略化方向发展，我们必须要有自己更远的想法。计算机技术协会，创建于2002年9月，自创立以来，一直致力于对计算机文化和相关理念的传播，以及专业技术能力的培养。我们希望，可以针对到每个人，让他学习更加透彻，学习到计算机技术的本质。而不是只是会写代码。
+                <br /><br />
+                计算机技术协会的口号是：以人为本，以技术为魂，以社会为舞台，以竞争为动力。在学校和指导部门允许和要求的情况下接取一些开发项目（学校的或者校外的），用于将会员平时所学理论和实践结合起来；锻炼大家的实战能力。
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- 第三张可滚动图片(js实现) -->
 <div class="ca_association_introduce_img_1 ca_bg_img_3" data-background="./images/background/bg_1.jpg">
     <div class="ca_association_introduce_img_1_content_container">

@@ -13,7 +13,7 @@
 		// 图片的自适应比例
 		this.proportion1;
 		//test为显示屏幕当前宽度，document.width,方便自适应调试,单位px
-		// this.test();
+		this.test();
 		// 以下的函数都将在window.onresize再次调用防止用户伸缩网页
 		// 学习方向自适应
 		this.caStudyContainerAuto();
@@ -228,11 +228,25 @@
 		{
 			var self=this;
 			var screenWidth=parseInt($(document).width());
+
+			//第一个act处
 			var height=parseInt($(".act_show_left_container").css("height"));
 			$(".act_show_container").css({
 				"min-height":height+"px"
 			});
 			$(".act_show_right_container").css("min-height",height-50+"px");
+
+			//第二个act处
+		    var height_2=parseInt($(".act_show_left_container_2").css("height"));
+			if(screenWidth>650){
+				$(".act_show_container_2").css({
+					"min-height":height_2+"px"
+				});
+			}else{
+				$(".act_show_container_2").css({
+					"min-height":height_2*2+"px"
+				});
+			}
 		}
 	}
 	window['index_function']=index_function;
