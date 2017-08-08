@@ -24,7 +24,10 @@
 		// 最后的介绍容器里的小图标自适应
 		this.caIntroduceBottomFigsAuto();
 		// 协会活动容器自适应
-		this.actShowContainerAuto();
+		// this.actShowContainerAuto();
+		setTimeout(function(){
+			self.actShowContainerAuto();
+		},10);
 		// var obj=document.getElementById("ac_index_body");
 		// 触屏事件测试
 		// obj.addEventListener("touchmove",function(event){
@@ -238,10 +241,11 @@
 
 			//第二个act处
 		    var height_2=parseInt($(".act_show_left_container_2").css("height"));
+		    var width=parseInt($(".act_show_left_container_2").css("width"));
 		    var height_3=parseInt($(".act_show_right_container_2").css("height"));
 			if(screenWidth>650){
 				$(".act_show_container_2").css({
-					"height":height_2+"px"
+					"height":height_2>height_3?height_2:height_3+"px"
 				});
 			}else{
 				$(".act_show_container_2").css({

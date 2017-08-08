@@ -176,9 +176,7 @@
             <div class="act_show_content">
                 计算机技术协会是由计算机学院主办，计算机学院党团总支直接领导管理的面向全校的专业技术型学生社团。开展学术讨论，普及计算机技术知识，传播计算机文化和相关理念，扶植计算机技术爱好者，培养更多计算机技术方面的人才。
                 <br /><br />
-                <div style="width:100%;">
-                    <img src="{{URL::asset('images/introduce_bottom/xpic8326.jpg')}}" width="100%" />
-                </div>
+                <img src="{{URL::asset('images/introduce_bottom/xpic8326.jpg')}}" width="100%" class="act_show_left_img" />
             </div>
         </div>
         <div class="act_show_right_container_2">
