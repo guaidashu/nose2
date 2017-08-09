@@ -94,7 +94,7 @@
     <ul class="am-nav am-nav-pills am-nav-justify">
       <li class=""><a href="{{url('index/index.html')}}">首页</a></li>
       <li>
-        <a href="#">项目中心</a>
+        <a href="{{url('project/index.html')}}">项目中心</a>
         <!-- sub-menu start-->
         <ul class="sub-menu">
           <li class="menu-item"><a href="http://sh.wyysdsa.cn/" target="_blank">超级作业</a></li>
@@ -143,7 +143,7 @@
           <ul class="am-menu-nav am-avg-sm-1">
               <li><a href="{{url('index/index.html')}}" class="" >首页</a></li>
               <li class="am-parent">
-                <a href="#" class="" >项目中心</a>
+                <a href="{{url('project/index.html')}}" class="" >项目中心</a>
                   <ul class="am-menu-sub am-collapse ">
                       <li class="">
                         <a href="http://sh.wyysdsa.cn/" class="" target="_blank" >超级作业</a>

@@ -1,0 +1,32 @@
+.project1,.project2,.project3{
+	margin:0 auto;
+	margin-top:20px;
+	height:200px;
+	width:80%;
+	background-color:rgb(254,254,254);
+}
+.project1_left,.project2_left,.project3_left{
+	width:30%;
+	height:200px;
+	float:left;
+}
+.project1_right,.project2_right,.project3_right{
+	width:66%;
+	height:200px;
+	float:right;
+	padding-top:15px;
+}
+
+a:hover {text-decoration:underline;}
+
+img.img1,.img2,.img3
+{
+opacity:0.6;
+filter:alpha(opacity=60); /* 针对 IE8 以及更早的版本 */
+}
+
+img:hover
+{
+opacity:1.0;
+filter:alpha(opacity=100); /* 针对 IE8 以及更早的版本 */
+}

@@ -28,6 +28,10 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	Route::get('act/success.html','ActController@success');
 	Route::get('act/code.html','ActController@codeOnline');
 
+// 项目展示页面
+Route::get('project','ProjectController@index');
+Route::get('project/index.html','ProjectController@index');
+
 // 其他测试页面
 Route::get('test/test', 'TestController@test');
 Route::get('test/fun', 'TestController@curlTest');
