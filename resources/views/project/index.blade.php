@@ -31,11 +31,11 @@
 			在线批改学生作业完成情况Excel导出。
 		</div>
 	</div>
-	<div class="project2">
-		<div class="project2_left">
+	<div class="project1">
+		<div class="project1_left">
 			<a href="http://www.wyysdsa.com/stucontrol/" target="_blank"><img class="img2" src="{{URL::asset('images/project/project5.png')}}"/></a>
 		</div>
-		<div class="project2_right">
+		<div class="project1_right">
 			<center><a href="http://www.wyysdsa.com/stucontrol/" target="_blank">
 			<p style="font-size:22px;letter-spacing:5px;font-weight:bold;">
 			查寝系统
@@ -45,11 +45,11 @@
 			发表各类留言。
 		</div>
 	</div>
-	<div class="project3">
-		<div class="project3_left">
+	<div class="project1">
+		<div class="project1_left">
 			<a href="http://www.wyysdsa.cn:1965/" target="_blank"><img class="img3" src="{{URL::asset('images/project/project6.png')}}"/></a>
 		</div>
-		<div class="project3_right">
+		<div class="project1_right">
 			<center><a href="http://www.wyysdsa.cn:1965/" target="_blank">
 			<p style="font-size:22px;letter-spacing:5px;font-weight:bold;">川理在线</p></a></center>
 			川理在线是一个登录学校教务系统，查询图书馆借阅、校园卡、英语四六级、学生缴费信息的平台。<br>
@@ -64,5 +64,11 @@
 <!--新改的部分-->
 @include('./../common/bottom')
 
+<script type="text/javascript" src="{{URL::asset('js/project.js')}}"></script>
+<script type="text/javascript">
+$(function(){
+	var project=new project_function();
+});
+</script>
 </body>
 </html>
