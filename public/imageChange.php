@@ -1,3 +1,3 @@
 <?php
 include './../app/function.php';
-imagesChange("./images/background/bg_4.jpg", "./images/background/bg_4.jpeg");
+imagesChange("./images/project/project4.png", "./images/project/project4.jpeg");

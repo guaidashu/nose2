@@ -28,7 +28,7 @@
 			在线批改学生作业完成情况Excel导出。
 		</div>
 		<div class="project1_left" name="project1_left">
-			<a href="http://sh.wyysdsa.cn/" target="_blank"><img class="img1" src="{{URL::asset('images/project/project4.png')}}"/></a>
+			<a href="http://sh.wyysdsa.cn/" target="_blank"><img class="img1" src="{{URL::asset('images/project/project4.jpeg')}}"/></a>
 		</div>
 	</div>
 	<div class="project1" name="project1">
