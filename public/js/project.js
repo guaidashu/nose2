@@ -22,7 +22,12 @@
 			var self=this;
 			var screenWidth=parseInt($(document).width());
 			var height=parseInt($(".project1_right").height());
-			$(".project1").css("height",height+45+"px");
+			var height_2=parseInt($(".project1_left").height());
+			if(screenWidth > 650){
+				$(".project1").css("height",height+45+"px");
+			}else{
+				$(".project1").css("height",height+45+height_2+"px");
+			}
 		}
 	}
 	window['project_function']=project_function;

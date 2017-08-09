@@ -25,7 +25,6 @@
 }
 .project1_left{
 	width:30%;
-	height:100%;
 	float:left;
 }
 .project1_right{
@@ -34,6 +33,18 @@
 	float:right;
 	padding-top:15px;
 	padding-bottom: 30px;
+}
+
+@media(max-width: 650px){
+	.project1_left{
+		float:none;
+		width:100%;
+		min-height:0px;
+	}
+	.project1_right{
+		float:none;
+		width:100%;
+	}
 }
 
 .ca_about_container a:hover {text-decoration:underline;}
