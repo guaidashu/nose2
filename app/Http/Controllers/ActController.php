@@ -124,7 +124,7 @@ class ActController extends Controller
 		// 进行cookie的获取
 		$cookieFile = "cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
 		passthru("touch ".$cookieFile, $return);
-		if(!$return){
+		if($return){
 			echo js_arr("执行失败");
 			exit;
 		}
