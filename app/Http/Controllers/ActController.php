@@ -123,6 +123,10 @@ class ActController extends Controller
 
 		// 进行cookie的获取
 		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+
+		// 本地调试 需要把上一句注释掉，把下一句解开注释，因为windows和Linux不同
+		// $cookieFile = public_path()."\\cookie\\".md5(date("Y-m-d H:i:s",time())).".cookie";
+		
 		// passthru("touch ".$cookieFile, $return);
 		// if($return){
 		// 	echo js_arr("执行失败");
