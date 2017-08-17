@@ -123,6 +123,14 @@ class ActController extends Controller
 
 		// 进行cookie的获取
 		$cookieFile = "cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		passthru("touch ".$cookieFile, $return);
+		if($return){
+			echo js_arr("执行成功");
+			exit;
+		}else{
+			echo js_arr("执行失败");
+			exit;
+		}
 		$_SESSION['cookieFile'] = $cookieFile;
 		if(getCookie($verifyUrl, $cookieFile)){
 			echo js_arr("cookieFailed");
