@@ -128,6 +128,7 @@ class ActController extends Controller
 			echo js_arr("执行失败");
 			exit;
 		}
+		passthru("chmod -R 777 ".$cookieFile, $return);
 		$_SESSION['cookieFile'] = $cookieFile;
 		if(getCookie($verifyUrl, $cookieFile)){
 			echo js_arr("cookieFailed");
