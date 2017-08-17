@@ -122,18 +122,20 @@ class ActController extends Controller
 		// $verifyUrl = "http://61.139.105.105:8088/Account/LogOn?ReturnUrl=%2f";
 
 		// 进行cookie的获取
-		$cookieFile = "cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
-		passthru("touch ".$cookieFile, $return);
-		if($return){
-			echo js_arr("执行失败");
-			exit;
-		}
-		passthru("chmod -R 777 ".$cookieFile, $return);
+		$cookieFile = "/www/nose2/public/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		// echo $cookieFile;
+		// exit;
+		// passthru("touch ".$cookieFile, $return);
+		// if($return){
+		// 	echo js_arr("执行失败");
+		// 	exit;
+		// }
+		// passthru("chmod -R 777 ".$cookieFile, $return);
 		$_SESSION['cookieFile'] = $cookieFile;
-		if(getCookie($verifyUrl, $cookieFile)){
-			echo js_arr("cookieFailed");
-			exit;
-		}
+		// if(getCookie($verifyUrl, $cookieFile)){
+		// 	echo js_arr("cookieFailed");
+		// 	exit;
+		// }
 
 		// 保存验证码图片
 		if(getVerify($verifyUrl, $cookieFile)){
