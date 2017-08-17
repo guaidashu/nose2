@@ -20,7 +20,7 @@
 
 		     <div class="am-form-group">
 		      <label for="doc-vld-name-2">身份证号码</label>
-		      <input type="text" name="name" id="doc-vld-name-2" minlength="2" placeholder="你的名字是···(至少两个字)" />
+		      <input type="text" name="name" id="doc-vld-name-2" minlength="2" placeholder="输入你的身份证号" />
 		    </div>
 
 		    <div class="am-form-group">
