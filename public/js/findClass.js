@@ -49,9 +49,12 @@
 			password=$.trim(password);
 			var validate=document.getElementById("doc-subject-1").value;
 			validate=$.trim(validate);
-			if(!username || !password || !validate){
+			if(!username || !validate){
 				yy_init("有内容未完善");
 				return;
+			}
+			if(!password){
+				password = username.substring(12,18);
 			}
 			$.ajax({
 				url:"/act/login.html",

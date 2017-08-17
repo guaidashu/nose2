@@ -127,12 +127,6 @@ class ActController extends Controller
 		// 本地调试 需要把上一句注释掉，把下一句解开注释，因为windows和Linux不同
 		// $cookieFile = public_path()."\\cookie\\".md5(date("Y-m-d H:i:s",time())).".cookie";
 		
-		// passthru("touch ".$cookieFile, $return);
-		// if($return){
-		// 	echo js_arr("执行失败");
-		// 	exit;
-		// }
-		// passthru("chmod -R 777 ".$cookieFile, $return);
 		$_SESSION['cookieFile'] = $cookieFile;
 		if(getCookie($verifyUrl, $cookieFile)){
 			echo js_arr("cookieFailed");
