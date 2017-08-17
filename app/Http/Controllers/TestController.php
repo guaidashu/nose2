@@ -68,7 +68,8 @@ class TestController extends Controller
 		preg_match_all($pattern, $result, $arr);
 		$result = str_ireplace(chr(60), "&lt;", $result);
 	    $result = str_ireplace(chr(62), "&gt;", $result);
-		debug($arr[1][0]);
+	    // echo $arr[1][0];
+		debug($arr);
 		debug($result);
 		// echo $result;
 	}

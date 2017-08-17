@@ -1,0 +1,11 @@
+.ca_about_container{
+	min-height: 0px;
+	width:100%;
+}
+.ca_carousel_container{
+	width:100%;
+	overflow:hidden;
+}
+.ca_carousel{
+	height:100%;
+}

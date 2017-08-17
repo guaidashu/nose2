@@ -1,3 +1,10 @@
+<!--[if lte IE 9 ]>
+<div class="am-alert am-alert-danger ie-warning" data-am-alert>
+  <button type="button" class="am-close">&times;</button>
+  <div class="am-container">
+    365 安全卫士提醒：你的浏览器太古董了，妹子无爱，<a
+    href="http://browsehappy.com/" target="_blank">速速点击换一个</a>！</div></div>
+<![endif]-->
 <!-- 顶部信息栏。包括登录信息(top message show(include login message)) -->
 <div class="topbar">
     <div class="container">
@@ -75,7 +82,7 @@
                                             </div>
                                         </div>
                     </div>
-                    <a class="contact-btn">
+                    <a class="contact-btn" href="http://wpa.qq.com/msgrd?v=3&uin=1023767856&site=qq&menu=yes" target="_blank">
                       <button type="button" class="am-btn am-btn-secondary am-radius">联系我们</button>
                     </a>
                   </div>
@@ -189,7 +196,7 @@
               </li>
               <li class=""><a href="{{url('crn/index.html')}}" class="" >协会招新</a></li>
               <li class=""><a href="{{url('about/index.html')}}" class="" >关于我们</a></li>
-              <li class=""><a href="#" class="" >联系我们</a></li>
+              <li class=""><a href="http://wpa.qq.com/msgrd?v=3&uin=1023767856&site=qq&menu=yes" target="_blank" class="" >联系我们</a></li>
               <li class="am-parent">
                 <a href="" class="nav-icon nav-icon-globe" >Language</a>
                   <ul class="am-menu-sub am-collapse  ">

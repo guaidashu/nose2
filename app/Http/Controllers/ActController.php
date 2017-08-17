@@ -104,4 +104,104 @@ class ActController extends Controller
 	{
 		return view('act/code',['name'=>$_SESSION['ca_username']]);
 	}
+
+	public function findClass()
+	{
+		return view('act/findClass',['name'=>$_SESSION['ca_username']]);
+	}
+
+	// 获取cookie 同时保存验证码图片
+	public function getVerify()
+	{
+		if(!empty($_SESSION['cookieFile'])){
+			unlink($_SESSION['cookieFile']);
+			$_SESSION['cookieFile']=null;
+		}
+		// 验证码URL
+		$verifyUrl = "http://61.139.105.105:8088/Account/GetValidateCode";
+		// $verifyUrl = "http://61.139.105.105:8088/Account/LogOn?ReturnUrl=%2f";
+
+		// 进行cookie的获取
+		$cookieFile = "cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		$_SESSION['cookieFile'] = $cookieFile;
+		if(getCookie($verifyUrl, $cookieFile)){
+			echo js_arr("cookieFailed");
+			exit;
+		}
+
+		// 保存验证码图片
+		if(getVerify($verifyUrl, $cookieFile)){
+			echo js_arr("saveImgFailed");
+			exit;
+		}else{
+			echo js_arr("ok");
+		}
+	}
+
+	// 模拟登录
+	public function login()
+	{
+		// 登录处理页面的URL 
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		$validate = $_POST['validate'];
+		$loginUrl = "http://61.139.105.105:8088/Account/LogOn?ReturnUrl=%2f";
+		$info = array(
+			"user" => $username,
+			"password" => $password,
+			"validate" => $validate
+			);
+		$result = curlLogin($loginUrl, $info, $_SESSION['cookieFile']);
+
+		$pattern = "/Object moved/";
+		if(preg_match($pattern, $result)){
+			// 成功了就返回这个
+			$_SESSION['findClassCookie'] = 1;
+			echo js_arr("ok");
+		}else{
+			echo js_arr("failed");
+			exit;
+		}
+	}
+
+	// 获取新生信息
+	public function getInfo()
+	{
+		if(empty($_SESSION['findClassCookie'])){
+			return redirect("act/findClass.html");
+		}
+		$url = "http://61.139.105.105:8088/Student/Detail";
+		$result = getInfo($url, $_SESSION['cookieFile']);
+		// 删除临时的cookie文件夹
+		unlink($_SESSION['cookieFile']);
+		// 获取班级
+		$pattern = '/<td>(.*?)<\/td>/is';
+		preg_match_all($pattern, $result, $match);
+		// 班级
+		$class = $match[1][7];
+		// 入学年份
+		$year = $match[1][3];
+		// 学号
+		$classNumber = $match[1][4];
+		// 专业
+		$major = $match[1][6];
+		// 院系 
+		$further = $match[1][5];
+		// 姓名
+		$name = $match[1][0];
+
+		// debug($class);
+		// debug($match[1]);
+		$arr = array(
+			"name" => $name,
+			"year" => $year,
+			"further" => $further,
+			"classNumber" => $classNumber,
+			"major" => $major,
+			"class" => $class
+			);
+		$_SESSION['findClassCookie'] = null;
+		$_SESSION['cookieFile'] = null;
+		return view('act/getInfo',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
+	}
 }

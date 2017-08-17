@@ -117,3 +117,82 @@ function imagesChange($src,$path)
 	//销毁原图释放资源
 	imagedestroy($images);
 }
+
+
+
+
+
+
+/*
+		爬虫函数些    参数 $url是要抓取的URL  $cookieFile 是要存的暂时cookie文件夹
+ */
+function getCookie($url, $cookieFile)
+{
+	// 保存cookie的文件
+	// $cookieFile = "tmp.cookie";
+	// 设置允许运行的时间，防止死循环
+	$timeOut = 5;
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	// 使curl 返回并不输出，而是返回字符串
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	// 设置连接时间
+	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeOut);
+	// 保存cookie到指定文件夹
+	curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieFile);
+	$content = curl_exec($ch);
+	curl_close($ch);
+}
+
+// 保存验证码的图片, $url 为验证码的url地址 ,$cookieFile 是要存的暂时cookie文件夹
+function getVerify($url, $cookieFile)
+{
+	$imgName = "images/verify.jpg";
+	$timeOut = 20;
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	// 带上刚刚的cookie进行访问
+	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	// 设置连接时间
+	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeOut);
+	// 执行curl并且返回图片
+	$img = curl_exec($ch);
+	curl_close($ch);
+	$fp = fopen("images/verify.jpg", "w");
+	fwrite($fp, $img);
+	fclose($fp);
+}
+
+// 模拟登录函数
+// 此处的$url为登录处理页面的URL连接，$info为信息数组包括验证码，用foreach来遍历(内置默认为用户名，密码和验证码)
+function curlLogin($url, $info, $cookieFile)
+{
+	$post = 'UserName='.$info['user'].'&Password='.$info['password'].'&ValidateCode='.$info['validate'];
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
+	$result = curl_exec($ch);
+	curl_close($ch);
+	return $result;
+}
+
+function getInfo($url, $cookieFile)
+{
+	// $url = "http://61.139.105.105:8088/Student/Detail";
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
+	$result = curl_exec($ch);
+	curl_close($ch);
+	return $result;
+}

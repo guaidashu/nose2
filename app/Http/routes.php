@@ -23,30 +23,35 @@ Route::post('crn/handle.html', 'CrnController@handle');
 
 // 协会动态页面组
 	// 算法入门报名页面
-	Route::get('act/algorithm.html','ActController@algorithm');
-	Route::post('act/algorithmHandle.html','ActController@algorithmHandle');
-	Route::get('act/success.html','ActController@success');
-	Route::get('act/code.html','ActController@codeOnline');
+	Route::get('act/algorithm.html', 'ActController@algorithm');
+	Route::post('act/algorithmHandle.html', 'ActController@algorithmHandle');
+	Route::get('act/success.html', 'ActController@success');
+	Route::get('act/code.html', 'ActController@codeOnline');
+	// 新生班级查询
+	Route::get('act/findClass.html', 'ActController@findClass');
+	Route::get('act/getVerify.html', 'ActController@getVerify');
+	Route::post('act/login.html', 'ActController@login');
+	Route::get('act/getInfo.html', 'ActController@getInfo');
 
 // 项目展示页面
-Route::get('project','ProjectController@index');
-Route::get('project/index.html','ProjectController@index');
+Route::get('project', 'ProjectController@index');
+Route::get('project/index.html', 'ProjectController@index');
 
 // 其他测试页面
 Route::get('test/test', 'TestController@test');
 Route::get('test/fun', 'TestController@curlTest');
-Route::get('test/sql.html','TestController@sqlTest');
-Route::get('test/email.html','TestController@emailTest');
-Route::get('test/testFrame.html','TestController@testFrame');
+Route::get('test/sql.html', 'TestController@sqlTest');
+Route::get('test/email.html', 'TestController@emailTest');
+Route::get('test/testFrame.html', 'TestController@testFrame');
 
 // 关于我们页面模块
-Route::get('about','AboutController@index');
-Route::get('about/index.html','AboutController@index');
+Route::get('about', 'AboutController@index');
+Route::get('about/index.html', 'AboutController@index');
 
 // 验证码
-Route::get('validate.html','ValidateController@validate');
-Route::get('getValidateCount.html',"ValidateController@getValidateCount");
-Route::post('validateCheck.html','ValidateController@validateCheck');
+Route::get('validate.html', 'ValidateController@validate');
+Route::get('getValidateCount.html', "ValidateController@getValidateCount");
+Route::post('validateCheck.html', 'ValidateController@validateCheck');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
