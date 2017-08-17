@@ -122,7 +122,7 @@ class ActController extends Controller
 		// $verifyUrl = "http://61.139.105.105:8088/Account/LogOn?ReturnUrl=%2f";
 
 		// 进行cookie的获取
-		$cookieFile = "/www/nose2/public/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		$cookieFile = md5(date("Y-m-d H:i:s",time())).".cookie";
 		// echo $cookieFile;
 		// exit;
 		// passthru("touch ".$cookieFile, $return);
