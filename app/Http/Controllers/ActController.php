@@ -220,7 +220,7 @@ class ActController extends Controller
 		// 开始就来判断来访的域名（防盗链），防止对方curl爬取
 		if(isset($_SERVER['HTTP_REFERER']))
 		{
-		    $tmp = strpos($_SERVER['HTTP_REFERER'],"http://www.nose.com/");
+		    $tmp = strpos($_SERVER['HTTP_REFERER'],"http://nose.wyysdsa.cn/");
 		    if(is_numeric($tmp)&&$tmp==0){
 		        
 		    } else{
@@ -267,20 +267,15 @@ class ActController extends Controller
 		// 判断无误后，则直接进行爬取信息
 		$num = $_POST['num'];
 		$url = "http://119.29.201.115/info_disp.php";
-		$cookieFile = "tmp.cookie";
-		// getCookie($url, $cookieFile);
 
 		$post = "ksh=".$num."&submit=ok";
-		// $post = "phone=111";
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
-		// curl_setopt($ch, CURLOPT_REFERER, 'http://localhost/');
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-		// curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
 		$result = curl_exec($ch);
 		curl_close($ch);
 		// echo $result;
