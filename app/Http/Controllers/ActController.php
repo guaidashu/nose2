@@ -244,9 +244,7 @@ class ActController extends Controller
 		$db->dbPassword="wyysdsa!";
 		$db->dbDatabase="house";
 		$db->dbconnect();
-		// $db->dbresult("insert into ip(ip)values('127.0.0.1')");
 		$db->dbresult("select * from ip where ip='".$ip."'");
-		// debug($db->result);
 		if($db->dbrow($db->result)){
 		    $row = $db->row;
 		    $db->dbclose();
