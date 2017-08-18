@@ -196,3 +196,69 @@ function getInfo($url, $cookieFile)
 	curl_close($ch);
 	return $result;
 }
+
+
+// 暂时是这样只适用于 春儿的这个网页
+function get_td_array_self($table)
+{
+	$pattern = '/<th>([\w\W]*?)<\/th>/';
+	preg_match_all($pattern, $table, $matches);
+	// debug($matches[1]);
+
+	$pattern = '/<td>([\w\W]*?)<\/td>/';
+	preg_match_all($pattern, $table, $matches2);
+	// debug($matches2[1]);
+	$arr = array();
+	foreach ($matches[1] as $key => $value) {
+		$arr[$value] = $matches2[1][$key];
+	}
+	return $arr;
+}
+
+
+// table转数组函数
+function get_td_array($table) {
+$pattern = '/<tbody>([\w\W]*?)<\/tbody>/';
+preg_match($pattern, $table, $matches);
+
+if (empty($matches[0])) {
+	$table = null;
+}else{
+	$table = $matches[0];
+}
+
+$table = str_replace(array("</tr>","</td>"),array("{tr}","{td}"),$table);    
+//去掉 HTML 标记
+$table = preg_replace("/<\/?[^>]+>/i",'',$table); 
+$table = explode('{tr}', $table);
+array_pop($table);
+debug($table);
+foreach ($table as $key=>$tr) {    
+$td = explode('{td}', $tr);
+//去掉空格
+$td=str_replace(array(" ","　","\t","\n","\r","&nbsp;"),array("","","","","",""),$td); 
+array_pop($td);
+	$td_array[] = $td;     
+}
+if (empty($td_array)) {
+	return null;
+}else{
+	return $td_array;
+}
+}
+
+
+
+// 获取IP函数
+function getIP()
+{
+	global $ip;
+	if (getenv("HTTP_CLIENT_IP"))
+		$ip = getenv("HTTP_CLIENT_IP");
+	else if(getenv("HTTP_X_FORWARDED_FOR"))
+		$ip = getenv("HTTP_X_FORWARDED_FOR");
+	else if(getenv("REMOTE_ADDR"))
+		$ip = getenv("REMOTE_ADDR");
+	else $ip = "Unknow";
+	return $ip;
+}

@@ -78,6 +78,10 @@
 </div>
 <div class="login_statement_envelop">
 </div>
+<div id="bottom_author" style="width:100%;min-height:50px;line-height:50px;text-align:center;color:#333;font-size:15px;">
+	技术支持：<a href="{{url('index/index.html')}}">计算机技术协会</a>
+</div>
+<div style="width:100%;height:50px;"></div>
 @include('./../common/bottom')
 
 <script type="text/javascript" src="{{URL::asset('js/algorithm.js')}}"></script>

@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{URL::asset('css/crn.css')}}" />
 <title>
-新生班级查询结果
+新生寝室查询结果
 </title>
 </head>
 <body>
@@ -16,14 +16,11 @@
 		<div class="am-u-md-8 am-u-sm-centered">
 		    <form class="am-form" data-am-validator>
 			    <fieldset class="am-form-set">
-			        <legend>新生班级查询结果</legend>
+			        <legend style="border-bottom: none;">新生寝室查询结果</legend>
 					<ul class="am-list">
-					  <li style="border-top:none;"><a href="#">姓名：{{$info['name']}}</a></li>
-					  <li><a href="#">入学年份：{{$info['year']}}</a></li>
-					  <li><a href="#">院系：{{$info['further']}}</a></li>
-					  <li><a href="#">专业：{{$info['major']}}</a></li>
-					  <li><a href="#">班级：{{$info['class']}}</a></li>
-					  <li><a href="#">学号：{{$info['classNumber']}}</a></li>
+					  @foreach($info as $key=>$value)
+						  <li><a href="#">{{$key}}：{{$value}}</a></li>
+					  @endforeach
 					</ul>
 				</fieldset>
 			</form>

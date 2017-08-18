@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use App\ActModel;
 use Mail;
 
 class ActController extends Controller
@@ -207,5 +208,86 @@ class ActController extends Controller
 		$_SESSION['findClassCookie'] = null;
 		$_SESSION['cookieFile'] = null;
 		return view('act/getInfo',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
+	}
+
+	public function findDorm()
+	{
+		return view('act/findDorm',['name'=>$_SESSION['ca_username']]);
+	}
+
+	public function searchDorm()
+	{
+		// 开始就来判断来访的域名（防盗链），防止对方curl爬取
+		if(isset($_SERVER['HTTP_REFERER']))
+		{
+		    $tmp = strpos($_SERVER['HTTP_REFERER'],"http://www.nose.com/");
+		    if(is_numeric($tmp)&&$tmp==0){
+		        
+		    } else{
+		        echo "404 NOT FOUND";
+		        exit;
+		    }  
+		}else{
+		    echo "404 NOT FOUND";
+		    exit;
+		}
+		// 判断Ip ，若是敌对IP则直接结束掉不让其获取信息
+		$ip = getIP();
+		if($ip ==  "121.42.11.49"){
+		    echo "404 NOT FOUND";
+		    exit;
+		}
+		// 若是其他IP ，则最多让其取20次
+		$db=new ActModel();
+		$db->dbLocalhost="123.207.145.179";
+		$db->dbUser="root";
+		$db->dbPassword="wyysdsa!";
+		$db->dbDatabase="house";
+		$db->dbconnect();
+		// $db->dbresult("insert into ip(ip)values('127.0.0.1')");
+		$db->dbresult("select * from ip where ip='".$ip."'");
+		// debug($db->result);
+		if($db->dbrow($db->result)){
+		    $row = $db->row;
+		    $db->dbclose();
+		    if($row['lookNum']>20){
+		        echo "404 NOT FOUND";
+		        exit;
+		    }else{
+		        $db->dbconnect();
+		        $db->dbresult("update ip set lookNum=".($row['lookNum']+1)." where ip='".$ip."'");
+		    }
+		}else{
+		    $db->dbclose();
+		    $db->dbconnect();
+		    $db->dbresult("insert into ip(ip,lookNum)values('$ip','1')");
+		    $db->dbclose();
+		}
+
+		// 判断无误后，则直接进行爬取信息
+		$num = $_POST['num'];
+		$url = "http://119.29.201.115/info_disp.php";
+		$cookieFile = "tmp.cookie";
+		// getCookie($url, $cookieFile);
+
+		$post = "ksh=".$num."&submit=ok";
+		// $post = "phone=111";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
+		// curl_setopt($ch, CURLOPT_REFERER, 'http://localhost/');
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+		// curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
+		$result = curl_exec($ch);
+		curl_close($ch);
+		// echo $result;
+		$pattern = '/<table(.*?)>(.*?)<\/table>/is';
+		preg_match_all($pattern, $result, $match);
+		$arr = get_td_array_self($match[2][0]);
+		// debug($arr);
+		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
 	}
 }
