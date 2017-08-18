@@ -238,28 +238,22 @@ class ActController extends Controller
 		    exit;
 		}
 		// 若是其他IP ，则最多让其取20次
-		$db=new ActModel();
-		$db->dbLocalhost="123.207.145.179";
-		$db->dbUser="root";
-		$db->dbPassword="wyysdsa!";
-		$db->dbDatabase="house";
-		$db->dbconnect();
-		$db->dbresult("select * from ip where ip='".$ip."'");
-		if($db->dbrow($db->result)){
-		    $row = $db->row;
-		    $db->dbclose();
-		    if($row['lookNum']>20){
+		$db = new ActModel();
+		$data = $db->where('ip',$ip)->get();
+		if(!empty($data[0])){
+		    $row = $data[0];
+		    if($row->lookNum>20){
 		        echo "404 NOT FOUND";
 		        exit;
 		    }else{
-		        $db->dbconnect();
-		        $db->dbresult("update ip set lookNum=".($row['lookNum']+1)." where ip='".$ip."'");
+		    	$db->where('ip',$ip)->update(['lookNum'=>($row->lookNum+1)]);
+		        // $db->dbresult("update ip set lookNum=".($row['lookNum']+1)." where ip='".$ip."'");
 		    }
 		}else{
-		    $db->dbclose();
-		    $db->dbconnect();
-		    $db->dbresult("insert into ip(ip,lookNum)values('$ip','1')");
-		    $db->dbclose();
+			$insert = new ActModel();
+			$insert->ip = "127.0.0.2";
+			$insert->lookNum = 100;
+			$data = $insert->save();
 		}
 
 		// 判断无误后，则直接进行爬取信息

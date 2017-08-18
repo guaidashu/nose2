@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use App\TestModel;
+use App\ActModel;
 use Mail;
 use App\User;
 
@@ -24,11 +25,26 @@ class TestController extends Controller
 
 	public function sqlTest()
 	{
-		$data=DB::select('select phone,email from crn');
-		foreach ($data as $key => $value) {
-			debug($key);
-			debug($value->phone);
-		}
+		$model = new ActModel();
+		// $input = [
+		//     'lookNum'=>100
+		// ];
+		// $arr = array("ip"=>'127.0.0.1');
+		// $data = $model->where('ip','127.0.0.2')->update($arr);
+		// $model->ip = "127.0.0.2";
+		// $model->lookNum = 100;
+		// $data = $model->save();
+		// $data = $model->update("update ip set lookNum=0 where ip='127.0.0.1'");
+		// $data = $model->where('ip','127.0.0.1')->get();
+		// if(!empty($data[0])){
+			debug($data);
+		// }
+		
+		// $data=DB::select('select phone,email from crn');
+		// foreach ($data as $key => $value) {
+		// 	debug($key);
+		// 	debug($value->phone);
+		// }
 	}
 
 	public function emailTest()
