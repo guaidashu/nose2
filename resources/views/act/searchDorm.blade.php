@@ -251,7 +251,7 @@
     </div>
     <div class="am-u-sm-5 am-u-end">
       <div class="m-logo">
-        <a href="{{url('index/index.html')}}" ><img src="{{URL::asset('images/logo.png')}}" style="margin-top:-2px;" alt="logo" /></a>
+        <a href="https://suse.xsdhy.com/" ><img src="{{URL::asset('images/logo.png')}}" style="margin-top:-2px;" alt="logo" /></a>
       </div>
     </div>
   </div>
