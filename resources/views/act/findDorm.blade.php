@@ -117,7 +117,7 @@
         <ul class="sub-menu">
           <li class="menu-item"><a href="http://sh.wyysdsa.cn/" target="_blank">超级作业</a></li>
           <li class="menu-item"><a href="http://www.wyysdsa.com/stucontrol/" target="_blank">查寝系统</a></li>
-          <li class="menu-item"><a href="http://www.wyysdsa.cn:1965" target="_blank">川理在线</a></li>
+          <li class="menu-item"><a href="http://nose.wyysdsa.cn" target="_blank">计算机技术协会</a></li>
         </ul>
         <!-- sub-menu end-->
       </li>
@@ -174,7 +174,7 @@
                         <a href="http://www.wyysdsa.com/stucontrol/" class="" target="_blank">查寝系统</a>
                       </li>
                       <li class="">
-                        <a href="http://www.wyysdsa.cn:1965" class="" target="_blank">川理在线</a>
+                        <a href="http://nose.wyysdsa.cn/" class="" target="_blank">计算机技术协会</a>
                       </li>
                   </ul>
               </li>
