@@ -251,8 +251,8 @@ class ActController extends Controller
 		    }
 		}else{
 			$insert = new ActModel();
-			$insert->ip = "127.0.0.2";
-			$insert->lookNum = 100;
+			$insert->ip = $ip;
+			$insert->lookNum = 1;
 			$data = $insert->save();
 		}
 
