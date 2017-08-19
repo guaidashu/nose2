@@ -278,7 +278,7 @@ class ActController extends Controller
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 		$result = curl_exec($ch);
 		curl_close($ch);
-		debug($result, true);
+		// debug($result, true);
 		// echo $result;
 		$pattern = "/<script>(.*?)<\/script>/";
 		if(preg_match($pattern, $result)){
