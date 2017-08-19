@@ -240,7 +240,7 @@ class ActController extends Controller
 		// $ip = getIP();
 		$ip = getMacAddr();
 		// debug($ip);
-		if($ip !=  "28-C2-DD-15-61-96"){
+		if($ip ==  "28-C2-DD-15-61-9"){
 		    echo "404 NOT FOUND";
 		    exit;
 		}
