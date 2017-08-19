@@ -238,12 +238,12 @@ class ActController extends Controller
 		}
 		// 判断Ip ，若是敌对IP则直接结束掉不让其获取信息
 		// $ip = getIP();
-		$ip = getMacAddr();
-		// debug($ip);
-		if($ip ==  "28-C2-DD-15-61-9"){
-		    echo "404 NOT FOUND";
-		    exit;
-		}
+		$ip = getIP();
+		// // debug($ip);
+		// if($ip ==  "28-C2-DD-15-61-9"){
+		//     echo "404 NOT FOUND";
+		//     exit;
+		// }
 		// 若是其他IP ，则最多让其取20次
 		$db = new ActModel();
 		$data = $db->where('ip',$ip)->get();
@@ -273,8 +273,8 @@ class ActController extends Controller
 		curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		// curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
-		curl_setopt($ch, CURLOPT_REFERER, 'http://nose.wyysdsa.cn/'); 
+		curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
+		// curl_setopt($ch, CURLOPT_REFERER, 'http://nose.wyysdsa.cn/'); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 		$result = curl_exec($ch);
 		curl_close($ch);
