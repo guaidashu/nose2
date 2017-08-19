@@ -19,8 +19,8 @@
 			        <legend style="border-bottom: none;">新生寝室查询结果</legend>
 					<ul class="am-list">
 					  @if(empty($info))
-						  <li><a href="#">该功能暂未开通噢</a></li>
-						  <!-- <li><a href="#">不存在此考生信息噢，请检查一下有没有输入正确</a></li> -->
+						  <!-- <li><a href="#">该功能暂未开通噢</a></li> -->
+						  <li><a href="#">不存在此考生信息噢，请检查一下有没有输入正确</a></li>
 					  @else
 						  @foreach($info as $key=>$value)
 							  <li><a href="#">{{$key}}：{{$value}}</a></li>

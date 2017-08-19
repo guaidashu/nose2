@@ -217,9 +217,9 @@ class ActController extends Controller
 
 	public function searchDorm()
 	{
-		$arr = null;
-		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
-		exit;
+		// $arr = null;
+		// return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
+		// exit;
 		// 开始就来判断来访的域名（防盗链），防止对方curl爬取
 		if(isset($_SERVER['HTTP_REFERER']))
 		{
