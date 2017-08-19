@@ -273,7 +273,7 @@ class ActController extends Controller
 		$result = curl_exec($ch);
 		curl_close($ch);
 		// echo $result;
-		$pattern = "/<script>alert('不存在该考生号!');history.back();<\/script>/";
+		$pattern = "/<script>(.*?)<\/script>/";
 		if(preg_match($pattern, $result)){
 			$arr = null;
 		}else{
