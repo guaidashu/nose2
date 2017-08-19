@@ -24,6 +24,8 @@
 						  @foreach($info as $key=>$value)
 							  <li><a href="#">{{$key}}：{{$value}}</a></li>
 						  @endforeach
+						  <li><a href="#">小提示：1-412的意思就是十栋6楼606房号的寝室噢
+</a></li>
 					  @endif
 					</ul>
 				</fieldset>
