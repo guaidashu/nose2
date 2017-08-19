@@ -282,7 +282,7 @@
 	</div>
 </div>
 <div id="bottom_author" style="width:100%;min-height:50px;line-height:50px;text-align:center;color:#333;font-size:15px;">
-	技术支持：<a href="{{url('index/index.html')}}">怪大叔</a>
+	技术支持：<a href="https://suse.xsdhy.com/">川理在线</a>
 </div>
 <div style="height:40px;width:100%;"></div>
 @include('./../common/bottom')
