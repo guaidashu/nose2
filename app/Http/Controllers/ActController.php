@@ -222,7 +222,7 @@ class ActController extends Controller
 		{
 		    $tmp = strpos($_SERVER['HTTP_REFERER'],"http://nose.wyysdsa.cn/");
 		    // 本地测试开启下面这一条语句 ，服务器测试开启上面一条语句
-		    // $tmp = strpos($_SERVER['HTTP_REFERER'],"http://www.nose.cn/");
+		    // $tmp = strpos($_SERVER['HTTP_REFERER'],"http://www.nose.com/");
 		    if(is_numeric($tmp)&&$tmp==0){
 		        
 		    } else{
@@ -273,9 +273,14 @@ class ActController extends Controller
 		$result = curl_exec($ch);
 		curl_close($ch);
 		// echo $result;
-		$pattern = '/<table(.*?)>(.*?)<\/table>/is';
-		preg_match_all($pattern, $result, $match);
-		$arr = get_td_array_self($match[2][0]);
+		$pattern = "/<script>alert('不存在该考生号!');history.back();<\/script>/";
+		if(preg_match($pattern, $result)){
+			$arr = null;
+		}else{
+			$pattern = '/<table(.*?)>(.*?)<\/table>/is';
+			preg_match_all($pattern, $result, $match);
+			$arr = get_td_array_self($match[2][0]);
+		}
 		// debug($arr);
 		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
 	}
