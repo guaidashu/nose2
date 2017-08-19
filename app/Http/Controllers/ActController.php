@@ -220,7 +220,9 @@ class ActController extends Controller
 		// 开始就来判断来访的域名（防盗链），防止对方curl爬取
 		if(isset($_SERVER['HTTP_REFERER']))
 		{
-		    $tmp = strpos($_SERVER['HTTP_REFERER'],"http://nose.wyysdsa.cn/");
+		    // $tmp = strpos($_SERVER['HTTP_REFERER'],"http://nose.wyysdsa.cn/");
+		    // 本地测试开启下面这一条语句 ，服务器测试开启上面一条语句
+		    $tmp = strpos($_SERVER['HTTP_REFERER'],"http://www.nose.cn/");
 		    if(is_numeric($tmp)&&$tmp==0){
 		        
 		    } else{
