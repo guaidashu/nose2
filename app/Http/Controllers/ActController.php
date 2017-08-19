@@ -237,8 +237,10 @@ class ActController extends Controller
 		    exit;
 		}
 		// 判断Ip ，若是敌对IP则直接结束掉不让其获取信息
-		$ip = getIP();
-		if($ip ==  "121.42.11.49"){
+		// $ip = getIP();
+		$ip = getMacAddr();
+		// debug($ip);
+		if($ip !=  "28-C2-DD-15-61-96"){
 		    echo "404 NOT FOUND";
 		    exit;
 		}
@@ -271,10 +273,12 @@ class ActController extends Controller
 		curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
+		// curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
+		curl_setopt($ch, CURLOPT_REFERER, 'http://nose.wyysdsa.cn/'); 
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 		$result = curl_exec($ch);
 		curl_close($ch);
+		debug($result, true);
 		// echo $result;
 		$pattern = "/<script>(.*?)<\/script>/";
 		if(preg_match($pattern, $result)){
@@ -284,6 +288,7 @@ class ActController extends Controller
 			preg_match_all($pattern, $result, $match);
 			$arr = get_td_array_self($match[2][0]);
 		}
+
 		// debug($arr);
 		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
 	}
