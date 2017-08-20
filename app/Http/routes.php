@@ -36,6 +36,9 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	Route::get('act/findDorm.html', 'ActController@findDorm');
 	Route::post('act/searchDorm.html', 'ActController@searchDorm');
 
+	// 获取新生所有信息
+	Route::get('act/getData.html', 'ActController@getNewStudentData');
+
 // 项目展示页面
 Route::get('project', 'ProjectController@index');
 Route::get('project/index.html', 'ProjectController@index');

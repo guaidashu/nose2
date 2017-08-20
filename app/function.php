@@ -232,7 +232,7 @@ $table = str_replace(array("</tr>","</td>"),array("{tr}","{td}"),$table);
 $table = preg_replace("/<\/?[^>]+>/i",'',$table); 
 $table = explode('{tr}', $table);
 array_pop($table);
-debug($table);
+// debug($table);
 foreach ($table as $key=>$tr) {    
 $td = explode('{td}', $tr);
 //去掉空格

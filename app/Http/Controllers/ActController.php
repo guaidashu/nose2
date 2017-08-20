@@ -212,6 +212,7 @@ class ActController extends Controller
 
 	public function findDorm()
 	{
+		exit;
 		return view('act/findDorm',['name'=>$_SESSION['ca_username']]);
 	}
 
@@ -223,9 +224,9 @@ class ActController extends Controller
 		// 开始就来判断来访的域名（防盗链），防止对方curl爬取
 		if(isset($_SERVER['HTTP_REFERER']))
 		{
-		    $tmp = strpos($_SERVER['HTTP_REFERER'],"http://nose.wyysdsa.cn/");
+		    // $tmp = strpos($_SERVER['HTTP_REFERER'],"http://nose.wyysdsa.cn/");
 		    // 本地测试开启下面这一条语句 ，服务器测试开启上面一条语句
-		    // $tmp = strpos($_SERVER['HTTP_REFERER'],"http://www.nose.com/");
+		    $tmp = strpos($_SERVER['HTTP_REFERER'],"http://www.nose.com/");
 		    if(is_numeric($tmp)&&$tmp==0){
 		        
 		    } else{
@@ -291,5 +292,32 @@ class ActController extends Controller
 
 		// debug($arr);
 		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
+	}
+
+	public function getNewStudentData()
+	{
+		// $url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607152888654";//计算机学院
+		$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607302420548"; // 法学院
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$result = curl_exec($ch);
+		curl_close($ch);
+		$pattern = "/<div class='div_content'>(.*?)<\/div>/";
+		preg_match_all($pattern, $result, $match);
+		$result = $match;
+		$pattern = '/<table(.*?)>(.*?)<\/table>/';
+		$arr = get_td_array($match[1][0]);
+		// debug("ok", true);
+		foreach ($arr as $key => $value) {
+			// debug($value, true);
+			if($key == 0){
+				continue;
+			}
+			// debug($value, true);
+			$data = DB::insert('insert into student(xq,ksh,xm,xb,xy,zy,xh,bj,qs)values(?,?,?,?,?,?,?,?,?)',$value);
+			// debug($data, true);
+		}
 	}
 }
