@@ -230,12 +230,13 @@ class ActController extends Controller
 		$data = DB::update("update ip set lookNum=? where ip=?",[$lookNum,'127.0.0.1']);
 		if(empty($arr[0])){
 			$arr = null;
+			$person = null;
+			$qs = null;
 		}else{
 			$arr = $arr[0];
+			$qs = DB::select("select * from student where qs=? group by ksh",[$arr->qs]);
 		}
-		$qs = DB::select("select * from student where qs=? group by ksh",[$arr->qs]);
 		// $qs = DB::table('student')->where('qs',$arr->qs)->get();
-		// debug($qs[0], true);
 		if(!empty($arr)){
 			// 这里是进行每个班男女人数统计的
 			$count = DB::table('count_person')->where('bj',$arr->bj)->get();
