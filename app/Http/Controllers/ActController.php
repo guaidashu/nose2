@@ -278,13 +278,17 @@ class ActController extends Controller
 		// }
 		// 
 		$arr = DB::table('student')->where('ksh',$num)->get();
+		$data = DB::table('ip')->where('ip',"127.0.0.1")->get();
+		$lookNum = $data[0]->lookNum+1;
+		$data = DB::update("update ip set lookNum=? where ip=?",[$lookNum,'127.0.0.1']);
 		$arr = $arr[0];
 		// debug($arr->ksh);
 		if(empty($arr->ksh)){
 			$arr = null;
 		}
-		// debug($arr);
-		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
+		$qs = DB::table('student')->where('qs',$arr->qs)->get();
+		// debug($qs[0], true);
+		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr,'qs'=>$qs]);
 	}
 
 	public function getNewStudentData()

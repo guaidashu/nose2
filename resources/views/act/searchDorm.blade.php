@@ -281,6 +281,14 @@
 </a></li>
 					  @endif
 					</ul>
+					@if(!empty($qs))
+						<legend style="border-bottom: none;">你的亲爱的室友们</legend>
+						<ul class="am-list">
+							@foreach($qs as $k=>$v)
+							<li><a href="">{{$v->xm}}</a></li>
+							@endforeach
+						</ul>
+					@endif
 				</fieldset>
 			</form>
 		</div>

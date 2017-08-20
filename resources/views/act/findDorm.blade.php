@@ -263,7 +263,7 @@
 	  <div class="am-u-md-8 am-u-sm-centered">
 	    <form class="am-form" method="POST" action="/act/searchDorm.html" data-am-validator>
 	      <fieldset class="am-form-set">
-	        <legend>新生寝室号查询</legend>
+	        <legend>新生寝室号查询（可以看到室友了噢）</legend>
 
 		     <div class="am-form-group">
 		      <label for="doc-vld-name-2">考生号</label>
