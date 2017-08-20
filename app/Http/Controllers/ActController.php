@@ -212,7 +212,7 @@ class ActController extends Controller
 
 	public function findDorm()
 	{
-		return view('act/findDorm',['name'=>$_SESSION['ca_username']]);
+		return view('act/findDorm',['name'=>$_SESSION['ca_username']]);//恩那
 	}
 
 	public function searchDorm()
