@@ -212,7 +212,6 @@ class ActController extends Controller
 
 	public function findDorm()
 	{
-		exit;
 		return view('act/findDorm',['name'=>$_SESSION['ca_username']]);
 	}
 
@@ -222,74 +221,68 @@ class ActController extends Controller
 		// return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
 		// exit;
 		// 开始就来判断来访的域名（防盗链），防止对方curl爬取
-		if(isset($_SERVER['HTTP_REFERER']))
-		{
-		    // $tmp = strpos($_SERVER['HTTP_REFERER'],"http://nose.wyysdsa.cn/");
-		    // 本地测试开启下面这一条语句 ，服务器测试开启上面一条语句
-		    $tmp = strpos($_SERVER['HTTP_REFERER'],"http://www.nose.com/");
-		    if(is_numeric($tmp)&&$tmp==0){
-		        
-		    } else{
-		        echo "404 NOT FOUND";
-		        exit;
-		    }  
-		}else{
-		    echo "404 NOT FOUND";
-		    exit;
-		}
-		// 判断Ip ，若是敌对IP则直接结束掉不让其获取信息
+		// // 判断Ip ，若是敌对IP则直接结束掉不让其获取信息
+		// // $ip = getIP();
 		// $ip = getIP();
-		$ip = getIP();
-		// // debug($ip);
-		// if($ip ==  "28-C2-DD-15-61-9"){
-		//     echo "404 NOT FOUND";
-		//     exit;
+		// // // debug($ip);
+		// // if($ip ==  "28-C2-DD-15-61-9"){
+		// //     echo "404 NOT FOUND";
+		// //     exit;
+		// // }
+		// // 若是其他IP ，则最多让其取20次
+		// $db = new ActModel();
+		// $data = $db->where('ip',$ip)->get();
+		// if(!empty($data[0])){
+		//     $row = $data[0];
+		//     if($row->lookNum>20){
+		//         echo "404 NOT FOUND";
+		//         exit;
+		//     }else{
+		//     	$db->where('ip',$ip)->update(['lookNum'=>($row->lookNum+1)]);
+		//         // $db->dbresult("update ip set lookNum=".($row['lookNum']+1)." where ip='".$ip."'");
+		//     }
+		// }else{
+		// 	$insert = new ActModel();
+		// 	$insert->ip = $ip;
+		// 	$insert->lookNum = 1;
+		// 	$data = $insert->save();
 		// }
-		// 若是其他IP ，则最多让其取20次
-		$db = new ActModel();
-		$data = $db->where('ip',$ip)->get();
-		if(!empty($data[0])){
-		    $row = $data[0];
-		    if($row->lookNum>20){
-		        echo "404 NOT FOUND";
-		        exit;
-		    }else{
-		    	$db->where('ip',$ip)->update(['lookNum'=>($row->lookNum+1)]);
-		        // $db->dbresult("update ip set lookNum=".($row['lookNum']+1)." where ip='".$ip."'");
-		    }
-		}else{
-			$insert = new ActModel();
-			$insert->ip = $ip;
-			$insert->lookNum = 1;
-			$data = $insert->save();
+
+		// // 判断无误后，则直接进行爬取信息
+		$num = htmlspecialchars($_POST['num']);
+		if(!numCheck($num)){
+			exit;
 		}
+		// $url = "http://119.29.201.115/info_disp.php";
 
-		// 判断无误后，则直接进行爬取信息
-		$num = $_POST['num'];
-		$url = "http://119.29.201.115/info_disp.php";
-
-		$post = "ksh=".$num."&submit=ok";
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
-		curl_setopt($ch, CURLOPT_HEADER, 0);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
-		// curl_setopt($ch, CURLOPT_REFERER, 'http://nose.wyysdsa.cn/'); 
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-		$result = curl_exec($ch);
-		curl_close($ch);
-		// debug($result, true);
-		// echo $result;
-		$pattern = "/<script>(.*?)<\/script>/";
-		if(preg_match($pattern, $result)){
+		// $post = "ksh=".$num."&submit=ok";
+		// $ch = curl_init();
+		// curl_setopt($ch, CURLOPT_URL, $url);
+		// curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
+		// curl_setopt($ch, CURLOPT_HEADER, 0);
+		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		// curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
+		// // curl_setopt($ch, CURLOPT_REFERER, 'http://nose.wyysdsa.cn/'); 
+		// curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+		// $result = curl_exec($ch);
+		// curl_close($ch);
+		// // debug($result, true);
+		// // echo $result;
+		// $pattern = "/<script>(.*?)<\/script>/";
+		// if(preg_match($pattern, $result)){
+		// 	$arr = null;
+		// }else{
+		// 	$pattern = '/<table(.*?)>(.*?)<\/table>/is';
+		// 	preg_match_all($pattern, $result, $match);
+		// 	$arr = get_td_array_self($match[2][0]);
+		// }
+		// 
+		$arr = DB::table('student')->where('ksh',$num)->get();
+		$arr = $arr[0];
+		// debug($arr->ksh);
+		if(empty($arr->ksh)){
 			$arr = null;
-		}else{
-			$pattern = '/<table(.*?)>(.*?)<\/table>/is';
-			preg_match_all($pattern, $result, $match);
-			$arr = get_td_array_self($match[2][0]);
 		}
-
 		// debug($arr);
 		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
 	}
@@ -297,7 +290,17 @@ class ActController extends Controller
 	public function getNewStudentData()
 	{
 		// $url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607152888654";//计算机学院
-		$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607302420548"; // 法学院
+		// $url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607269451011"; // 法学院
+		 //$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607152888654";//计算机学院
+                //$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607302420548"; // 法学院
+                //$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607269451011"; //高端技能人才
+//$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607242888431";                  // 管理学院
+//$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607219450899";
+//$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607194920470";
+//$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607173513751"; // 机械学院
+//$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607131794945"; // 教育心理学院
+//$url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607111169848";//经济学院
+// $url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387606891481510";外语学院
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_HEADER, 0);

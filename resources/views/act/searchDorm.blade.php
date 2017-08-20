@@ -269,9 +269,14 @@
 						  <!-- <li><a href="#">该功能暂未开通噢</a></li> -->
 						  <li><a href="#">不存在此考生信息噢，请检查一下有没有输入正确</a></li>
 					  @else
-						  @foreach($info as $key=>$value)
-							  <li><a href="#">{{$key}}：{{$value}}</a></li>
-						  @endforeach
+						  <li><a href="#">校区：{{$info->xq}}</a></li>
+						  <li><a href="#">考生号：{{$info->ksh}}</a></li>
+						  <li><a href="#">姓名：{{$info->xm}}</a></li>
+						  <li><a href="#">学院：{{$info->xy}}</a></li>
+						  <li><a href="#">专业：{{$info->zy}}</a></li>
+						  <li><a href="#">学号：{{$info->xh}}</a></li>
+						  <li><a href="#">班级：{{$info->bj}}</a></li>
+						  <li><a href="#">寝室：{{$info->qs}}</a></li>
 						  <li><a href="#">小提示：1-412的意思就是一栋4楼412房号的寝室噢
 </a></li>
 					  @endif
