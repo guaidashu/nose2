@@ -217,78 +217,50 @@ class ActController extends Controller
 
 	public function searchDorm()
 	{
-		// $arr = null;
-		// return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
-		// exit;
-		// 开始就来判断来访的域名（防盗链），防止对方curl爬取
-		// // 判断Ip ，若是敌对IP则直接结束掉不让其获取信息
-		// // $ip = getIP();
-		// $ip = getIP();
-		// // // debug($ip);
-		// // if($ip ==  "28-C2-DD-15-61-9"){
-		// //     echo "404 NOT FOUND";
-		// //     exit;
-		// // }
-		// // 若是其他IP ，则最多让其取20次
-		// $db = new ActModel();
-		// $data = $db->where('ip',$ip)->get();
-		// if(!empty($data[0])){
-		//     $row = $data[0];
-		//     if($row->lookNum>20){
-		//         echo "404 NOT FOUND";
-		//         exit;
-		//     }else{
-		//     	$db->where('ip',$ip)->update(['lookNum'=>($row->lookNum+1)]);
-		//         // $db->dbresult("update ip set lookNum=".($row['lookNum']+1)." where ip='".$ip."'");
-		//     }
-		// }else{
-		// 	$insert = new ActModel();
-		// 	$insert->ip = $ip;
-		// 	$insert->lookNum = 1;
-		// 	$data = $insert->save();
-		// }
 
 		// // 判断无误后，则直接进行爬取信息
 		$num = htmlspecialchars($_POST['num']);
 		if(!numCheck($num)){
 			exit;
 		}
-		// $url = "http://119.29.201.115/info_disp.php";
-
-		// $post = "ksh=".$num."&submit=ok";
-		// $ch = curl_init();
-		// curl_setopt($ch, CURLOPT_URL, $url);
-		// curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
-		// curl_setopt($ch, CURLOPT_HEADER, 0);
-		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		// curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
-		// // curl_setopt($ch, CURLOPT_REFERER, 'http://nose.wyysdsa.cn/'); 
-		// curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-		// $result = curl_exec($ch);
-		// curl_close($ch);
-		// // debug($result, true);
-		// // echo $result;
-		// $pattern = "/<script>(.*?)<\/script>/";
-		// if(preg_match($pattern, $result)){
-		// 	$arr = null;
-		// }else{
-		// 	$pattern = '/<table(.*?)>(.*?)<\/table>/is';
-		// 	preg_match_all($pattern, $result, $match);
-		// 	$arr = get_td_array_self($match[2][0]);
-		// }
-		// 
-		$arr = DB::table('student')->where('ksh',$num)->get();
+		// $arr = DB::table('student')->where('ksh',$num)->get();
+		$arr = DB::select("select * from student where ksh=? group by ksh",[$num]);
 		$data = DB::table('ip')->where('ip',"127.0.0.1")->get();
 		$lookNum = $data[0]->lookNum+1;
 		$data = DB::update("update ip set lookNum=? where ip=?",[$lookNum,'127.0.0.1']);
-		$arr = $arr[0];
-		// debug($arr->ksh);
-		if(empty($arr->ksh)){
+		if(empty($arr[0])){
 			$arr = null;
+		}else{
+			$arr = $arr[0];
 		}
-		$qs = DB::table('student')->where('qs',$arr->qs)->get();
+		$qs = DB::select("select * from student where qs=? group by ksh",[$arr->qs]);
+		// $qs = DB::table('student')->where('qs',$arr->qs)->get();
 		// debug($qs[0], true);
-		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr,'qs'=>$qs]);
+		if(!empty($arr)){
+			// 这里是进行每个班男女人数统计的
+			$count = DB::table('count_person')->where('bj',$arr->bj)->get();
+			if(empty($count[0])){
+				$person = DB::select("select * from student where bj=? && xb='男' group by ksh",[$arr->bj]);
+				$male = count($person);
+				$person = DB::select("select * from student where bj=? && xb='女' group by ksh",[$arr->bj]);
+				$female = count($person);
+				$all = $male+$female;
+				$person = array(
+					"male" => $male,
+					"female" => $female,
+					"bj" => $arr->bj,
+					"all" => $all
+					);
+				$data = DB::table('count_person')->insert($person);
+			}else{
+				$count = $count[0];
+				$person = array();
+				$person['male'] = $count->male;
+				$person['female'] = $count->female;
+				$person['all'] = $count->all;
+			}
+		}
+		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr,'qs'=>$qs,'person'=>$person]);
 	}
 
 	public function getNewStudentData()

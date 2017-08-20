@@ -281,6 +281,14 @@
 </a></li>
 					  @endif
 					</ul>
+					@if(!empty($person))
+						<legend style="border-bottom: none;">班级人数</legend>
+						<ul class="am-list">
+							<li><a href="">男：{{$person['male']}}</a></li>
+							<li><a href="">女：{{$person['female']}}</a></li>
+							<li><a href="">总数：{{$person['all']}}</a></li>
+						</ul>
+					@endif
 					@if(!empty($qs))
 						<legend style="border-bottom: none;">你的亲爱的室友们</legend>
 						<ul class="am-list">
