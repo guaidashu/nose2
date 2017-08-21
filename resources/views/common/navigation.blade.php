@@ -119,7 +119,7 @@
           </ul>
       </li>
       <li>
-        <a href="#">协会动态</a>
+        <a href="#">在线功能</a>
         <!-- sub-menu start-->
         <ul class="sub-menu">
           <li class="menu-item"><a href="{{url('act/algorithm.html')}}">算法入门报名</a></li>
@@ -182,7 +182,7 @@
                   </ul>
               </li>
               <li class="am-parent">
-                <a href="#" class="" >协会动态</a>
+                <a href="#" class="" >在线功能</a>
                   <ul class="am-menu-sub am-collapse  ">
                       <li class="">
                         <a href="{{url('act/algorithm.html')}}" class="" >算法入门报名</a>
