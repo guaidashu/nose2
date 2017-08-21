@@ -15,6 +15,7 @@
 Route::get('/', 'IndexController@index');
 Route::get('index', 'IndexController@index');
 Route::get('index/index.html', 'IndexController@index');
+Route::get('test', 'IndexController@test');
 
 // 协会招新页面
 Route::get('crn', 'CrnController@index');

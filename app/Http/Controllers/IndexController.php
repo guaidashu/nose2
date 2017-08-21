@@ -22,4 +22,9 @@ class IndexController extends Controller
 	{
 		return view('index/index',['name'=>$_SESSION['ca_username']]);
 	}
+
+	public function test()
+	{
+		echo "ok";
+	}
 }
