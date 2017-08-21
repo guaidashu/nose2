@@ -23,10 +23,10 @@ Route::post('crn/handle.html', 'CrnController@handle');
 
 // 协会动态页面组
 	// 算法入门报名页面
-	Route::get('act/algorithm.html', 'ActController@algorithm');
-	Route::post('act/algorithmHandle.html', 'ActController@algorithmHandle');
-	Route::get('act/success.html', 'ActController@success');
-	Route::get('act/code.html', 'ActController@codeOnline');
+	// Route::get('act/algorithm.html', 'ActController@algorithm');
+	// Route::post('act/algorithmHandle.html', 'ActController@algorithmHandle');
+	// Route::get('act/success.html', 'ActController@success');
+	// Route::get('act/code.html', 'ActController@codeOnline');
 	// 新生班级查询
 	Route::get('act/findClass.html', 'ActController@findClass');
 	Route::get('act/getVerify.html', 'ActController@getVerify');

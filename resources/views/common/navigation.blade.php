@@ -122,7 +122,7 @@
         <a href="#">川理在线</a>
         <!-- sub-menu start-->
         <ul class="sub-menu">
-          <li class="menu-item"><a href="{{url('act/algorithm.html')}}">算法入门报名</a></li>
+          <!-- <li class="menu-item"><a href="{{url('act/algorithm.html')}}">算法入门报名</a></li> -->
           <li class="menu-item"><a href="{{url('act/findClass.html')}}">新生班级查询</a></li>
           <li class="menu-item"><a href="{{url('act/findDorm.html')}}">新生寝室号查询</a></li>
           <li class="menu-item"><a href="{{url('act/findGrade.html')}}">四六级成绩查询</a></li>
@@ -186,7 +186,7 @@
                 <a href="#" class="" >川理在线</a>
                   <ul class="am-menu-sub am-collapse  ">
                       <li class="">
-                        <a href="{{url('act/algorithm.html')}}" class="" >算法入门报名</a>
+                        <!-- <a href="{{url('act/algorithm.html')}}" class="" >算法入门报名</a> -->
                       </li>
                       <li class="">
                         <a href="{{url('act/findClass.html')}}" class="" >新生班级查询</a>
