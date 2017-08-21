@@ -35,6 +35,9 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	// 新生寝室号查询
 	Route::get('act/findDorm.html', 'ActController@findDorm');
 	Route::post('act/searchDorm.html', 'ActController@searchDorm');
+	// 四六级查询
+	Route::get('act/findGrade.html', 'ActController@findGrade');
+	Route::post('act/findGradeResult.html', 'ActController@findGradeResult');
 
 	// 获取新生所有信息
 	// Route::get('act/getData.html', 'ActController@getNewStudentData');

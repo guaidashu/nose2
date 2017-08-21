@@ -37,16 +37,16 @@
 					@if(!empty($person))
 						<legend style="border-bottom: none;">班级人数</legend>
 						<ul class="am-list">
-							<li><a href="">男：{{$person['male']}}</a></li>
-							<li><a href="">女：{{$person['female']}}</a></li>
-							<li><a href="">总数：{{$person['all']}}</a></li>
+							<li><a href="#">男：{{$person['male']}}</a></li>
+							<li><a href="#">女：{{$person['female']}}</a></li>
+							<li><a href="#">总数：{{$person['all']}}</a></li>
 						</ul>
 					@endif
 					@if(!empty($qs))
 						<legend style="border-bottom: none;">你的亲爱的室友们</legend>
 						<ul class="am-list">
 							@foreach($qs as $k=>$v)
-							<li><a href="">{{$v->xm}}&nbsp;&nbsp;{{$v->bj}}</a></li>
+							<li><a href="#">{{$v->xm}}&nbsp;&nbsp;{{$v->bj}}</a></li>
 							@endforeach
 						</ul>
 					@endif
@@ -56,7 +56,7 @@
 	</div>
 </div>
 <div id="bottom_author" style="width:100%;min-height:50px;line-height:50px;text-align:center;color:#333;font-size:15px;">
-	技术支持：<a href="{{url('index/index.html')}}">川理在线</a>
+	技术支持：<a href="https://suse.xsdhy.com/" target="_blank">川理在线</a>
 </div>
 <div style="height:40px;width:100%;"></div>
 @include('./../common/bottom')

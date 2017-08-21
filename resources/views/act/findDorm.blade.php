@@ -22,22 +22,6 @@
 		      <label for="doc-vld-name-2">考生号</label>
 		      <input type="text" name="num" id="doc-vld-name-2" minlength="2" placeholder="输入你的考生号" />
 		    </div>
-
-<!-- 		    <div class="am-form-group">
-		      <label for="doc-vld-528">密码</label>
-		      <input type="password" id="doc-vld-528" name="phone" class="js-pattern-mobile"
-		             placeholder="身份证后六位数(第一次登录可不填)" required/>
-		    </div>
-
-		    <div class="am-form-group">
-			  <label for="doc-subject-1">验证码</label>
-			  <input type="text" id="doc-subject-1" name="subject" class="js-pattern-mobile"
-		             placeholder="请输入验证码" required />
-			  <span class="am-form-caret"></span>
-			</div>
-			<div class="am-form-group">
-			  <img id="validate" style="cursor: pointer;" src="" width="80px" />
-			</div> -->
 	      </fieldset>
 	      <button type="submit" class="handle_btn am-btn am-btn-primary am-btn-block">提交信息</button>
 	    </form>
@@ -50,7 +34,7 @@
 </div>
 
 <div id="bottom_author" style="width:100%;min-height:50px;line-height:50px;text-align:center;color:#333;font-size:15px;">
-	技术支持：<a href="{{url('index/index.html')}}">川理在线</a>
+	技术支持：<a href="https://suse.xsdhy.com/" target="_blank">川理在线</a>
 </div>
 <div style="width:100%;height:50px;"></div>
 @include('./../common/bottom')

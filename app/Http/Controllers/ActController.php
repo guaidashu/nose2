@@ -96,11 +96,13 @@ class ActController extends Controller
 		}
 	}
 
+	// 报名成功信息提示页面
 	public function success()
 	{
 		return view('act/success',['name'=>$_SESSION['ca_username']]);
 	}
 
+	// 在线代码编译页面
 	public function codeOnline()
 	{
 		return view('act/code',['name'=>$_SESSION['ca_username']]);
@@ -210,11 +212,13 @@ class ActController extends Controller
 		return view('act/getInfo',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
 	}
 
+	// 新生查询寝室页面
 	public function findDorm()
 	{
 		return view('act/findDorm',['name'=>$_SESSION['ca_username']]);//恩那
 	}
 
+	//新生寝室查询处理(结果)页面
 	public function searchDorm()
 	{
 
@@ -264,6 +268,8 @@ class ActController extends Controller
 		return view('act/searchDorm',['name'=>$_SESSION['ca_username'],'info'=>$arr,'qs'=>$qs,'person'=>$person]);
 	}
 
+
+	// 这个函数是用来爬取学校页面的所有新生信息并且存到数据库的函数
 	public function getNewStudentData()
 	{
 		// $url = "http://www.suse.edu.cn/p/10/?StId=st_app_news_i_x636387607152888654";//计算机学院
@@ -299,5 +305,22 @@ class ActController extends Controller
 			$data = DB::insert('insert into student(xq,ksh,xm,xb,xy,zy,xh,bj,qs)values(?,?,?,?,?,?,?,?,?)',$value);
 			// debug($data, true);
 		}
+	}
+
+	// 四六级查询页面
+	public function findGrade()
+	{
+		return view('act/findGrade', ['name'=>$_SESSION['ca_username']]);
+	}
+
+	//四六级查询结果处理页面
+	public function findGradeResult()
+	{
+		$zkz = $_POST['zkz'];
+		$name = $_POST['name'];
+		if(!$zkz || !$name){
+			exit;
+		}
+		return view('act/findGradeResult', ['name'=>$_SESSION['ca_username']]);
 	}
 }
