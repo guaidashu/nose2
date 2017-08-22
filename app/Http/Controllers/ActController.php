@@ -366,14 +366,16 @@ class ActController extends Controller
 		curl_close($ch);
 		$pattern = "/{(.*?)}/";
 		preg_match_all($pattern, $result, $match);
-		// if(!empty($match[1][0]){
+		if(!empty($match)){
 			$result = $match[1][0];
 			$result = explode(",", $result);
 			foreach ($result as $key => $value) {
 				$value = preg_replace("/(.*?):/", "", $value);
 				$result[$key] = preg_replace("/'/", "", $value);
 			}
-			// debug($result, true);
+		}else{
+			$result = null;
+		}
 		return view('act/findGradeResult', ['name'=>$_SESSION['ca_username'], "result"=>$result]);
 	}
 }

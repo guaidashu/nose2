@@ -6,6 +6,12 @@
 		this.body = $(document.body);
 		// this.test();
 		this.body.delegate("#doc-subject-1", "focus", function(){
+			var zkzh = document.getElementById("doc-vld-email-2").value;
+			zkzh = $.trim(zkzh);
+			if(!zkzh){
+				yy_init("请输入准考证号噢，然后才有验证码");
+				return;
+			}
 			if(self.check){
 				self.check = false;
 				self.getVerify();
