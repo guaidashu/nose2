@@ -316,6 +316,9 @@ class ActController extends Controller
     // 四六级查询验证码获取
     public function getVerifyGrade()
     {
+    	if(!empty($_SESSION['cookieFileGrade'])){
+    		unlink($_SESSION['cookieFileGrade']);
+    	}
     	$zkzh = $_GET['zkzh'];
     	// $cookieUrl = "http://cet.neea.edu.cn/cet/";
     	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=0.07973244115974676";
@@ -385,6 +388,8 @@ class ActController extends Controller
 		}else{
 			$result = null;
 		}
+		unlink($_SESSION['cookieFileGrade']);
+		$_SESSION['cookieFileGrade'] = null;
 		return view('act/findGradeResult', ['name'=>$_SESSION['ca_username'], "result"=>$result]);
 	}
 }
