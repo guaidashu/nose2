@@ -322,7 +322,7 @@ class ActController extends Controller
     	}
     	$zkzh = $_POST['zkzh'];
     	// $cookieUrl = "http://cet.neea.edu.cn/cet/";
-    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=0.".rand(1,1000);
+    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=t=0.9161693250351091";
 		$imgName = "images/verifyGrade.jpg";
 		// 进行cookie的获取
 		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
