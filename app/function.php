@@ -147,9 +147,9 @@ function getCookie($url, $cookieFile)
 }
 
 // 保存验证码的图片, $url 为验证码的url地址 ,$cookieFile 是要存的暂时cookie文件夹
-function getVerify($url, $cookieFile)
+function getVerify($url, $cookieFile, $imgName)
 {
-	$imgName = "images/verify.jpg";
+	// $imgName = "images/verify.jpg";
 	$timeOut = 20;
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
@@ -163,7 +163,7 @@ function getVerify($url, $cookieFile)
 	// 执行curl并且返回图片
 	$img = curl_exec($ch);
 	curl_close($ch);
-	$fp = fopen("images/verify.jpg", "w");
+	$fp = fopen($imgName, "w");
 	fwrite($fp, $img);
 	fclose($fp);
 }
@@ -184,7 +184,7 @@ function curlLogin($url, $info, $cookieFile)
 	return $result;
 }
 
-function getInfo($url, $cookieFile)
+function getInfo($url, $cookieFile=null)
 {
 	// $url = "http://61.139.105.105:8088/Student/Detail";
 	$ch = curl_init();
@@ -197,6 +197,19 @@ function getInfo($url, $cookieFile)
 	return $result;
 }
 
+//需要加域名请求的信息获取
+function getInfoRefer($url, $refer, $cookieFile=null)
+{
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_REFERER, $refer);
+	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
+	$result = curl_exec($ch);
+	curl_close($ch);
+	return $result;
+}
 
 // 暂时是这样只适用于 春儿的这个网页
 function get_td_array_self($table)

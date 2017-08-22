@@ -18,7 +18,16 @@
 	      <fieldset class="am-form-set">
 	        <legend>四六级成绩查询结果</legend>
 	        <ul class="am-list">
-		        <li><a href="#">暂未开通噢，请8月22日九点以后再来。</li>
+		        @if(!empty($result))
+			        <li><a href="#">姓名：{{$result[1]}}</a></li>
+			        <li><a href="#">准考证号：{{$result[0]}}</a></li>
+			        <li><a href="#">总分：{{$result[3]}}</a></li>
+			        <li><a href="#">听力：{{$result[5]}}</a></li>
+			        <li><a href="#">阅读：{{$result[6]}}</a></li>
+			        <li><a href="#">写作和翻译：{{$result[7]}}</a></li>
+			    @else
+			        <li><a href="#">没有此考生信息噢</a></li>
+		        @endif
 	        </ul>
 	      </fieldset>
 	      <button type="button" class="handle_btn am-btn am-btn-primary am-btn-block">返回</button>

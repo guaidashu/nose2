@@ -129,7 +129,7 @@ class ActController extends Controller
 
 		// 本地调试 需要把上一句注释掉，把下一句解开注释，因为windows和Linux不同
 		// $cookieFile = public_path()."\\cookie\\".md5(date("Y-m-d H:i:s",time())).".cookie";
-		
+		$imgName = "images/verify.jpg";
 		$_SESSION['cookieFile'] = $cookieFile;
 		if(getCookie($verifyUrl, $cookieFile)){
 			echo js_arr("cookieFailed");
@@ -137,7 +137,7 @@ class ActController extends Controller
 		}
 
 		// 保存验证码图片
-		if(getVerify($verifyUrl, $cookieFile)){
+		if(getVerify($verifyUrl, $cookieFile, $imgName)){
 			echo js_arr("saveImgFailed");
 			exit;
 		}else{
@@ -313,14 +313,67 @@ class ActController extends Controller
 		return view('act/findGrade', ['name'=>$_SESSION['ca_username']]);
 	}
 
+    // 四六级查询验证码获取
+    public function getVerifyGrade()
+    {
+    	$zkzh = $_GET['zkzh'];
+    	// $cookieUrl = "http://cet.neea.edu.cn/cet/";
+    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=0.07973244115974676";
+		$imgName = "images/verifyGrade.jpg";
+		// 进行cookie的获取
+		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		// 本地调试 需要把上一句注释掉，把下一句解开注释，因为windows和Linux不同
+		// $cookieFile = public_path()."\\cookie\\".md5(date("Y-m-d H:i:s",time())).".cookie";
+		$_SESSION['cookieFileGrade'] = $cookieFile;
+		if(getCookie($url, $cookieFile)){
+			echo js_arr("cookieFailed");
+			exit;
+		}
+
+		$result = getInfoRefer($url, "http://cet.neea.edu.cn/cet/", $cookieFile);
+		preg_match_all('/result.imgs\(\"(.*?)\"\)\;/is', $result, $match);
+		$url = $match[1][0];
+		if(getVerify($url, $cookieFile, $imgName)){
+			echo js_arr("failed");
+		}else{
+			echo js_arr("ok");
+		}
+    }
 	//四六级查询结果处理页面
 	public function findGradeResult()
 	{
 		$zkz = $_POST['zkz'];
 		$name = $_POST['name'];
+		$validate = $_POST['validate'];
 		if(!$zkz || !$name){
 			exit;
 		}
-		return view('act/findGradeResult', ['name'=>$_SESSION['ca_username']]);
+		$cookieFile = $_SESSION['cookieFileGrade'];
+		$post = "data=CET4_171_DANGCI%2C".$zkz."%2C".$name."&v=".$validate;
+		$url = "http://cache.neea.edu.cn/cet/query";
+		$header = array('Accept: image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap');
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		// curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
+		curl_setopt($ch, CURLOPT_REFERER, 'http://cet.neea.edu.cn/cet/');
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+		curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
+		$result = curl_exec($ch);
+		curl_close($ch);
+		$pattern = "/{(.*?)}/";
+		preg_match_all($pattern, $result, $match);
+		// if(!empty($match[1][0]){
+			$result = $match[1][0];
+			$result = explode(",", $result);
+			foreach ($result as $key => $value) {
+				$value = preg_replace("/(.*?):/", "", $value);
+				$result[$key] = preg_replace("/'/", "", $value);
+			}
+			// debug($result, true);
+		return view('act/findGradeResult', ['name'=>$_SESSION['ca_username'], "result"=>$result]);
 	}
 }
