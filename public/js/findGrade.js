@@ -26,7 +26,7 @@
 			zkzh = $.trim(zkzh);
 			if(!zkzh){
 				yy_init("请输入准考证号噢，然后才有验证码");
-				return;
+				return false;
 			}
 			if(!numCheck(zkzh)){
 				yy_init("请输入15位的准考证号");
@@ -37,7 +37,7 @@
 			if(!self.check){
 				self.getVerify();
 			}
-		})
+		});
 	};
 	findGrade_function.prototype = {
 		test:function()
@@ -66,7 +66,8 @@
 					}
 				},
 				error:function(data, status, e){
-					console.log(e);
+					yy_init("系统错误");
+					// console.log(e);
 				}
 			});
 		}
