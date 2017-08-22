@@ -365,8 +365,8 @@ class ActController extends Controller
 		$result = curl_exec($ch);
 		curl_close($ch);
 		$pattern = "/{(.*?)}/";
-		preg_match_all($pattern, $result, $match);
-		if(!empty($match)){
+		if(!empty($result)){
+			preg_match_all($pattern, $result, $match);
 			$result = $match[1][0];
 			$result = explode(",", $result);
 			foreach ($result as $key => $value) {
