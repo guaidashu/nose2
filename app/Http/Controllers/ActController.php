@@ -318,10 +318,11 @@ class ActController extends Controller
     {
     	if(!empty($_SESSION['cookieFileGrade'])){
     		unlink($_SESSION['cookieFileGrade']);
+    		$_SESSION['cookieFileGrade'] = null;
     	}
     	$zkzh = $_GET['zkzh'];
     	// $cookieUrl = "http://cet.neea.edu.cn/cet/";
-    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=0.07973244115974676";
+    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=".rand(1,10);
 		$imgName = "images/verifyGrade.jpg";
 		// 进行cookie的获取
 		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
