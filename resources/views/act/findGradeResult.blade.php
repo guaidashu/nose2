@@ -25,6 +25,7 @@
 			        <li><a href="#">听力：{{$result[5]}}</a></li>
 			        <li><a href="#">阅读：{{$result[6]}}</a></li>
 			        <li><a href="#">写作和翻译：{{$result[7]}}</a></li>
+			        <li><a href="#">怪大叔的小提示：425分就过了噢</a></li>
 			    @else
 			        <li><a href="#">没有此考生信息噢</a></li>
 		        @endif
