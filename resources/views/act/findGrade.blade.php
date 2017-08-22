@@ -31,7 +31,7 @@
 		    <div class="am-form-group">
 			  <label for="doc-subject-1">验证码</label>
 			  <input type="text" id="doc-subject-1" name="validate" class="js-pattern-mobile"
-		             placeholder="请输入验证码" required />
+		             placeholder="要输入了准考证号点击我才有图片噢" required />
 			  <span class="am-form-caret"></span>
 			</div>
 
