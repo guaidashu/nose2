@@ -320,9 +320,9 @@ class ActController extends Controller
     		unlink($_SESSION['cookieFileGrade']);
     		$_SESSION['cookieFileGrade'] = null;
     	}
-    	$zkzh = $_GET['zkzh'];
+    	$zkzh = $_POST['zkzh'];
     	// $cookieUrl = "http://cet.neea.edu.cn/cet/";
-    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=".rand(1,10);
+    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=".rand(1,1000);
 		$imgName = "images/verifyGrade.jpg";
 		// 进行cookie的获取
 		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";

@@ -58,7 +58,7 @@
 			}
 			$.ajax({
 				url:"/act/getVerifyGrade.html",
-				type:"GET",
+				type:"POST",
 				dataType:"json",
 				data:{"zkzh":zkzh},
 				success:function(data){

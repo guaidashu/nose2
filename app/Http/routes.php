@@ -39,7 +39,7 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	// 四六级查询
 	Route::get('act/findGrade.html', 'ActController@findGrade');
 	Route::post('act/findGradeResult.html', 'ActController@findGradeResult');
-	Route::get('act/getVerifyGrade.html', 'ActController@getVerifyGrade');
+	Route::post('act/getVerifyGrade.html', 'ActController@getVerifyGrade');
 	Route::get('act/getGradeNum.html', 'ActController@getGradeNum');
 	Route::post('act/getGradeNumHandle.html', 'ActController@getGradeNumHandle');
 	// 获取新生所有信息
