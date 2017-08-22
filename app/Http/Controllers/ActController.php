@@ -316,10 +316,6 @@ class ActController extends Controller
     // 四六级查询验证码获取
     public function getVerifyGrade()
     {
-    	if(!empty($_SESSION['cookieFileGrade'])){
-    		unlink($_SESSION['cookieFileGrade']);
-    		$_SESSION['cookieFileGrade'] = null;
-    	}
     	$zkzh = $_POST['zkzh'];
     	// $cookieUrl = "http://cet.neea.edu.cn/cet/";
     	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=t=0.9161693250351091";
