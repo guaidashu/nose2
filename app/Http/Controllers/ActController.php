@@ -348,6 +348,11 @@ class ActController extends Controller
 		if(!$zkz || !$name){
 			exit;
 		}
+		$pattern = "/^[0-9]{15}$/";
+		if(!preg_match($pattern, $zkz)){
+			$result = null;
+			return view('act/findGradeResult', ['name'=>$_SESSION['ca_username'], "result"=>$result]);
+		}
 		$cookieFile = $_SESSION['cookieFileGrade'];
 		$post = "data=CET4_171_DANGCI%2C".$zkz."%2C".$name."&v=".$validate;
 		$url = "http://cache.neea.edu.cn/cet/query";
@@ -357,7 +362,6 @@ class ActController extends Controller
 		curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		// curl_setopt($ch, CURLOPT_REFERER, 'http://119.29.201.115/'); 
 		curl_setopt($ch, CURLOPT_REFERER, 'http://cet.neea.edu.cn/cet/');
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
@@ -365,9 +369,14 @@ class ActController extends Controller
 		$result = curl_exec($ch);
 		curl_close($ch);
 		$pattern = "/{(.*?)}/";
-		if(!empty($result)){
-			preg_match_all($pattern, $result, $match);
+		preg_match_all($pattern, $result, $match);
+		if(!empty($match[1][0])){
 			$result = $match[1][0];
+			$pattern = "/error/";
+			if(preg_match($pattern, $result)){
+				$result = null;
+				return view('act/findGradeResult', ['name'=>$_SESSION['ca_username'], "result"=>$result]);
+			}
 			$result = explode(",", $result);
 			foreach ($result as $key => $value) {
 				$value = preg_replace("/(.*?):/", "", $value);

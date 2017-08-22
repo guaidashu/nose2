@@ -387,6 +387,7 @@ function validateClose()
 	});
 }
 
+// 判断邮箱，若是不是一个正确的邮箱 ，则返回true
 function emailCheck(email)
 {
 	var patternEmail=/^\S([a-zA-Z0-9]*)(@)(163|126|sina|sohu|139|gmail|hotmail|21cn|qq)(\.com)$/;

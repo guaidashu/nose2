@@ -12,9 +12,25 @@
 				yy_init("请输入准考证号噢，然后才有验证码");
 				return;
 			}
+			if(!numCheck(zkzh)){
+				yy_init("请输入15位的准考证号");
+				return;
+			}
 			if(self.check){
 				self.check = false;
 				self.getVerify();
+			}
+		});
+		$("form").submit(function(){
+			var zkzh = document.getElementById("doc-vld-email-2").value;
+			zkzh = $.trim(zkzh);
+			if(!zkzh){
+				yy_init("请输入准考证号噢，然后才有验证码");
+				return;
+			}
+			if(!numCheck(zkzh)){
+				yy_init("请输入15位的准考证号");
+				return false;
 			}
 		});
 		this.body.delegate("#validate", "click", function(){
@@ -57,3 +73,14 @@
 	}
 	window['findGrade_function'] = findGrade_function;
 })(jQuery);
+
+
+function numCheck(num)
+{
+	var pattern = /^([0-9]){15}$/;
+	if(!pattern.test(num)){
+		return false;
+	}else{
+		return true;
+	}
+}
