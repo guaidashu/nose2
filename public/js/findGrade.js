@@ -21,6 +21,9 @@
 				self.getVerify();
 			}
 		});
+		this.body.delegate(".handle_btn_get", "click", function(){
+			self.getGradeNum();
+		});
 		$("form").submit(function(){
 			var zkzh = document.getElementById("doc-vld-email-2").value;
 			zkzh = $.trim(zkzh);
@@ -70,6 +73,25 @@
 					// console.log(e);
 				}
 			});
+		},
+		getGradeNum:function()
+		{
+			$.ajax({
+                url:"/act/getGradeNumHandle.html",
+                type:"POST",
+                dataType:"json",
+                data:{
+                    "id": $("#doc-vld-email-2").val(),
+                    "name": $("#doc-vld-name-2").val(),
+					"level": document.getElementById("doc-select-1").value
+                },
+                success: function(data){
+                    yy_init(data.text);
+                },
+				error:function(data, status, e){
+					yy_init("获取失败");
+				}
+            });
 		}
 	}
 	window['findGrade_function'] = findGrade_function;

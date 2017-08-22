@@ -198,7 +198,7 @@ function getInfo($url, $cookieFile=null)
 }
 
 //需要加域名请求的信息获取
-function getInfoRefer($url, $refer, $cookieFile=null)
+function getInfoRefer($url, $refer = null, $cookieFile = null)
 {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);

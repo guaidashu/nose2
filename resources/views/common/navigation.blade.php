@@ -126,6 +126,7 @@
           <li class="menu-item"><a href="{{url('act/findClass.html')}}">新生班级查询</a></li>
           <li class="menu-item"><a href="{{url('act/findDorm.html')}}">新生寝室号查询</a></li>
           <li class="menu-item"><a href="{{url('act/findGrade.html')}}">四六级成绩查询</a></li>
+          <li class="menu-item"><a href="{{url('act/getGradeNum.html')}}">四六级准考证查询</a></li>
           <li class="menu-item"><a href="{{url('act/code.html')}}">在线代码编译</a></li>
         </ul>
         <!-- sub-menu end-->
@@ -196,6 +197,9 @@
                       </li>
                       <li class="">
                         <a href="{{url('act/findGrade.html')}}">四六级成绩查询</a>
+                      </li>
+                      <li class="">
+                        <a href="{{url('act/getGradeNum.html')}}">四六级准考证查询</a>
                       </li>
                       <li class="">
                         <a href="{{url('act/code.html')}}" class="" >在线代码编译</a>

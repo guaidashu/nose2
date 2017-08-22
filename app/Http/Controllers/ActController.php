@@ -393,4 +393,36 @@ class ActController extends Controller
 		$_SESSION['cookieFileGrade'] = null;
 		return view('act/findGradeResult', ['name'=>$_SESSION['ca_username'], "result"=>$result]);
 	}
+
+	// 查询准考证号
+	public function getGradeNum()
+	{
+		return view('act/findNum', ['name'=>$_SESSION['ca_username']]);
+	}
+
+	// 查询准考证号 处理函数\
+	public function getGradeNumHandle()
+	{
+		$arr_1 = array("218","218","66","66","218","218","60","60","202","204","66","66","66","59","61","60","222","221","66","59","60","60","66","218","218","62","63","64","66","66","122","211");
+		$randarr= mt_rand(0,count($arr_1));
+		$ip1id = $arr_1[$randarr];
+		$ip2id=  round(rand(600000,  2550000)  /  10000);
+		$ip3id=  round(rand(600000,  2550000)  /  10000);
+		$ip4id=  round(rand(600000,  2550000)  /  10000);
+		$ip = $ip1id . "." . $ip2id . "." . $ip3id . "." . $ip4id;
+
+		$name = $_POST['name'];
+		$sfz = $_POST['id'];
+		$level = $_POST['level'];
+		$url = "http://119.29.186.155:7299/get?id=".$sfz."&name=".$name."&level=".$level;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_REFERER, "http://119.29.186.155:7299/");
+		// debug(curl_getinfo($ch), true);
+		$result = curl_exec($ch);
+		echo js_arr($result);
+	}
 }
