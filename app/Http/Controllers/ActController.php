@@ -310,6 +310,12 @@ class ActController extends Controller
 	// 四六级查询页面
 	public function findGrade()
 	{
+		if(!empty($_SESSION['cookieFileGrade'])){
+    		if(file_exists($_SESSION['cookieFileGrade'])){
+    			unlink($_SESSION['cookieFileGrade']);
+    		}
+    		$_SESSION['cookieFileGrade'] = null;
+    	}
 		return view('act/findGrade', ['name'=>$_SESSION['ca_username']]);
 	}
 
@@ -324,7 +330,7 @@ class ActController extends Controller
     	}
     	$zkzh = $_POST['zkzh'];
     	// $cookieUrl = "http://cet.neea.edu.cn/cet/";
-    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=0.9161693250351091";
+    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=0.".rand(10000000000000,100000000000000);
 		$imgName = "images/verifyGrade.jpg";
 		// 进行cookie的获取
 		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
@@ -363,14 +369,14 @@ class ActController extends Controller
 		$_SESSION['cookieFileGrade'] = null;
 		$post = "data=CET4_171_DANGCI%2C".$zkz."%2C".$name."&v=".$validate;
 		$url = "http://cache.neea.edu.cn/cet/query";
-		$header = array('Accept: image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap');
+		// $header = array('Accept: image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap');
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt ($ch, CURLOPT_POST, true);//请求方式为post
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_REFERER, 'http://cet.neea.edu.cn/cet/');
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+		// curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 		curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
 		$result = curl_exec($ch);
