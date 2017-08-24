@@ -363,7 +363,12 @@ class ActController extends Controller
 		}
 		$cookieFile = $_SESSION['cookieFileGrade'];
 		$_SESSION['cookieFileGrade'] = null;
-		$post = "data=CET4_171_DANGCI%2C".$zkz."%2C".$name."&v=".$validate;
+		$num = substr($zkz, 9, 1);
+		if($num == 1){
+			$post = "data=CET4_171_DANGCI%2C".$zkz."%2C".$name."&v=".$validate;
+		}else{
+			$post = "data=CET6_171_DANGCI%2C".$zkz."%2C".$name."&v=".$validate;
+		}
 		$url = "http://cache.neea.edu.cn/cet/query";
 		// $header = array('Accept: image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap');
 		$ch = curl_init();
