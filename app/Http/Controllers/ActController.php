@@ -435,4 +435,10 @@ class ActController extends Controller
 		$result = curl_exec($ch);
 		echo js_arr($result);
 	}
+
+	// 图书借阅信息查询
+	public function findBookMsg()
+	{
+		return view('act/findBookMsg', ['name'=>$_SESSION['ca_username']]);
+	}
 }

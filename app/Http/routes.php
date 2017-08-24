@@ -42,6 +42,9 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	Route::post('act/getVerifyGrade.html', 'ActController@getVerifyGrade');
 	Route::get('act/getGradeNum.html', 'ActController@getGradeNum');
 	Route::post('act/getGradeNumHandle.html', 'ActController@getGradeNumHandle');
+
+	// 图书借阅信息
+	Route::get('act/findBookMsg.html', 'ActController@findBookMsg');
 	// 获取新生所有信息
 	// Route::get('act/getData.html', 'ActController@getNewStudentData');
 
