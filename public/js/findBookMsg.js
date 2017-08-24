@@ -80,6 +80,7 @@
 						location.href = "/act/findBookMsgResult.html";
 					}else{
 						yy_init(data.text);
+						self.getVerify();
 					}
 				},
 				error:function(data, status, e){
