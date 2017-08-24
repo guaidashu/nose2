@@ -170,9 +170,8 @@ function getVerify($url, $cookieFile, $imgName)
 
 // 模拟登录函数
 // 此处的$url为登录处理页面的URL连接，$info为信息数组包括验证码，用foreach来遍历(内置默认为用户名，密码和验证码)
-function curlLogin($url, $info, $cookieFile)
+function curlLogin($url, $post, $cookieFile)
 {
-	$post = 'UserName='.$info['user'].'&Password='.$info['password'].'&ValidateCode='.$info['validate'];
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);

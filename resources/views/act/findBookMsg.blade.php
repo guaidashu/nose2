@@ -14,7 +14,7 @@
 <div class="crn_container">
 	<div class="am-g">
 	  <div class="am-u-md-8 am-u-sm-centered">
-	    <form class="am-form" method="POST" action="" data-am-validator>
+	    <form class="am-form" data-am-validator>
 	      <fieldset class="am-form-set">
 	        <legend>图书借阅信息</legend>
 
@@ -25,13 +25,13 @@
 
 		     <div class="am-form-group">
 		      <label for="doc-vld-name-2">密码</label>
-		      <input type="text" name="password" id="doc-vld-name-2" minlength="2" placeholder="密码默认为123" />
+		      <input type="password" name="password" id="doc-vld-name-2" minlength="2" placeholder="密码默认为123" />
 		    </div>
 
 		    <div class="am-form-group">
 			  <label for="doc-subject-1">验证码</label>
 			  <input type="text" id="doc-subject-1" name="validate" class="js-pattern-mobile"
-		             placeholder="要输入了准考证号点击我才有图片噢" required />
+		             placeholder="请输入验证码" required />
 			  <span class="am-form-caret"></span>
 			</div>
 
@@ -39,7 +39,7 @@
 			  <img id="validate" style="cursor: pointer;" src="" width="80px" />
 			</div>
 	      </fieldset>
-	      <button type="submit" class="handle_btn_book am-btn am-btn-primary am-btn-block">提交信息</button>
+	      <button type="button" class="handle_btn_book am-btn am-btn-primary am-btn-block">提交信息</button>
 	    </form>
 	  </div>
 	</div>
@@ -53,7 +53,7 @@
 <script type="text/javascript" src="{{URL::asset('js/findBookMsg.js')}}"></script>
 <script type="text/javascript">
 $(function(){
-	var findBookMsg=new findBookMsg_function();
+	var findBookMsg=new findBookMsg_function(1);
 });
 </script>
 </body>

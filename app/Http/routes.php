@@ -27,7 +27,7 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	// Route::get('act/algorithm.html', 'ActController@algorithm');
 	// Route::post('act/algorithmHandle.html', 'ActController@algorithmHandle');
 	// Route::get('act/success.html', 'ActController@success');
-	// Route::get('act/code.html', 'ActController@codeOnline');
+	Route::get('act/code.html', 'ActController@codeOnline');
 	// 新生班级查询
 	Route::get('act/findClass.html', 'ActController@findClass');
 	Route::get('act/getVerify.html', 'ActController@getVerify');
@@ -45,6 +45,11 @@ Route::post('crn/handle.html', 'CrnController@handle');
 
 	// 图书借阅信息
 	Route::get('act/findBookMsg.html', 'ActController@findBookMsg');
+	Route::get('act/getBookVerify.html', 'ActController@getBookVerify');
+	Route::post('act/findBookMsgLogin.html', 'ActController@findBookMsgLogin');
+	Route::get('act/findBookMsgResult.html', 'ActController@findBookMsgResult');
+	Route::post('act/continueGetBook.html', 'ActController@continueGetBook');
+	Route::get('act/findBookMsgExit.html', 'ActController@findBookMsgExit');
 	// 获取新生所有信息
 	// Route::get('act/getData.html', 'ActController@getNewStudentData');
 

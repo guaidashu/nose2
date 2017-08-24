@@ -153,11 +153,7 @@ class ActController extends Controller
 		$password = $_POST['password'];
 		$validate = $_POST['validate'];
 		$loginUrl = "http://61.139.105.105:8088/Account/LogOn?ReturnUrl=%2f";
-		$info = array(
-			"user" => $username,
-			"password" => $password,
-			"validate" => $validate
-			);
+		$info = 'UserName='.$username.'&Password='.$password.'&ValidateCode='.$validate;
 		$result = curlLogin($loginUrl, $info, $_SESSION['cookieFile']);
 
 		$pattern = "/Object moved/";
@@ -439,6 +435,136 @@ class ActController extends Controller
 	// 图书借阅信息查询
 	public function findBookMsg()
 	{
+		if(!empty($_SESSION['findBookMsgLogin'])){
+			return redirect("act/findBookMsgResult.html");
+		}
 		return view('act/findBookMsg', ['name'=>$_SESSION['ca_username']]);
+	}
+
+	// 图书馆借阅信息结果
+	public function findBookMsgLogin()
+	{
+	    $userName = $_POST['username'];
+	    $password = $_POST['password'];
+	    $validate = $_POST['validate'];
+		// $userName = "15111020225";
+		// $password = "NC01jyo";
+		// $validate = "sf5e";
+		$post = "txtUserName=".$userName."&txtPassword=".$password."&txtCode=".$validate."&chkRemember=checked&logintype=0";
+		$cookieFile = $_SESSION['cookieFileBook'];
+		$url = "http://lib.suse.edu.cn/tools/submit_ajax.ashx?action=user_login&site=main";
+		$result = curlLogin($url, $post, $cookieFile);
+		$result = json_decode($result);
+		if($result->status != 1){
+			echo js_arr($result->msg);
+		}else{
+			echo js_arr("ok");
+			$_SESSION['findBookMsgLogin'] = "login";
+		}
+	}
+
+	public function findBookMsgResult()
+	{
+
+		$url = "http://lib.suse.edu.cn/user/center/borrow.html";
+		$cookieFile = $_SESSION['cookieFileBook'];
+		$result = getInfo($url, $cookieFile);
+		// 获取姓名
+		preg_match_all('/<p class="reader_name">([\w\W]*?)<\/p>/', $result, $match);
+		if(!empty($match[1][0])){
+			$name = str_replace(array(" ","　","\t","\n","\r","&nbsp;"),array("","","","","",""), $match[1][0]);
+		}else{
+			$name = null;
+		}
+		// 获取姓名结束
+		$pattern = '/<table class="table table01 table03" width="100%" cellpadding="0" cellspacing="0" border="0">([\w\W]*?)<\/table>/';
+		preg_match_all($pattern, $result, $match);
+		if(!empty($match[1][0])){
+			$result = $match[1][0];
+			$result = str_replace(array("</tr>","</td>"),array("{tr}","{td}"),$result);
+			$result = preg_replace(array('/<tr([\w\W]*?)>/', '/<td([\w\W]*?)>/'), array('', ''), $result);
+			preg_match_all("/RenewBook\('([0-9]*)', '([0-9]*)'\)/", $result, $match);
+			// 读者ID
+			if(!empty($match[2][0])){
+				$readId = $match[2][0];
+				// 书籍的ID 用于续借
+				$bookId = $match[1];
+				$result = preg_replace(array('/<div([\w\W].*?)>/', '/<\/div>/', '/<a([\w\W]*?)>/', '/<\/a>{td}/'), array('', '', '{td}', ''), $result);
+				$result = str_replace(array(" ","　","\t","\n","\r","&nbsp;"),array("","","","","",""),$result);
+				$result = explode("{tr}", $result);
+				$num = count($result);
+				$arr = array();
+				foreach ($result as $key => $value) {
+					if($key == 0 || $key == $num-1){
+						continue;
+					}
+					$arr[$key-1] = explode("{td}", $value);
+				}
+			}else{
+				$readId = null;
+				$bookId = null;
+				$arr = null;
+			}
+			
+		}else{
+			$readId = null;
+			$bookId = null;
+			$arr = null;
+		}
+		return view('act/findBookMsgResult', ['name'=>$_SESSION['ca_username'],'info'=>$arr,'readId'=>$readId,'bookId'=>$bookId, 'username'=>$name]);
+	}
+
+	// 图书续借处理函数
+	public function continueGetBook()
+	{
+		$bookId = $_POST['bookId'];
+		$readId = $_POST['readId'];
+		if(!$bookId || !$readId){
+			echo js_arr("failed");
+			exit;
+		}
+		$url = "http://lib.suse.edu.cn/tools/submit_ajax.ashx?action=prenew_book";
+		$cookieFile = $_SESSION['cookieFileBook'];
+		$post = "bookbarcode=".$bookId."&readerbarcode=".$readId;
+		$result = curlLogin($url, $post, $cookieFile);
+		$result = json_decode($result);
+		if($result->status != 1){
+			echo js_arr($result->msg);
+		}else{
+			echo js_arr("ok");
+		}
+	}
+
+	// 图书借阅退出函数
+	public function findBookMsgExit()
+	{
+		if(!empty($_SESSION['findBookMsgLogin'])){
+			$_SESSION['findBookMsgLogin'] = null;
+			echo js_arr("ok");
+		}else{
+			echo js_arr("failed");
+		}
+	}
+	// 图书馆借阅信息模拟登录验证码获取
+	public function getBookVerify()
+	{
+		if(!empty($_SESSION['cookieFileBook'])){
+			if(file_exists($_SESSION['cookieFileBook'])){
+				unlink($_SESSION['cookieFileBook']);
+			}
+			$_SESSION['cookieFileBook'] = null;
+		}
+		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		$url = "http://lib.suse.edu.cn/tools/verify_code.ashx?time=0.9".rand(10000000000000, 100000000000000);
+		$_SESSION['cookieFileBook'] = $cookieFile;
+		if(getCookie($url, $cookieFile)){
+			echo js_arr("CookieGetFailed");
+			exit;
+		}
+		if(getVerify($url, $cookieFile, "images/verifyBook.jpg")){
+			echo js_arr("getVerifyBookFailed");
+		}else{
+			echo js_arr("ok");
+		}
 	}
 }
