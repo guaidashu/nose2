@@ -79,7 +79,7 @@
 					if(data.text == "ok"){
 						location.href = "/act/findBookMsgResult.html";
 					}else{
-						yy_init("密码或者学号或者验证码错误噢");
+						yy_init(data.text);
 					}
 				},
 				error:function(data, status, e){
