@@ -1,4 +1,8 @@
 /node_modules
 /public/storage
+/public/images/verifyBook.jpg
+/public/images/verifyGrade.jpg
+/public/images/verify.jpg
+/public/cookie
 Homestead.yaml
 Homestead.json
