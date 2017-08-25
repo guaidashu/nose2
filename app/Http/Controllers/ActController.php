@@ -117,7 +117,9 @@ class ActController extends Controller
 	public function getVerify()
 	{
 		if(!empty($_SESSION['cookieFile'])){
-			unlink($_SESSION['cookieFile']);
+			if(file_exists($_SESSION['cookieFile'])){
+				unlink($_SESSION['cookieFile']);
+			}
 			$_SESSION['cookieFile']=null;
 		}
 		// 验证码URL
