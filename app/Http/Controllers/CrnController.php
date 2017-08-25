@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
+use Mail;
 
 class CrnController extends Controller
 {
@@ -38,7 +39,9 @@ class CrnController extends Controller
 		$year=htmlspecialchars($_POST['year']);
 		$phone=htmlspecialchars($_POST['phone']);
 		$content=htmlspecialchars($_POST['content']);
-		if(strlen($name)<2 || !$phone || !$email || !$year || strlen($content)>200){
+		$major = htmlspecialchars($_POST['major']);
+		$majorArr = array('web前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它');
+		if(strlen($name)<2 || !$phone || !$email || !$year || strlen($content)>200 || !$major){
 			echo js_arr("failed");
 			exit;
 		}
@@ -57,7 +60,10 @@ class CrnController extends Controller
 			echo js_arr("year");
 			exit;
 		}
-
+		if(!in_array($major, $majorArr)){
+			echo js_arr("major");
+			exit;
+		}
 		//我们需要判断邮箱和手机号码是否已被注册
 		$data=DB::select('select phone,email from crn');
 		foreach ($data as $key => $value) {
@@ -71,23 +77,33 @@ class CrnController extends Controller
 			}
 		}
 
+		// 二维码地址
+		$img = "http://nose.wyysdsa.cn/images/weixin.png";
+		$data = Mail::send('email/crn',['name'=>$name,'img'=>$img],function($message) use ($email){
+			$message->subject("计算机技术协会入会申请通知");
+			$message->to($email);
+		});
+		if(!$data){
+			echo js_arr("error_email");
+			exit;
+		}
 		$arr=array(
 			"name"=>$name,
 			"email"=>$email,
 			"year"=>$year,
 			"phone"=>$phone,
 			'date'=>date('Y-m-d H:i:s',time()),
-			"content"=>$content
+			"content"=>$content,
+			"major"=>$major
 			);
 		// 插入数据库 并且获取操作返回值
 		$data=DB::table('crn')->insert($arr);
 		//成功返回ok ，否则返回failed
 		if($data){
 			echo js_arr("ok");
-			$_SESSION['validate_count']+=1;
 		}else{
 			echo js_arr("failed");
-			$_SESSION['validate_count']+=1;
 		}
+		$_SESSION['validate_count']+=1;
 	}
 }

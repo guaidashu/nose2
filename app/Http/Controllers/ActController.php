@@ -97,10 +97,10 @@ class ActController extends Controller
 	// }
 
 	// 报名成功信息提示页面
-	// public function success()
-	// {
-	// 	return view('act/success',['name'=>$_SESSION['ca_username']]);
-	// }
+	public function success()
+	{
+		return view('act/success',['name'=>$_SESSION['ca_username']]);
+	}
 
 	// 在线代码编译页面
 	public function codeOnline()
