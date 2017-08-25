@@ -58,11 +58,11 @@ Route::get('project', 'ProjectController@index');
 Route::get('project/index.html', 'ProjectController@index');
 
 // 其他测试页面
-Route::get('test/test', 'TestController@test');
-Route::get('test/fun', 'TestController@curlTest');
-Route::get('test/sql.html', 'TestController@sqlTest');
-Route::get('test/email.html', 'TestController@emailTest');
-Route::get('test/testFrame.html', 'TestController@testFrame');
+// Route::get('test/test', 'TestController@test');
+// Route::get('test/fun', 'TestController@curlTest');
+// Route::get('test/sql.html', 'TestController@sqlTest');
+// Route::get('test/email.html', 'TestController@emailTest');
+// Route::get('test/testFrame.html', 'TestController@testFrame');
 
 // 关于我们页面模块
 Route::get('about', 'AboutController@index');

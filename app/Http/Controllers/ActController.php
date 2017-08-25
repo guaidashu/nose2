@@ -69,7 +69,7 @@ class ActController extends Controller
 	// 	}
 	// 	// 二维码地址
 	// 	$img="http://nose.wyysdsa.cn/images/weixin.png";
-	// 	$data=Mail::send('email/algorithm',['name'=>$name,'img'=>$img],function($message) use ($email){
+	// 	$data=Mail::send('email/crn',['name'=>$name,'img'=>$img],function($message) use ($email){
 	// 		$message->subject("算法报名通知");
 	// 		$message->to($email);
 	// 	});

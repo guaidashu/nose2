@@ -53,15 +53,18 @@ class TestController extends Controller
 		// 	$message->subject('恭喜你');
 		// 	$message->to('1023767856@qq.com');
 		// });
-		$name="宋节";
-		$email='1023767856@qq.com';
-		$img='http://nose.wyysdsa.cn/images/logo_1.png';
-		$data=Mail::send('test',['name'=>$name,'email'=>$email,'img'=>$img],function($message) use ($email){
-			$message->subject('测试');
-			echo $email;
+		$name = "宋节";
+		$email = '1023767856@qq.com';
+		// $img='http://nose.wyysdsa.cn/images/logo_1.png';
+		$img = "http://www.nose.com/images/weixin.png";
+		$data = Mail::send('email/crn',['name'=>$name, 'img'=>$img],function($message) use ($email){
+			$message->subject("计算机技术协会");
 			$message->to($email);
 		});
-		debug($data);
+		if(!$data){
+			echo js_arr("error_email");
+			exit;
+		}
 	}
 
 	public function fun($url)
