@@ -3,7 +3,6 @@
 	{
 		var self = this;
 		this.body = $(document.body);
-		this.getVerify();
 		// 测试页面宽度 ，用于设计自适应
 		// this.test();
 		// this.body.delegate(".handle_btn", "click", function(){

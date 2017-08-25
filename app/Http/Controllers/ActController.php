@@ -326,7 +326,7 @@ class ActController extends Controller
     	}
     	$zkzh = $_POST['zkzh'];
     	// $cookieUrl = "http://cet.neea.edu.cn/cet/";
-    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=0.".rand(10000000000000,100000000000000);
+    	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=0.".abs(mt_rand()<<3);
 		$imgName = "images/verifyGrade.jpg";
 		// 进行cookie的获取
 		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
@@ -560,7 +560,7 @@ class ActController extends Controller
 			$_SESSION['cookieFileBook'] = null;
 		}
 		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
-		$url = "http://lib.suse.edu.cn/tools/verify_code.ashx?time=0.9".rand(10000000000000, 100000000000000);
+		$url = "http://lib.suse.edu.cn/tools/verify_code.ashx?time=0.96".abs(rand(600000,  2550000)<<3);
 		$_SESSION['cookieFileBook'] = $cookieFile;
 		if(getCookie($url, $cookieFile)){
 			echo js_arr("CookieGetFailed");
