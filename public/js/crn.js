@@ -79,6 +79,7 @@
 				success:function(data){
 					if(data.text=="ok"){
 						yy_init("提交成功，请等待邮箱通知结果");
+						location.href = "/act/success.html";
 					}else if(data.text=="re_phone"){
 						yy_init("该手机号已被注册");
 					}else if(data.text=="re_email"){
