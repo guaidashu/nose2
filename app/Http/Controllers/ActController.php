@@ -352,6 +352,7 @@ class ActController extends Controller
 	//四六级查询结果处理页面
 	public function findGradeResult()
 	{
+		$ip = virtualIp();
 		$zkz = $_POST['zkz'];
 		$name = $_POST['name'];
 		$validate = $_POST['validate'];
@@ -367,8 +368,10 @@ class ActController extends Controller
 		$_SESSION['cookieFileGrade'] = null;
 		$num = substr($zkz, 9, 1);
 		if($num == 1){
+			// 四级启用这句话进行post
 			$post = "data=CET4_171_DANGCI%2C".$zkz."%2C".$name."&v=".$validate;
 		}else{
+			// 六级启用这句话进行post
 			$post = "data=CET6_171_DANGCI%2C".$zkz."%2C".$name."&v=".$validate;
 		}
 		$url = "http://cache.neea.edu.cn/cet/query";
@@ -381,6 +384,7 @@ class ActController extends Controller
 		curl_setopt($ch, CURLOPT_REFERER, 'http://cet.neea.edu.cn/cet/');
 		// curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
 		curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
 		$result = curl_exec($ch);
 		curl_close($ch);
@@ -416,14 +420,8 @@ class ActController extends Controller
 	// 查询准考证号 处理函数\
 	public function getGradeNumHandle()
 	{
-		$arr_1 = array("218","218","66","66","218","218","60","60","202","204","66","66","66","59","61","60","222","221","66","59","60","60","66","218","218","62","63","64","66","66","122","211");
-		$randarr= mt_rand(0,count($arr_1));
-		$ip1id = $arr_1[$randarr];
-		$ip2id=  round(rand(600000,  2550000)  /  10000);
-		$ip3id=  round(rand(600000,  2550000)  /  10000);
-		$ip4id=  round(rand(600000,  2550000)  /  10000);
-		$ip = $ip1id . "." . $ip2id . "." . $ip3id . "." . $ip4id;
-
+		// 获取伪造ip
+		$ip = virtualIp();
 		$name = $_POST['name'];
 		$sfz = $_POST['id'];
 		$level = $_POST['level'];
@@ -448,7 +446,7 @@ class ActController extends Controller
 		return view('act/findBookMsg', ['name'=>$_SESSION['ca_username']]);
 	}
 
-	// 图书馆借阅信息结果
+	// 图书馆借阅登陆函数
 	public function findBookMsgLogin()
 	{
 	    $userName = $_POST['username'];
@@ -470,9 +468,12 @@ class ActController extends Controller
 		}
 	}
 
+	// 图书馆借阅信息结果
 	public function findBookMsgResult()
 	{
-
+		if(empty($_SESSION['cookieFileBook'])){
+			return redirect("act/findBookMsg.html");
+		}
 		$url = "http://lib.suse.edu.cn/user/center/borrow.html";
 		$cookieFile = $_SESSION['cookieFileBook'];
 		$result = getInfo($url, $cookieFile);
@@ -572,6 +573,159 @@ class ActController extends Controller
 			echo js_arr("getVerifyBookFailed");
 		}else{
 			echo js_arr("ok");
+		}
+	}
+
+	// 成绩查询页面(期末考试)
+	public function grade()
+	{
+		if(!empty($_SESSION['userGrade'])){
+			return redirect("act/jwxtGrade.html");
+		}
+		return view('act/grade', ['name'=>$_SESSION['ca_username']]);
+	}
+
+	// 教务系统验证码获取
+	public function getVerifyGradeQM()
+	{
+		if(!empty($_SESSION['cookieGrade'])){
+			if(file_exists($_SESSION['cookieGrade'])){
+				unlink($_SESSION['cookieGrade']);
+			}
+		}
+		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		$_SESSION['cookieGrade'] = $cookieFile;
+		$url = "http://61.139.105.138/CheckCode.aspx";
+		$img = "images/verifyGradeQM.jpg";
+		$referer = "http://61.139.105.138/default2.aspx";
+		if(getCookie($url, $cookieFile)){
+			echo js_arr("cookieFailed");
+			exit;
+		}
+		if(getVerify($url, $cookieFile, $img, $referer)){
+			echo js_arr("failed");
+			exit;
+		}else{
+			echo js_arr("ok");
+		}
+	}
+
+	// 教务系统模拟登录函数
+	public function jwxtLogin()
+	{
+		$username = $_POST['username'];
+		$_SESSION['jwxtUsername'] = $username;
+		$password = $_POST['password'];
+		$validate = $_POST['validate'];
+		$year = $_POST['year'];
+		$_SESSION['jwxtYear'] = $year;
+		$item = $_POST['item'];
+		$_SESSION['jwxtItem'] = $item;
+		$referer = "http://61.139.105.138/default2.aspx";
+		// 首先是模拟登录
+		$url = "http://61.139.105.138/default2.aspx";
+		$cookieFile = $_SESSION['cookieGrade'];
+		// 获取隐藏字段 
+		$hidden = $this->getHiddenView($url, $cookieFile);
+		// 设置post数组并且转化为httpdata格式
+		$post['__VIEWSTATE'] = $hidden;
+		$post['txtUserName'] = $username;
+		$post['TextBox2'] = $password;
+		$post['txtSecretCode'] = $validate;
+		$post['lbLanguage'] = '';
+		$post['hidPdrs'] = '';
+		$post['hidsc'] = '';
+		$post['RadioButtonList1'] = iconv('utf-8', 'gb2312', '学生');
+		$post['Button1'] = iconv('utf-8', 'gb2312', '登录');
+		$post = http_build_query($post);
+
+		$result = curlLogin($url, $post, $cookieFile);
+		$pattern = "/Object moved to/";
+		if(!preg_match($pattern, $result)){
+			echo js_arr("logError");
+			exit;
+		}else{
+			$_SESSION['userGrade'] = "login";
+			echo js_arr("ok");
+		}
+	}
+
+	// 获取隐藏字段函数
+	public function getHiddenView($url, $cookieFile){
+		$result = getInfoRefer($url, $url, $cookieFile);
+		$pattern = '/<input type="hidden" name="__VIEWSTATE" value="(.*?)" \/>/is';
+		preg_match($pattern, $result, $matches);
+		if (empty($matches[1])) {
+			return null;
+		}else{
+			return $matches[1];
+		}
+	}
+
+	// 成绩获取
+	public function jwxtGrade()
+	{
+		if(empty($_SESSION['userGrade'])){
+			return redirect("act/grade.html");
+		}
+		$username = $_SESSION['jwxtUsername'];
+		$year = $_SESSION['jwxtYear'];
+		$item = $_SESSION['jwxtItem'];
+		$cookieFile = $_SESSION['cookieGrade'];
+		$url = 'http://61.139.105.138/xscjcx_dq.aspx?xh='.$username;
+		$postcj['__EVENTTARGET'] = '';
+		$postcj['__EVENTARGUMENT'] = '';
+		$postcj['__VIEWSTATE'] = $this->getHiddenView($url, $cookieFile);
+		$postcj['ddlxn']=  $year;
+		$postcj['ddlxq']=  $item;
+		$postcj['btnCx']=  ' 查  询 ';
+		$postcj = http_build_query($postcj);
+		$url = "http://61.139.105.138/xscjcx_dq.aspx?xh=".$username;
+		// 获取隐藏字段
+		$result = curlLogin($url, $postcj, $cookieFile, $url);
+		// $result = str_ireplace(chr(60), "&lt;", $result);
+		// $result = str_ireplace(chr(62), "&gt;", $result);
+		$result = mb_convert_encoding($result, "utf-8", "gb2312");
+		preg_match_all("/<td>姓名：([\w\W]*?)<\/td>/", $result, $match);
+		if(!empty($match[1][0])){
+			$name = $match[1][0];
+		}else{
+			$name = null;
+		}
+		$pattern = '/<table([\w\W]*?)id="Data[g|G]rid1"([\w\W]*?)>([\w\W]*?)<\/table>/';
+		preg_match_all($pattern, $result, $match);
+		// 以tr为间隔
+		if(!empty($match[3][0])){
+			$result = str_replace(array("</tr>","</td>"),array("{tr}","{td}"),$match[3][0]);
+			$result = preg_replace(array('/<tr([\w\W]*?)>/', '/<td([\w\W]*?)>/'), array('', ''), $result);
+			$result = str_replace(array(" ","　","\t","\n","\r","&nbsp;"),array("","","","","",""),$result);
+			$result = explode("{tr}", $result);
+			$num = count($result)-1;
+			foreach ($result as $key => $value) {
+				if($key == 0 || $key == $num){
+					continue;
+				}
+				$arr[$key-1] = explode("{td}", $value);
+			}
+		}else{
+			$arr = null;
+		}
+		return view('act/jwxtGrade', ['name'=>$_SESSION['ca_username'], 'username'=>$name, 'info'=>$arr]);
+	}
+
+	// 成绩查询退出处理函数
+	public function gradeExit()
+	{
+		if(!empty($_SESSION['userGrade'])){
+			if(!empty($_SESSION['cookieGrade'])){
+				if(file_exists($_SESSION['cookieGrade'])){
+					unlink($_SESSION['cookieGrade']);
+				}
+			}
+			$_SESSION['userGrade'] = null;
+			echo js_arr("ok");
+		}else{
+			echo js_arr("failed");
 		}
 	}
 }

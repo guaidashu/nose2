@@ -132,12 +132,14 @@ function getCookie($url, $cookieFile)
 	// $cookieFile = "tmp.cookie";
 	// 设置允许运行的时间，防止死循环
 	$timeOut = 5;
+	$ip = virtualIp();
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	// 使curl 返回并不输出，而是返回字符串
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
 	// 设置连接时间
 	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeOut);
 	// 保存cookie到指定文件夹
@@ -147,16 +149,21 @@ function getCookie($url, $cookieFile)
 }
 
 // 保存验证码的图片, $url 为验证码的url地址 ,$cookieFile 是要存的暂时cookie文件夹
-function getVerify($url, $cookieFile, $imgName)
+function getVerify($url, $cookieFile, $imgName, $referer = null)
 {
 	// $imgName = "images/verify.jpg";
 	$timeOut = 20;
+	$ip = virtualIp();
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	// 带上刚刚的cookie进行访问
 	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	if(!empty($referer)){
+		curl_setopt($ch, CURLOPT_REFERER, $referer);
+	}
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	// 设置连接时间
 	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeOut);
@@ -170,13 +177,18 @@ function getVerify($url, $cookieFile, $imgName)
 
 // 模拟登录函数
 // 此处的$url为登录处理页面的URL连接，$info为信息数组包括验证码，用foreach来遍历(内置默认为用户名，密码和验证码)
-function curlLogin($url, $post, $cookieFile)
+function curlLogin($url, $post, $cookieFile, $referer = null)
 {
 	$ch = curl_init();
+	$ip = virtualIp();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
+	if(!empty($referer)){
+		curl_setopt($ch, CURLOPT_REFERER, $referer);
+	}
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
 	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
 	$result = curl_exec($ch);
 	curl_close($ch);
@@ -186,9 +198,11 @@ function curlLogin($url, $post, $cookieFile)
 function getInfo($url, $cookieFile=null)
 {
 	// $url = "http://61.139.105.105:8088/Student/Detail";
+	$ip = virtualIp();
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
 	$result = curl_exec($ch);
@@ -199,15 +213,34 @@ function getInfo($url, $cookieFile=null)
 //需要加域名请求的信息获取
 function getInfoRefer($url, $refer = null, $cookieFile = null)
 {
+	// 伪造Ip
+	$ip = virtualIp();
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
 	curl_setopt($ch, CURLOPT_REFERER, $refer);
 	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
 	$result = curl_exec($ch);
 	curl_close($ch);
 	return $result;
+}
+
+// 伪造ip函数
+function virtualIp()
+{
+	$arr_1 = array("218","218","66","66","218","218","60","60","202","204","66","66","66","59","61","60","222","221","66","59","60","60","66","218","218","62","63","64","66","66","122","211");
+	$randarr= mt_rand(0,count($arr_1));
+	if($randarr > 30){
+		$randarr = $randarr - 1;
+	}
+	$ip1id = $arr_1[$randarr];
+	$ip2id=  round(rand(600000,  2550000)  /  10000);
+	$ip3id=  round(rand(600000,  2550000)  /  10000);
+	$ip4id=  round(rand(600000,  2550000)  /  10000);
+	$ip = $ip1id . "." . $ip2id . "." . $ip3id . "." . $ip4id;
+	return $ip;
 }
 
 // 暂时是这样只适用于 春儿的这个网页

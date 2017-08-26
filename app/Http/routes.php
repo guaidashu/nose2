@@ -50,6 +50,13 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	Route::get('act/findBookMsgResult.html', 'ActController@findBookMsgResult');
 	Route::post('act/continueGetBook.html', 'ActController@continueGetBook');
 	Route::get('act/findBookMsgExit.html', 'ActController@findBookMsgExit');
+
+	// 成绩查询(期末成绩)
+	Route::get('act/grade.html', 'ActController@grade');
+	Route::get('act/getVerifyGradeQM.html', 'ActController@getVerifyGradeQM');
+	Route::post('act/jwxtLogin.html', 'ActController@jwxtLogin');
+	Route::get('act/jwxtGrade.html', 'ActController@jwxtGrade');
+	Route::get('act/gradeExit.html', 'ActController@gradeExit');
 	// 获取新生所有信息
 	// Route::get('act/getData.html', 'ActController@getNewStudentData');
 
