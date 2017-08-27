@@ -77,16 +77,6 @@ class CrnController extends Controller
 			}
 		}
 
-		// 二维码地址
-		// $img = "http://nose.wyysdsa.cn/images/weixin.png";
-		// $data = Mail::send('email/crn',['name'=>$name,'img'=>$img],function($message) use ($email){
-		// 	$message->subject("计算机技术协会入会申请通知");
-		// 	$message->to($email);
-		// });
-		// if(!$data){
-		// 	echo js_arr("error_email");
-		// 	exit;
-		// }
 		$arr=array(
 			"name"=>$name,
 			"email"=>$email,
@@ -105,5 +95,31 @@ class CrnController extends Controller
 			echo js_arr("failed");
 		}
 		$_SESSION['validate_count']+=1;
+	}
+
+	public function sendMail()
+	{
+		// 二维码地址
+		$data = DB::table('crn')->where("status", 0)->get();
+		if(empty($data[0])){
+			echo js_arr("empty");
+			exit;
+		}else{
+			$email = $data[0]->email;
+			$name = $data[0]->name;
+		}
+		$img = "http://nose.wyysdsa.cn/images/weixin.png";
+		$result = Mail::send('email/crn',['name'=>$name,'img'=>$img],function($message) use ($email){
+			$message->subject("计算机技术协会入会申请通知");
+			$message->to($email);
+		});
+		if(!$result){
+			echo js_arr("error_email")."\n";
+			exit;
+		}
+		$result = DB::table('crn')->where("phone",$data[0]->phone)->update(['status'=>1]);
+		if($result){
+			echo "成功给".$data[0]->name."发送邮件(".$data[0]->email.")\n";
+		}
 	}
 }

@@ -21,6 +21,8 @@ Route::get('index/index.html', 'IndexController@index');
 Route::get('crn', 'CrnController@index');
 Route::get('crn/index.html', 'CrnController@index');
 Route::post('crn/handle.html', 'CrnController@handle');
+	// 协会招新邮件发送
+	Route::get('crn/sendMail.html', 'CrnController@sendMail');
 
 // 协会动态页面组
 	// 算法入门报名页面
