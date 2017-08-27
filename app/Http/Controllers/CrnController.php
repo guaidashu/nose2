@@ -78,15 +78,15 @@ class CrnController extends Controller
 		}
 
 		// 二维码地址
-		$img = "http://nose.wyysdsa.cn/images/weixin.png";
-		$data = Mail::send('email/crn',['name'=>$name,'img'=>$img],function($message) use ($email){
-			$message->subject("计算机技术协会入会申请通知");
-			$message->to($email);
-		});
-		if(!$data){
-			echo js_arr("error_email");
-			exit;
-		}
+		// $img = "http://nose.wyysdsa.cn/images/weixin.png";
+		// $data = Mail::send('email/crn',['name'=>$name,'img'=>$img],function($message) use ($email){
+		// 	$message->subject("计算机技术协会入会申请通知");
+		// 	$message->to($email);
+		// });
+		// if(!$data){
+		// 	echo js_arr("error_email");
+		// 	exit;
+		// }
 		$arr=array(
 			"name"=>$name,
 			"email"=>$email,
