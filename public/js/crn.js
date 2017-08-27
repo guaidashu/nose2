@@ -56,7 +56,7 @@
 				yy_init("请输入正确的入学年份");
 				return;
 			}
-			if(major<0 || major>5){
+			if(major<0 || major>7){
 				yy_init("你娃娃要搞事情");
 				return;
 			}
