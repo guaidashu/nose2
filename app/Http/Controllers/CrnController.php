@@ -102,7 +102,7 @@ class CrnController extends Controller
 		// 二维码地址
 		$data = DB::table('crn')->where("status", 0)->get();
 		if(empty($data[0])){
-			echo js_arr("empty");
+			// echo js_arr("empty");
 			exit;
 		}else{
 			$email = $data[0]->email;
