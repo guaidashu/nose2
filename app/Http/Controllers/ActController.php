@@ -815,6 +815,10 @@ class ActController extends Controller
 		// $result = str_ireplace(chr(62), "&gt;", $result);
 		$pattern = '/<table class="am-table  am-table-hover ">([\w\W]*?)<\/table>/';
 		preg_match_all($pattern, $result, $match);
+		if(empty($match[1][0])){
+			echo js_arr("没有此用户的辅导员信息噢，请检查你的准考证号正确不噢。",6);
+			exit;
+		}
 		$result = $match[1][0];
 		preg_match_all('/<tbody>([\w\W]*?)<\/tbody>/', $result, $match);
 		$result = $match[1][0];
