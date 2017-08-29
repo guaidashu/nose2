@@ -38,6 +38,8 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	// 新生寝室号查询
 	Route::get('act/findDorm.html', 'ActController@findDorm');
 	Route::post('act/searchDorm.html', 'ActController@searchDorm');
+	Route::get('act/getFudaoyuan.html', 'ActController@getFudaoyuan');
+	Route::post('act/getFudaoyuanResult.html', 'ActController@getFudaoyuanResult');
 	// 四六级查询
 	Route::get('act/findGrade.html', 'ActController@findGrade');
 	Route::post('act/findGradeResult.html', 'ActController@findGradeResult');

@@ -787,4 +787,45 @@ class ActController extends Controller
 			echo js_arr("failed");
 		}
 	}
+
+	// 辅导员查询
+	public function getFudaoyuan()
+	{
+		return view("act/getFudaoyuan", ['name'=>$_SESSION['ca_username']]);
+	}
+
+	public function getFudaoyuanResult()
+	{
+		$ip = virtualIp();
+		$zkzh = $_POST['zkzh'];
+		// $zkzh = "17511108160181";
+		$post['ksh'] = $zkzh;
+		$post['submit'] = "ok";
+		$post = http_build_query($post);
+		$url = "http://119.29.201.115/info_disp.php";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+		curl_setopt($ch, CURLOPT_REFERER, "http://119.29.201.115/");
+		$result = curl_exec($ch);
+		// $result = str_ireplace(chr(60), "&lt;", $result);
+		// $result = str_ireplace(chr(62), "&gt;", $result);
+		$pattern = '/<table class="am-table  am-table-hover ">([\w\W]*?)<\/table>/';
+		preg_match_all($pattern, $result, $match);
+		$result = $match[1][0];
+		preg_match_all('/<tbody>([\w\W]*?)<\/tbody>/', $result, $match);
+		$result = $match[1][0];
+		$result = str_replace(array("</tr>","</td>"),array("{tr}",""),$result);
+		$result = str_replace(array("<tr>","<td>"),array("",""),$result);
+		$result = preg_replace('/<th>([\w\W]*?)<\/th>/', "", $result);
+		$result = str_replace(array(" ","　","\t","\n","\r","&nbsp;"),array("","","","","",""),$result);
+		$result = explode("{tr}", $result);
+		$name = $result[7];
+		$phone = $result[8];
+		$str = "辅导员名字：".$name."\n辅导员电话：".$phone;
+		echo js_arr($str, 6);
+	}
 }

@@ -18,7 +18,10 @@
 		});
 		this.body.delegate(".jdtj_click", "click", function(){
 			self.getXfjd();
-		})
+		});
+		this.body.delegate(".get_fudayuan", "click", function(){
+			self.getFudaoyuan();
+		});
 	};
 	grade_function.prototype = {
 		test:function()
@@ -138,6 +141,27 @@
 						var str = '<li><a href="#">'+data.xfjd+'</a></li>'+
 								  '<li><a href="#">'+data.xfjdzh+'</a></li>';
 					    $(".jdtj").html(str);
+					}
+				},
+				error:function(data, status, e){
+					console.log(e);
+				}
+			});
+		},
+		// 获取辅导员信息
+		getFudaoyuan:function()
+		{
+			var self = this;
+			var zkzh = document.getElementById("doc-vld-name-2").value;
+			zkzh = $.trim(zkzh);
+			$.ajax({
+				url:"/act/getFudaoyuanResult.html",
+				type:"POST",
+				dataType:"json",
+				data:{"zkzh":zkzh},
+				success:function(data){
+					if(data.id == 6){
+						yy_init(data.text);
 					}
 				},
 				error:function(data, status, e){
