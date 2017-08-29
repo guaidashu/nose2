@@ -7,6 +7,24 @@
 <title>
 成绩查询结果
 </title>
+<style>
+.jdtj_load{
+	background:url("{{URL::asset('images/loading.gif')}}") no-repeat center center;
+	background-size:30px 30px;
+	height:50px;
+	width:50px;
+	margin:0px auto;
+}
+.jdtj_click{
+	height:50px;
+	width:200px;
+	text-align: center;
+	font-size:15px;
+	color:#169ADA;
+	margin:0px auto;
+	cursor: pointer;
+}
+</style>
 </head>
 <body>
 @include('./../common/navigation')
@@ -20,7 +38,7 @@
 		      <legend>{{$info[0][0]}}学年第{{$info[0][1]}}学期成绩查询结果</legend>
 	      @else
 		      <legend>成绩查询结果</legend>
-	      @endif 
+	      @endif
 		        <ul class="am-list">
 			        <a href="#" class="">{{$username}}</a>&nbsp;<a href="#" class="exitGrade">退出</a>
 		        </ul>
@@ -53,6 +71,12 @@
 					<li><a href="#">暂时没有成绩信息噢。</a></li>
 				</ul>
 			@endif
+		      <legend>成绩统计</legend>
+		      <ul class="am-list jdtj">
+			      <div class="jdtj_click">
+				      点击我进行成绩统计噢
+			      </div>
+		      </ul>
 	      </fieldset>
 	    </form>
 	  </div>

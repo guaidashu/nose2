@@ -16,6 +16,9 @@
 		this.body.delegate(".exitGrade", "click", function(){
 			self.gradeExit();
 		});
+		this.body.delegate(".jdtj_click", "click", function(){
+			self.getXfjd();
+		})
 	};
 	grade_function.prototype = {
 		test:function()
@@ -112,6 +115,29 @@
 						location.href = "/act/grade.html";
 					}else{
 						yy_init("退出失败");
+					}
+				},
+				error:function(data, status, e){
+					console.log(e);
+				}
+			});
+		},
+		// 获取学分绩点数据
+		getXfjd:function()
+		{
+			var self = this;
+			var clickText = '<div class="jdtj_load"></div>';
+			$(".jdtj").html(clickText);
+			$.ajax({
+				url:"/act/jwxtJD.html",
+				type:"GET",
+				dataType:"json",
+				data:{},
+				success:function(data){
+					if(data.text == "ok"){
+						var str = '<li><a href="#">'+data.xfjd+'</a></li>'+
+								  '<li><a href="#">'+data.xfjdzh+'</a></li>';
+					    $(".jdtj").html(str);
 					}
 				},
 				error:function(data, status, e){

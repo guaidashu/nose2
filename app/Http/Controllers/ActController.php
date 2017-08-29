@@ -713,6 +713,65 @@ class ActController extends Controller
 		return view('act/jwxtGrade', ['name'=>$_SESSION['ca_username'], 'username'=>$name, 'info'=>$arr]);
 	}
 
+	// 
+	public function jwxtJD()
+	{
+		if(empty($_SESSION['userGrade'])){
+			return redirect('act/grade.html');
+		}
+		$username = $_SESSION['jwxtUsername'];
+		$cookieFile = $_SESSION['cookieGrade'];
+		$year = $_SESSION['jwxtYear'];
+		$item = $_SESSION['jwxtItem'];
+		$url = "http://61.139.105.138/xscjcx.aspx?xh=".$username;
+		$post['__VIEWSTATE'] = $this->getHiddenView($url, $cookieFile);
+		$post['__EVENTTARGET'] = '';
+		$post['__EVENTARGUMENT'] = '';
+		$post['hidLanguage'] = '';
+		$post['ddlXN']=  $year;
+		$post['ddlXQ']=  $item;
+		$post['ddl_kcxz'] = '';
+		$post['Button1']=  '成绩统计';
+		$post = http_build_query($post);
+		$result = curlLogin($url, $post, $cookieFile, $url);
+		// $result = str_ireplace(chr(60), "&lt;", $result);
+		// $result = str_ireplace(chr(62), "&gt;", $result);
+		$result = mb_convert_encoding($result, "utf-8", "gb2312");
+		// debug($result, true);
+		preg_match_all('/<span id="lbl_xm">姓名：([\w\W]*?)<\/span>/', $result, $match);
+		if(!empty($match[1][0])){
+			$name = $match[1][0];
+		}else{
+			$name = null;
+		}
+		// 获取平均学分绩点
+		$pattern = '/<span id="pjxfjd"><b>([\w\W]*?)<\/b><\/span>/';
+		preg_match_all($pattern, $result, $match);
+		if(!empty($match[1][0])){
+			$xfjd = $match[1][0];
+		}else{
+			$xfjd = null;
+		}
+		// 获取学分绩点总和
+		$pattern = '/<span id="xfjdzh"><b>([\w\W]*?)<\/b><\/span>/';
+		preg_match_all($pattern, $result, $match);
+		if(!empty($match[1][0])){
+			$xfjdzh = $match[1][0];
+		}else{
+			$xfjdzh = null;
+		}
+		if(empty($xfjd) || empty($xfjdzh)){
+			$flag = "failed";
+		}else{
+			$flag = "ok";
+		}
+		$arr = array(
+			"text" => $flag,
+			"xfjd" => $xfjd,
+			"xfjdzh" => $xfjdzh
+			);
+		echo json_encode($arr);
+	}
 	// 成绩查询退出处理函数
 	public function gradeExit()
 	{

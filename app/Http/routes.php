@@ -59,6 +59,7 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	Route::post('act/jwxtLogin.html', 'ActController@jwxtLogin');
 	Route::get('act/jwxtGrade.html', 'ActController@jwxtGrade');
 	Route::get('act/gradeExit.html', 'ActController@gradeExit');
+	Route::get('act/jwxtJD.html', 'ActController@jwxtJD');
 	// 获取新生所有信息
 	// Route::get('act/getData.html', 'ActController@getNewStudentData');
 
