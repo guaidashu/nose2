@@ -40,7 +40,7 @@ class CrnController extends Controller
 		$phone=htmlspecialchars($_POST['phone']);
 		$content=htmlspecialchars($_POST['content']);
 		$major = htmlspecialchars($_POST['major']);
-		$majorArr = array('web前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它');
+		$majorArr = array('Office基础', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它');
 		if(strlen($name)<2 || !$phone || !$email || !$year || strlen($content)>200 || !$major){
 			echo js_arr("failed");
 			exit;

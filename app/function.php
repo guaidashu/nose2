@@ -124,140 +124,129 @@ function imagesChange($src,$path)
 
 
 /*
-		爬虫函数些    参数 $url是要抓取的URL  $cookieFile 是要存的暂时cookie文件夹
+        爬虫函数些    参数 $url是要抓取的URL  $cookieFile 是要存的暂时cookie文件夹
  */
-function getCookie($url, $cookieFile)
+function getCookie($url)
 {
-	// 保存cookie的文件
-	// $cookieFile = "tmp.cookie";
-	// 设置允许运行的时间，防止死循环
-	$timeOut = 5;
-	$ip = virtualIp();
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-	// 使curl 返回并不输出，而是返回字符串
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
-	// 设置连接时间
-	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeOut);
-	// 保存cookie到指定文件夹
-	curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieFile);
-	$content = curl_exec($ch);
-	curl_close($ch);
+    // 保存cookie的文件
+    // $cookieFile = "tmp.cookie";
+    // 设置允许运行的时间，防止死循环
+    $timeOut = 5;
+    $ip = virtualIp();
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    // 使curl 返回并不输出，而是返回字符串
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
+    // 设置连接时间
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeOut);
+    // 保存cookie到指定文件夹
+    // curl_setopt($ch, CURLOPT_COOKIEJAR, $cookieFile);
+    $result = curl_exec($ch);
+    preg_match('/Set\-Cookie:([\w\W]*?);/', $result, $str);
+    curl_close($ch);
+    if(!empty($str[1])){
+        return $str[1];
+    }else{
+        return "failed";
+    }
 }
 
 // 保存验证码的图片, $url 为验证码的url地址 ,$cookieFile 是要存的暂时cookie文件夹
-function getVerify($url, $cookieFile, $imgName, $referer = null)
+function getVerify($url, $cookie, $imgName, $referer = null)
 {
-	// $imgName = "images/verify.jpg";
-	$timeOut = 20;
-	$ip = virtualIp();
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $url);
-	// 带上刚刚的cookie进行访问
-	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	if(!empty($referer)){
-		curl_setopt($ch, CURLOPT_REFERER, $referer);
-	}
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	// 设置连接时间
-	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeOut);
-	// 执行curl并且返回图片
-	$img = curl_exec($ch);
-	curl_close($ch);
-	$fp = fopen($imgName, "w");
-	fwrite($fp, $img);
-	fclose($fp);
+    // $imgName = "images/verify.jpg";
+    $timeOut = 20;
+    $ip = virtualIp();
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    // 带上刚刚的cookie进行访问
+    curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    if(!empty($referer)){
+        curl_setopt($ch, CURLOPT_REFERER, $referer);
+    }
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    // 设置连接时间
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeOut);
+    // 执行curl并且返回图片
+    $img = curl_exec($ch);
+    curl_close($ch);
+    $fp = fopen($imgName, "w");
+    fwrite($fp, $img);
+    fclose($fp);
 }
 
 // 模拟登录函数
 // 此处的$url为登录处理页面的URL连接，$info为信息数组包括验证码，用foreach来遍历(内置默认为用户名，密码和验证码)
-function curlLogin($url, $post, $cookieFile, $referer = null)
+function curlLogin($url, $post, $cookie, $referer = null)
 {
-	$ch = curl_init();
-	$ip = virtualIp();
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-	if(!empty($referer)){
-		curl_setopt($ch, CURLOPT_REFERER, $referer);
-	}
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
-	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
-	$result = curl_exec($ch);
-	curl_close($ch);
-	return $result;
+    $ch = curl_init();
+    $ip = virtualIp();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    if(!empty($referer)){
+        curl_setopt($ch, CURLOPT_REFERER, $referer);
+    }
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
+    curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
 }
 
-function getInfo($url, $cookieFile=null)
+function getInfo($url, $cookie=null)
 {
-	// $url = "http://61.139.105.105:8088/Student/Detail";
-	$ip = virtualIp();
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
-	$result = curl_exec($ch);
-	curl_close($ch);
-	return $result;
+    // $url = "http://61.139.105.105:8088/Student/Detail";
+    $ip = virtualIp();
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
 }
 
 //需要加域名请求的信息获取
-function getInfoRefer($url, $refer = null, $cookieFile = null)
+function getInfoRefer($url, $refer = null, $cookie = null)
 {
-	// 伪造Ip
-	$ip = virtualIp();
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
-	curl_setopt($ch, CURLOPT_REFERER, $refer);
-	curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
-	$result = curl_exec($ch);
-	curl_close($ch);
-	return $result;
+    // 伪造Ip
+    $ip = virtualIp();
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
+    curl_setopt($ch, CURLOPT_REFERER, $refer);
+    curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
 }
 
 // 伪造ip函数
 function virtualIp()
 {
-	$arr_1 = array("218","218","66","66","218","218","60","60","202","204","66","66","66","59","61","60","222","221","66","59","60","60","66","218","218","62","63","64","66","66","122","211");
-	$randarr= mt_rand(0,count($arr_1));
-	if($randarr > 30){
-		$randarr = $randarr - 1;
-	}
-	$ip1id = $arr_1[$randarr];
-	$ip2id=  round(rand(600000,  2550000)  /  10000);
-	$ip3id=  round(rand(600000,  2550000)  /  10000);
-	$ip4id=  round(rand(600000,  2550000)  /  10000);
-	$ip = $ip1id . "." . $ip2id . "." . $ip3id . "." . $ip4id;
-	return $ip;
-}
-
-// 暂时是这样只适用于 春儿的这个网页
-function get_td_array_self($table)
-{
-	$pattern = '/<th>([\w\W]*?)<\/th>/';
-	preg_match_all($pattern, $table, $matches);
-	// debug($matches[1]);
-
-	$pattern = '/<td>([\w\W]*?)<\/td>/';
-	preg_match_all($pattern, $table, $matches2);
-	// debug($matches2[1]);
-	$arr = array();
-	foreach ($matches[1] as $key => $value) {
-		$arr[$value] = $matches2[1][$key];
-	}
-	return $arr;
+    $arr_1 = array("218","218","66","66","218","218","60","60","202","204","66","66","66","59","61","60","222","221","66","59","60","60","66","218","218","62","63","64","66","66","122","211");
+    $randarr= mt_rand(0,count($arr_1));
+    if($randarr > 30){
+        $randarr = $randarr - 1;
+    }
+    $ip1id = $arr_1[$randarr];
+    $ip2id=  round(rand(600000,  2550000)  /  10000);
+    $ip3id=  round(rand(600000,  2550000)  /  10000);
+    $ip4id=  round(rand(600000,  2550000)  /  10000);
+    $ip = $ip1id . "." . $ip2id . "." . $ip3id . "." . $ip4id;
+    return $ip;
 }
 
 

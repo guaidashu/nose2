@@ -47,14 +47,15 @@
 			<div class="am-form-group">
 			  <label for="doc-select-2">学习方向</label>
 			  <select name="year" id="doc-select-2">
-			    <option value="0">web前端</option>
-			    <option value="1">网站后端</option>
-			    <option value="2">Java程序设计</option>
-			    <option value="3">Android开发</option>
-			    <option value="4">游戏开发</option>
-			    <option value="5">网络安全</option>
-			    <option value="6">算法设计</option>
-			    <option value="7">其它</option>
+				<option value="0">Office基础</option>
+			    <option value="1">网页前端</option>
+			    <option value="2">网站后端</option>
+			    <option value="3">Java程序设计</option>
+			    <option value="4">Android开发</option>
+			    <option value="5">游戏开发</option>
+			    <option value="6">网络安全</option>
+			    <option value="7">算法设计</option>
+			    <option value="8">其它</option>
 			  </select>
 			  <span class="am-form-caret"></span>
 			</div>

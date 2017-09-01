@@ -116,30 +116,25 @@ class ActController extends Controller
 	// 获取cookie 同时保存验证码图片
 	public function getVerify()
 	{
-		if(!empty($_SESSION['cookieFile'])){
-			if(file_exists($_SESSION['cookieFile'])){
-				unlink($_SESSION['cookieFile']);
-			}
-			$_SESSION['cookieFile']=null;
-		}
 		// 验证码URL
 		$verifyUrl = "http://61.139.105.105:8088/Account/GetValidateCode";
 		// $verifyUrl = "http://61.139.105.105:8088/Account/LogOn?ReturnUrl=%2f";
 
 		// 进行cookie的获取
-		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		// $cookie = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
 
 		// 本地调试 需要把上一句注释掉，把下一句解开注释，因为windows和Linux不同
-		// $cookieFile = public_path()."\\cookie\\".md5(date("Y-m-d H:i:s",time())).".cookie";
+		// $cookie = public_path()."\\cookie\\".md5(date("Y-m-d H:i:s",time())).".cookie";
 		$imgName = "images/verify.jpg";
-		$_SESSION['cookieFile'] = $cookieFile;
-		if(getCookie($verifyUrl, $cookieFile)){
-			echo js_arr("cookieFailed");
+		$cookie = getCookie($verifyUrl);
+		if($cookie == "failed"){
+			echo js_arr("getCookieFailed");
 			exit;
+		}else{
+			$_SESSION['cookie'] = $cookie;
 		}
-
 		// 保存验证码图片
-		if(getVerify($verifyUrl, $cookieFile, $imgName)){
+		if(getVerify($verifyUrl, $cookie, $imgName)){
 			echo js_arr("saveImgFailed");
 			exit;
 		}else{
@@ -156,7 +151,7 @@ class ActController extends Controller
 		$validate = $_POST['validate'];
 		$loginUrl = "http://61.139.105.105:8088/Account/LogOn?ReturnUrl=%2f";
 		$info = 'UserName='.$username.'&Password='.$password.'&ValidateCode='.$validate;
-		$result = curlLogin($loginUrl, $info, $_SESSION['cookieFile']);
+		$result = curlLogin($loginUrl, $info, $_SESSION['cookie']);
 
 		$pattern = "/Object moved/";
 		if(preg_match($pattern, $result)){
@@ -176,9 +171,9 @@ class ActController extends Controller
 			return redirect("act/findClass.html");
 		}
 		$url = "http://61.139.105.105:8088/Student/Detail";
-		$result = getInfo($url, $_SESSION['cookieFile']);
+		$result = getInfo($url, $_SESSION['cookie']);
 		// 删除临时的cookie文件夹
-		unlink($_SESSION['cookieFile']);
+		unlink($_SESSION['cookie']);
 		// 获取班级
 		$pattern = '/<td>(.*?)<\/td>/is';
 		preg_match_all($pattern, $result, $match);
@@ -206,7 +201,7 @@ class ActController extends Controller
 			"class" => $class
 			);
 		$_SESSION['findClassCookie'] = null;
-		$_SESSION['cookieFile'] = null;
+		$_SESSION['cookie'] = null;
 		return view('act/getInfo',['name'=>$_SESSION['ca_username'],'info'=>$arr]);
 	}
 
@@ -308,11 +303,11 @@ class ActController extends Controller
 	// 四六级查询页面
 	public function findGrade()
 	{
-		if(!empty($_SESSION['cookieFileGrade'])){
-    		if(file_exists($_SESSION['cookieFileGrade'])){
-    			unlink($_SESSION['cookieFileGrade']);
+		if(!empty($_SESSION['cookieGrade'])){
+    		if(file_exists($_SESSION['cookieGrade'])){
+    			unlink($_SESSION['cookieGrade']);
     		}
-    		$_SESSION['cookieFileGrade'] = null;
+    		$_SESSION['cookieGrade'] = null;
     	}
 		return view('act/findGrade', ['name'=>$_SESSION['ca_username']]);
 	}
@@ -320,30 +315,26 @@ class ActController extends Controller
     // 四六级查询验证码获取
     public function getVerifyGrade()
     {
-    	if(!empty($_SESSION['cookieFileGrade'])){
-    		if(file_exists($_SESSION['cookieFileGrade'])){
-    			unlink($_SESSION['cookieFileGrade']);
-    		}
-    		$_SESSION['cookieFileGrade'] = null;
-    	}
     	$zkzh = $_POST['zkzh'];
     	// $cookieUrl = "http://cet.neea.edu.cn/cet/";
     	$url = "http://cache.neea.edu.cn/Imgs.do?ik=".$zkzh."&t=0.".abs(mt_rand()<<3);
 		$imgName = "images/verifyGrade.jpg";
 		// 进行cookie的获取
-		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		// $cookie = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
 		// 本地调试 需要把上一句注释掉，把下一句解开注释，因为windows和Linux不同
-		// $cookieFile = public_path()."\\cookie\\".md5(date("Y-m-d H:i:s",time())).".cookie";
-		$_SESSION['cookieFileGrade'] = $cookieFile;
-		if(getCookie($url, $cookieFile)){
-			echo js_arr("cookieFailed");
+		// $cookie = public_path()."\\cookie\\".md5(date("Y-m-d H:i:s",time())).".cookie";
+		
+		$cookie = getCookie($url);
+		if($cookie == "failed"){
+			echo js_arr("getCookieFailed");
 			exit;
+		}else{
+			$_SESSION['cookieGrade'] = $cookie;
 		}
-
-		$result = getInfoRefer($url, "http://cet.neea.edu.cn/cet/", $cookieFile);
+		$result = getInfoRefer($url, "http://cet.neea.edu.cn/cet/", $cookie);
 		preg_match_all('/result.imgs\(\"(.*?)\"\)\;/is', $result, $match);
 		$url = $match[1][0];
-		if(getVerify($url, $cookieFile, $imgName)){
+		if(getVerify($url, $cookie, $imgName)){
 			echo js_arr("failed");
 		}else{
 			echo js_arr("ok");
@@ -364,8 +355,8 @@ class ActController extends Controller
 			$result = null;
 			return view('act/findGradeResult', ['name'=>$_SESSION['ca_username'], "result"=>$result]);
 		}
-		$cookieFile = $_SESSION['cookieFileGrade'];
-		$_SESSION['cookieFileGrade'] = null;
+		$cookie = $_SESSION['cookieGrade'];
+		$_SESSION['cookieGrade'] = null;
 		$num = substr($zkz, 9, 1);
 		if($num == 1){
 			// 四级启用这句话进行post
@@ -385,7 +376,7 @@ class ActController extends Controller
 		// curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
-		curl_setopt($ch, CURLOPT_COOKIEFILE, $cookieFile);
+		curl_setopt($ch, CURLOPT_COOKIE, $cookie);
 		$result = curl_exec($ch);
 		curl_close($ch);
 		$pattern = "/{(.*?)}/";
@@ -404,9 +395,6 @@ class ActController extends Controller
 			}
 		}else{
 			$result = null;
-		}
-		if(file_exists($cookieFile)){
-			unlink($cookieFile);
 		}
 		return view('act/findGradeResult', ['name'=>$_SESSION['ca_username'], "result"=>$result]);
 	}
@@ -456,9 +444,9 @@ class ActController extends Controller
 		// $password = "NC01jyo";
 		// $validate = "sf5e";
 		$post = "txtUserName=".$userName."&txtPassword=".$password."&txtCode=".$validate."&chkRemember=checked&logintype=0";
-		$cookieFile = $_SESSION['cookieFileBook'];
+		$cookie = $_SESSION['cookieBook'];
 		$url = "http://lib.suse.edu.cn/tools/submit_ajax.ashx?action=user_login&site=main";
-		$result = curlLogin($url, $post, $cookieFile);
+		$result = curlLogin($url, $post, $cookie);
 		$result = json_decode($result);
 		if($result->status != 1){
 			echo js_arr($result->msg);
@@ -471,12 +459,12 @@ class ActController extends Controller
 	// 图书馆借阅信息结果
 	public function findBookMsgResult()
 	{
-		if(empty($_SESSION['cookieFileBook'])){
+		if(empty($_SESSION['cookieBook'])){
 			return redirect("act/findBookMsg.html");
 		}
 		$url = "http://lib.suse.edu.cn/user/center/borrow.html";
-		$cookieFile = $_SESSION['cookieFileBook'];
-		$result = getInfo($url, $cookieFile);
+		$cookie = $_SESSION['cookieBook'];
+		$result = getInfo($url, $cookie);
 		// 获取姓名
 		preg_match_all('/<p class="reader_name">([\w\W]*?)<\/p>/', $result, $match);
 		if(!empty($match[1][0])){
@@ -532,9 +520,9 @@ class ActController extends Controller
 			exit;
 		}
 		$url = "http://lib.suse.edu.cn/tools/submit_ajax.ashx?action=prenew_book";
-		$cookieFile = $_SESSION['cookieFileBook'];
+		$cookie = $_SESSION['cookieBook'];
 		$post = "bookbarcode=".$bookId."&readerbarcode=".$readId;
-		$result = curlLogin($url, $post, $cookieFile);
+		$result = curlLogin($url, $post, $cookie);
 		$result = json_decode($result);
 		if($result->status != 1){
 			echo js_arr($result->msg);
@@ -556,20 +544,23 @@ class ActController extends Controller
 	// 图书馆借阅信息模拟登录验证码获取
 	public function getBookVerify()
 	{
-		if(!empty($_SESSION['cookieFileBook'])){
-			if(file_exists($_SESSION['cookieFileBook'])){
-				unlink($_SESSION['cookieFileBook']);
+		if(!empty($_SESSION['cookieBook'])){
+			if(file_exists($_SESSION['cookieBook'])){
+				unlink($_SESSION['cookieBook']);
 			}
-			$_SESSION['cookieFileBook'] = null;
+			$_SESSION['cookieBook'] = null;
 		}
-		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		$cookie = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
 		$url = "http://lib.suse.edu.cn/tools/verify_code.ashx?time=0.96".abs(rand(600000,  2550000)<<3);
-		$_SESSION['cookieFileBook'] = $cookieFile;
-		if(getCookie($url, $cookieFile)){
-			echo js_arr("CookieGetFailed");
+		
+		$cookie = getCookie($url);
+		if($cookie == "failed"){
+			echo js_arr("getCookieFailed");
 			exit;
+		}else{
+			$_SESSION['cookieBook'] = $cookie;
 		}
-		if(getVerify($url, $cookieFile, "images/verifyBook.jpg")){
+		if(getVerify($url, $cookie, "images/verifyBook.jpg")){
 			echo js_arr("getVerifyBookFailed");
 		}else{
 			echo js_arr("ok");
@@ -593,16 +584,20 @@ class ActController extends Controller
 				unlink($_SESSION['cookieGrade']);
 			}
 		}
-		$cookieFile = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
-		$_SESSION['cookieGrade'] = $cookieFile;
+		$cookie = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		
 		$url = "http://61.139.105.138/CheckCode.aspx";
 		$img = "images/verifyGradeQM.jpg";
 		$referer = "http://61.139.105.138/default2.aspx";
-		if(getCookie($url, $cookieFile)){
-			echo js_arr("cookieFailed");
+		$cookie = getCookie($url);
+		if($cookie == "failed"){
+			echo js_arr("getCookieFailed");
 			exit;
+		}else{
+			$_SESSION['cookieGrade'] = $cookie;
 		}
-		if(getVerify($url, $cookieFile, $img, $referer)){
+		$_SESSION['cookieGrade'] = $cookie;
+		if(getVerify($url, $cookie, $img, $referer)){
 			echo js_arr("failed");
 			exit;
 		}else{
@@ -624,9 +619,9 @@ class ActController extends Controller
 		$referer = "http://61.139.105.138/default2.aspx";
 		// 首先是模拟登录
 		$url = "http://61.139.105.138/default2.aspx";
-		$cookieFile = $_SESSION['cookieGrade'];
+		$cookie = $_SESSION['cookieGrade'];
 		// 获取隐藏字段 
-		$hidden = $this->getHiddenView($url, $cookieFile);
+		$hidden = $this->getHiddenView($url, $cookie);
 		// 设置post数组并且转化为httpdata格式
 		$post['__VIEWSTATE'] = $hidden;
 		$post['txtUserName'] = $username;
@@ -639,7 +634,7 @@ class ActController extends Controller
 		$post['Button1'] = iconv('utf-8', 'gb2312', '登录');
 		$post = http_build_query($post);
 
-		$result = curlLogin($url, $post, $cookieFile);
+		$result = curlLogin($url, $post, $cookie);
 		$pattern = "/Object moved to/";
 		if(!preg_match($pattern, $result)){
 			echo js_arr("logError");
@@ -651,8 +646,8 @@ class ActController extends Controller
 	}
 
 	// 获取隐藏字段函数
-	public function getHiddenView($url, $cookieFile){
-		$result = getInfoRefer($url, $url, $cookieFile);
+	public function getHiddenView($url, $cookie){
+		$result = getInfoRefer($url, $url, $cookie);
 		$pattern = '/<input type="hidden" name="__VIEWSTATE" value="(.*?)" \/>/is';
 		preg_match($pattern, $result, $matches);
 		if (empty($matches[1])) {
@@ -671,18 +666,18 @@ class ActController extends Controller
 		$username = $_SESSION['jwxtUsername'];
 		$year = $_SESSION['jwxtYear'];
 		$item = $_SESSION['jwxtItem'];
-		$cookieFile = $_SESSION['cookieGrade'];
+		$cookie = $_SESSION['cookieGrade'];
 		$url = 'http://61.139.105.138/xscjcx_dq.aspx?xh='.$username;
 		$postcj['__EVENTTARGET'] = '';
 		$postcj['__EVENTARGUMENT'] = '';
-		$postcj['__VIEWSTATE'] = $this->getHiddenView($url, $cookieFile);
+		$postcj['__VIEWSTATE'] = $this->getHiddenView($url, $cookie);
 		$postcj['ddlxn']=  $year;
 		$postcj['ddlxq']=  $item;
 		$postcj['btnCx']=  ' 查  询 ';
 		$postcj = http_build_query($postcj);
 		$url = "http://61.139.105.138/xscjcx_dq.aspx?xh=".$username;
 		// 获取隐藏字段
-		$result = curlLogin($url, $postcj, $cookieFile, $url);
+		$result = curlLogin($url, $postcj, $cookie, $url);
 		// $result = str_ireplace(chr(60), "&lt;", $result);
 		// $result = str_ireplace(chr(62), "&gt;", $result);
 		$result = mb_convert_encoding($result, "utf-8", "gb2312");
@@ -720,11 +715,11 @@ class ActController extends Controller
 			return redirect('act/grade.html');
 		}
 		$username = $_SESSION['jwxtUsername'];
-		$cookieFile = $_SESSION['cookieGrade'];
+		$cookie = $_SESSION['cookieGrade'];
 		$year = $_SESSION['jwxtYear'];
 		$item = $_SESSION['jwxtItem'];
 		$url = "http://61.139.105.138/xscjcx.aspx?xh=".$username;
-		$post['__VIEWSTATE'] = $this->getHiddenView($url, $cookieFile);
+		$post['__VIEWSTATE'] = $this->getHiddenView($url, $cookie);
 		$post['__EVENTTARGET'] = '';
 		$post['__EVENTARGUMENT'] = '';
 		$post['hidLanguage'] = '';
@@ -733,7 +728,7 @@ class ActController extends Controller
 		$post['ddl_kcxz'] = '';
 		$post['Button1']=  '成绩统计';
 		$post = http_build_query($post);
-		$result = curlLogin($url, $post, $cookieFile, $url);
+		$result = curlLogin($url, $post, $cookie, $url);
 		// $result = str_ireplace(chr(60), "&lt;", $result);
 		// $result = str_ireplace(chr(62), "&gt;", $result);
 		$result = mb_convert_encoding($result, "utf-8", "gb2312");

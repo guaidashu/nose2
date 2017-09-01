@@ -38,7 +38,7 @@
 			year=$.trim(year);
 			var content=document.getElementById("doc-vld-ta-2").value;
 			content=$.trim(content);
-			var arr = ['web前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它'];
+			var arr = ['Office基础', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它'];
 			var major = document.getElementById("doc-select-2").value;
 			if(name.length<2 || !email || !phone || !year){
 				yy_init("还有内容未完善噢！");
@@ -56,7 +56,7 @@
 				yy_init("请输入正确的入学年份");
 				return;
 			}
-			if(major<0 || major>7){
+			if(major<0 || major>8){
 				yy_init("你娃娃要搞事情");
 				return;
 			}
