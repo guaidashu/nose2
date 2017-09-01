@@ -48,14 +48,15 @@
 			  <label for="doc-select-2">学习方向</label>
 			  <select name="year" id="doc-select-2">
 				<option value="0">Office基础</option>
-			    <option value="1">网页前端</option>
-			    <option value="2">网站后端</option>
-			    <option value="3">Java程序设计</option>
-			    <option value="4">Android开发</option>
-			    <option value="5">游戏开发</option>
-			    <option value="6">网络安全</option>
-			    <option value="7">算法设计</option>
-			    <option value="8">其它</option>
+				<option value="1">C语言二级考试</option>
+			    <option value="2">网页前端</option>
+			    <option value="3">网站后端</option>
+			    <option value="4">Java程序设计</option>
+			    <option value="5">Android开发</option>
+			    <option value="6">游戏开发</option>
+			    <option value="7">网络安全</option>
+			    <option value="8">算法设计</option>
+			    <option value="9">其它</option>
 			  </select>
 			  <span class="am-form-caret"></span>
 			</div>
