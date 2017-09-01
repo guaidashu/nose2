@@ -31,7 +31,7 @@
 		    <div class="am-form-group">
 		      <label for="doc-vld-529">专业班级</label>
 		      <input type="text" id="doc-vld-529" name="zybj" class="js-pattern-mobile"
-		             placeholder="输入手机号" required/>
+		             placeholder="如 软件20156" required/>
 		    </div>
 
 		    <div class="am-form-group">
@@ -43,7 +43,7 @@
 		    <div class="am-form-group">
 		      <label for="doc-vld-530">学号</label>
 		      <input type="text" id="doc-vld-530" name="xh" class="js-pattern-mobile"
-		             placeholder="输入手机号" required/>
+		             placeholder="输入学号，若是不知道，可在此网站进行查询" required/>
 		    </div>
 
 		    <div class="am-form-group">
