@@ -172,8 +172,6 @@ class ActController extends Controller
 		}
 		$url = "http://61.139.105.105:8088/Student/Detail";
 		$result = getInfo($url, $_SESSION['cookie']);
-		// 删除临时的cookie文件夹
-		unlink($_SESSION['cookie']);
 		// 获取班级
 		$pattern = '/<td>(.*?)<\/td>/is';
 		preg_match_all($pattern, $result, $match);
