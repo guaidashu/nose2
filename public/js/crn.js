@@ -36,11 +36,21 @@
 			phone=$.trim(phone);
 			var year=document.getElementById("doc-select-1").value;
 			year=$.trim(year);
+			// 获取性别
+			var sex = document.getElementById("doc-select-6").value;
+			sex = $.trim(sex);
+			// 获取学号
+			var xh = document.getElementById("doc-vld-530").value;
+			xh = $.trim(xh);
+			// 获取专业班级
+			var zybj = document.getElementById("doc-vld-529").value;
+			zybj = $.trim(zybj);
 			var content=document.getElementById("doc-vld-ta-2").value;
 			content=$.trim(content);
 			var arr = ['Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它'];
+			var sexArr = ['男', '女'];
 			var major = document.getElementById("doc-select-2").value;
-			if(name.length<2 || !email || !phone || !year){
+			if(name.length<2 || !email || !phone || !year || !xh || !zybj || !sex){
 				yy_init("还有内容未完善噢！");
 				return;
 			}
@@ -56,10 +66,15 @@
 				yy_init("请输入正确的入学年份");
 				return;
 			}
+			if(!numCheck(xh)){
+				yy_init("请输入11位正确的学号");
+				return;
+			}
 			if(major<0 || major>9){
 				yy_init("你娃娃要搞事情");
 				return;
 			}
+			sex = sexArr[sex];
 			major = arr[major];
 			if(content.length>200){
 				yy_init("内容太长了，控制在200字以内噢。");
@@ -75,7 +90,7 @@
 				url:"/crn/handle.html",
 				type:"POST",
 				dataType:"json",
-				data:{"name":name, "email":email, "phone":phone, "year":year,"content":content,"major":major},
+				data:{"name":name, "email":email, "phone":phone, "year":year,"content":content,"major":major,"zybj":zybj,"xh":xh,"sex":sex},
 				success:function(data){
 					if(data.text=="ok"){
 						yy_init("提交成功，请等待邮箱通知结果");
@@ -149,3 +164,13 @@
 	}
 	window['crn_function']=crn_function;
 })(jQuery);
+
+function numCheck(num)
+{
+	var pattern = /^([0-9]){11}$/;
+	if(!pattern.test(num)){
+		return false;
+	}else{
+		return true;
+	}
+}

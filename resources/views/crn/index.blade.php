@@ -29,8 +29,20 @@
 		    </div>
 
 		    <div class="am-form-group">
+		      <label for="doc-vld-529">专业班级</label>
+		      <input type="text" id="doc-vld-529" name="zybj" class="js-pattern-mobile"
+		             placeholder="输入手机号" required/>
+		    </div>
+
+		    <div class="am-form-group">
 		      <label for="doc-vld-528">手机号</label>
 		      <input type="text" id="doc-vld-528" name="phone" class="js-pattern-mobile"
+		             placeholder="输入手机号" required/>
+		    </div>
+
+		    <div class="am-form-group">
+		      <label for="doc-vld-530">学号</label>
+		      <input type="text" id="doc-vld-530" name="xh" class="js-pattern-mobile"
 		             placeholder="输入手机号" required/>
 		    </div>
 
@@ -40,6 +52,15 @@
 			    <option value="2017">2017</option>
 			    <option value="2016">2016</option>
 			    <option value="2015">2015</option>
+			  </select>
+			  <span class="am-form-caret"></span>
+			</div>
+
+			<div class="am-form-group">
+			  <label for="doc-select-6">性别</label>
+			  <select name="xb" id="doc-select-6">
+				<option value="0">男</option>
+				<option value="0">女</option>
 			  </select>
 			  <span class="am-form-caret"></span>
 			</div>

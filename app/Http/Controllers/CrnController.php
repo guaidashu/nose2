@@ -40,8 +40,13 @@ class CrnController extends Controller
 		$phone=htmlspecialchars($_POST['phone']);
 		$content=htmlspecialchars($_POST['content']);
 		$major = htmlspecialchars($_POST['major']);
+		$xh = htmlspecialchars($_POST['xh']);
+		$zybj = htmlspecialchars($_POST['zybj']);
+		$sex = htmlspecialchars($_POST['sex']);
+
 		$majorArr = array('Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它');
-		if(strlen($name)<2 || !$phone || !$email || !$year || strlen($content)>200 || !$major){
+		$sexArr = array('男', '女');
+		if(strlen($name)<2 || !$phone || !$email || !$year || strlen($content)>200 || !$major || !$sex || !$zybj || !$xh){
 			echo js_arr("failed");
 			exit;
 		}
@@ -64,6 +69,10 @@ class CrnController extends Controller
 			echo js_arr("major");
 			exit;
 		}
+		if(!in_array($sex, $sexArr)){
+			echo js_arr("sex");
+			exit;
+		}
 		//我们需要判断邮箱和手机号码是否已被注册
 		$data=DB::select('select phone,email from crn');
 		foreach ($data as $key => $value) {
@@ -84,7 +93,10 @@ class CrnController extends Controller
 			"phone"=>$phone,
 			'date'=>date('Y-m-d H:i:s',time()),
 			"content"=>$content,
-			"major"=>$major
+			"major"=>$major,
+			'sex' => $sex,
+			'xh' => $xh,
+			'zybj' => $zybj
 			);
 		// 插入数据库 并且获取操作返回值
 		$data=DB::table('crn')->insert($arr);
