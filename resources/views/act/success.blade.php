@@ -12,8 +12,8 @@
 @include('./../common/navigation')
 
 <div class="ca_success_container">
-	<h1>恭喜你成功提交申请。</h1><br />
-	请加群624128312。很多消息会在群里发布噢。<br /><br />
+	<h1>恭喜你成为会员。</h1><br />
+	点击 <a href="https://jq.qq.com/?_wv=1027&k=5XPEzLC">https://jq.qq.com/?_wv=1027&k=5XPEzLC</a> 或者QQ搜索624128312加群。很多消息会在群里发布噢。<br /><br />
 	更多信息我们已经发送至您的邮箱，请注意查收，若是没有收到，请在垃圾箱查看是否有。
 	QQ邮箱个人过滤器十分神奇，他简直就是智障。<br /><br />带来不便请谅解，谢谢。<br />
 	也可以扫二维码加群：<br />

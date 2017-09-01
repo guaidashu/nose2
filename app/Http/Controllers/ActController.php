@@ -548,7 +548,7 @@ class ActController extends Controller
 			}
 			$_SESSION['cookieBook'] = null;
 		}
-		$cookie = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
+		// $cookie = public_path()."/cookie/".md5(date("Y-m-d H:i:s",time())).".cookie";
 		$url = "http://lib.suse.edu.cn/tools/verify_code.ashx?time=0.96".abs(rand(600000,  2550000)<<3);
 		
 		$cookie = getCookie($url);
