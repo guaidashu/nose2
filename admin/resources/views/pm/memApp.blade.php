@@ -24,7 +24,7 @@
 			    <thead>
 			        <tr>
 			            <th>姓名</th>
-			            <th>入学年份</th>
+			            <th>学习方向</th>
 			            <th>更多</th>
 			            <th>删除</th>
 			        </tr>
@@ -34,7 +34,7 @@
 
 				<tr>
 				  <td>{{$value->name}}</td>
-				  <td>{{$value->year}}</td>
+				  <td>{{$value->major}}</td>
 				  <td><a class="cursor_pointer ca_admin_algorithm_more" data-name="{{$value->name}}" data-year="{{$value->year}}" data-date="{{date('Y-m-d',strtotime($value->date))}}" data-phone="{{$value->phone}}" data-email="{{$value->email}}" data-more="{{$value->content}}">更多</a></td>
 				  <td><a class="cursor_pointer ca_admin_algorithm_delete" data-id="{{$value->id}}">删除</a></td>
 				</tr>
