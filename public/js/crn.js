@@ -18,6 +18,9 @@
 		this.body.delegate(".validate_btn", "click", function(){
 			self.validateCheck();
 		});
+		this.body.delegate(".change_redirect_btn", "click", function(){
+			self.changeInfo();
+		});
 	};
 	crn_function.prototype={
 		test:function()
@@ -157,6 +160,38 @@
 				},
 				error:function(data,status,e){
 					yy_init("系统错误");
+					console.log(e);
+				}
+			});
+		},
+		changeInfo:function()
+		{
+			var self = this;
+			var arr = ['Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它'];
+			var username = document.getElementById("doc-vld-530").value;
+			username = $.trim(username);
+			var password = document.getElementById("doc-vld-531").value;
+			password = $.trim(password);
+			var major = document.getElementById("doc-select-2").value;
+			major = $.trim(major);
+			major = arr[major];
+			if(!username || !password){
+				yy_init("请输入帐号或密码");
+				return;
+			}
+			$.ajax({
+				url:"/crn/changeInfoHandle.html",
+				type:"POST",
+				dataType:"json",
+				data:{"username":username, "password":password, "major":major},
+				success:function(data){
+					if(data.text == "ok"){
+						yy_init("修改成功");
+					}else{
+						yy_init(data.text);
+					}
+				},
+				error:function(data, status, e){
 					console.log(e);
 				}
 			});

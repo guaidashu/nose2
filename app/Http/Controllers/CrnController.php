@@ -134,4 +134,39 @@ class CrnController extends Controller
 			echo "成功给".$data[0]->name."发送邮件(".$data[0]->email.")\n";
 		}
 	}
+
+	public function changeInfo()
+	{
+		return view('crn/changeInfo', ['name'=>$_SESSION['ca_username']]);
+	}
+
+	public function changeInfoHandle()
+	{
+		// $username = "15101020615";
+		// $major = "Office基础";
+		// $password = "wyysdsa!";
+		$username = htmlspecialchars($_POST['username']);
+		$password = htmlspecialchars($_POST['password']);
+		$major = htmlspecialchars($_POST['major']);
+		if(!numCheck($username)){
+			echo js_arr("请输入正确用户名");
+			exit;
+		}
+		$majorArr = array('Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它');
+		if(!in_array($major, $majorArr)){
+			echo js_arr("请填写学习方向");
+			exit;
+		}
+		$data = DB::table('crn')->where('xh', $username)->get();
+		if(empty($data)){
+			echo js_arr("没有账号信息");
+			exit;
+		}
+		if($data[0]->password == $password){
+			DB::table('crn')->where('xh', $username)->update(['major'=>$major]);
+			echo js_arr("ok");
+		}else{
+			echo js_arr("密码错误");
+		}
+	}
 }

@@ -21,6 +21,9 @@ Route::get('index/index.html', 'IndexController@index');
 Route::get('crn', 'CrnController@index');
 Route::get('crn/index.html', 'CrnController@index');
 Route::post('crn/handle.html', 'CrnController@handle');
+	// 个人信息修改
+	Route::get('crn/changeInfo.html', 'CrnController@changeInfo');
+	Route::post('crn/changeInfoHandle.html', 'CrnController@changeInfoHandle');
 	// 协会招新邮件发送
 	Route::get('crn/sendMail.html', 'CrnController@sendMail');
 
