@@ -24,6 +24,7 @@ Route::get('algorithm/delete.html','AlgorithmController@delete');
 	// 入会申请
 Route::get('pm/memApp.html','PmController@memApp');
 Route::get('pm/memApp/delete.html','PmController@delete');
+	Route::get('pm/confirm.html', 'PmController@confirm');
 
 // 登录模块
 Route::get('login','LoginController@login');

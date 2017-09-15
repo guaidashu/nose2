@@ -45,4 +45,9 @@ class PmController extends Controller
 			echo js_arr("failed");
 		}
 	}
+
+	public function confirm()
+	{
+		return view('pm/confirm', ['name'=>$_SESSION['ca_admin_username']]);
+	}
 }
