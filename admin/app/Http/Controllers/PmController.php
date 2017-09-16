@@ -46,8 +46,42 @@ class PmController extends Controller
 		}
 	}
 
-	public function confirm()
+	// 确认入会页面
+	public function confirmPage()
 	{
-		return view('pm/confirm', ['name'=>$_SESSION['ca_admin_username']]);
+		return view('pm/confirmPage', ['name'=>$_SESSION['ca_admin_username']]);
+	}
+
+	// 个人信息查询处理
+	public function confirmGetInfo()
+	{
+		$name = htmlspecialchars($_POST['name']);
+		$data = DB::table('crn')->where('name', $name)->get();
+		if(empty($data)){
+			echo js_arr("没有此人数据", 0);
+			exit;
+		}
+		echo js_arr($data[0], 1);
+	}
+
+	// 确认入会处理
+	public function confirmChange()
+	{
+		$qq = htmlspecialchars($_POST['qq']);
+		if(!numCheck($qq)){
+			echo js_arr("这不是一个正确的QQ号噢");
+			exit;
+		}
+		$id = htmlspecialchars($_POST['id']);
+		if(!numCheck($id)){
+			echo js_arr("有问题");
+			exit;
+		}
+		$data = DB::table('crn')->where('id', $id)->update(['qq'=>$qq, 'allow'=>1]);
+		if($data){
+			echo js_arr("ok");
+		}else{
+			echo js_arr("failed");
+		}
 	}
 }

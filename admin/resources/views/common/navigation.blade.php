@@ -17,6 +17,7 @@
 	    </a>
 	    <ul class="am-list am-collapse admin-sidebar-sub" id="user-nav">
 	        <li><a href="{{url('pm/memApp.html')}}"><i class="am-icon-user am-margin-left-sm"></i> 入会申请 </a></li>
+	        <li><a href="{{url('pm/confirm.html')}}"><i class="am-icon-user am-margin-left-sm"></i> 入会确认 </a></li>
 	        <li><a href="#"><i class="am-icon-user am-margin-left-sm"></i> 人员列表 </a></li>
 	    </ul>
 	  </li>
@@ -87,6 +88,7 @@
 			    </a>
 			    <ul class="am-list am-collapse admin-sidebar-sub" id="m-user-nav">
 			        <li><a href="{{url('pm/memApp.html')}}"><i class="am-icon-user am-margin-left-sm"></i> 入会申请 </a></li>
+			        <li><a href="{{url('pm/confirm.html')}}"><i class="am-icon-user am-margin-left-sm"></i> 入会确认 </a></li>
 			        <li><a href="#"><i class="am-icon-user am-margin-left-sm"></i> 人员列表 </a></li>
 			    </ul>
 			  </li>
