@@ -34,10 +34,10 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	Route::get('act/success.html', 'ActController@success');
 	Route::get('act/code.html', 'ActController@codeOnline');
 	// 新生班级查询
-	// Route::get('act/findClass.html', 'ActController@findClass');
-	// Route::get('act/getVerify.html', 'ActController@getVerify');
-	// Route::post('act/login.html', 'ActController@login');
-	// Route::get('act/getInfo.html', 'ActController@getInfo');
+	Route::get('act/findClass.html', 'ActController@findClass');
+	Route::get('act/getVerify.html', 'ActController@getVerify');
+	Route::post('act/login.html', 'ActController@login');
+	Route::get('act/getInfo.html', 'ActController@getInfo');
 	// 四六级查询
 	Route::get('act/findGrade.html', 'ActController@findGrade');
 	Route::post('act/findGradeResult.html', 'ActController@findGradeResult');
