@@ -81,7 +81,7 @@
 						yy_init("确认成功");
 						document.getElementById("qq").value = "";
 					}else{
-						yy_init("系统错误");
+						yy_init("已经提交过了");
 					}
 				},
 				error:function(data, status, e){
