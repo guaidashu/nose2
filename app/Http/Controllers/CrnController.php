@@ -47,7 +47,7 @@ class CrnController extends Controller
 		$majorArr = array('Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它');
 		$sexArr = array('男', '女');
 		if(strlen($name)<2 || !$phone || !$email || !$year || !$major || !$sex || !$zybj || !$xh){
-			echo js_arr("failed");
+			echo js_arr("填写的内容不符合规范噢");
 			exit;
 		}
 		// 判断是否为正确的邮箱
