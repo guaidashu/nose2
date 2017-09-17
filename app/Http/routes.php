@@ -24,6 +24,11 @@ Route::post('crn/handle.html', 'CrnController@handle');
 	// 个人信息修改
 	Route::get('crn/changeInfo.html', 'CrnController@changeInfo');
 	Route::post('crn/changeInfoHandle.html', 'CrnController@changeInfoHandle');
+
+
+	Route::get('crn/confirm.html', 'CrnController@confirmPage');
+	Route::post('crn/confirmGetInfo.html', 'CrnController@confirmGetInfo');
+	Route::post('crn/confirmChange.html', 'CrnController@confirmChange');
 	// 协会招新邮件发送
 	Route::get('crn/sendMail.html', 'CrnController@sendMail');
 

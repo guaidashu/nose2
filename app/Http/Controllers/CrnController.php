@@ -169,4 +169,43 @@ class CrnController extends Controller
 			echo js_arr("密码错误");
 		}
 	}
+
+	// 确认入会页面
+	public function confirmPage()
+	{
+		return view('crn/confirmPage', ['name'=>$_SESSION['ca_username']]);
+	}
+
+	// 个人信息查询处理
+	public function confirmGetInfo()
+	{
+		$name = htmlspecialchars($_POST['name']);
+		$data = DB::table('crn')->where('xh', $name)->get();
+		if(empty($data)){
+			echo js_arr("没有此人数据", 0);
+			exit;
+		}
+		echo js_arr($data[0], 1);
+	}
+
+	// 确认入会处理
+	public function confirmChange()
+	{
+		$qq = htmlspecialchars($_POST['qq']);
+		if(!numCheck($qq)){
+			echo js_arr("这不是一个正确的QQ号噢");
+			exit;
+		}
+		$id = htmlspecialchars($_POST['id']);
+		if(!numCheck($id)){
+			echo js_arr("有问题");
+			exit;
+		}
+		$data = DB::table('crn')->where('id', $id)->update(['qq'=>$qq]);
+		if($data){
+			echo js_arr("ok");
+		}else{
+			echo js_arr("failed");
+		}
+	}
 }
