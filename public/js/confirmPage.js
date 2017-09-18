@@ -47,7 +47,7 @@
 								  '<li style="background-color:transparent;"><a href="#">学习方向：'+data.text.major+'</a></li>'+
 								  '<li style="background-color:transparent;"><a href="#">专业班级：'+data.text.zybj+'</a></li>'+
 								  '<li style="background-color:transparent;"><a href="#">性别：'+data.text.sex+'</a></li>';
-						if(data.text.qq){
+						if(data.text.qq && data.text.allow==1){
 							str = str + '<li style="background-color:transparent;"><a href="#">已确认入会</a></li>';
 						}else{
 							$(".qq").css("display", "block");
