@@ -74,17 +74,17 @@ class CrnController extends Controller
 			exit;
 		}
 		//我们需要判断邮箱和手机号码是否已被注册
-		$data=DB::select('select phone,email from crn');
-		foreach ($data as $key => $value) {
-			if($value->email==$email){
-				echo js_arr("re_email");
-				exit;
-			}
-			if($value->phone==$phone){
-				echo js_arr("re_phone");
-				exit;
-			}
-		}
+		// $data=DB::select('select phone,email from crn');
+		// foreach ($data as $key => $value) {
+		// 	if($value->email==$email){
+		// 		echo js_arr("re_email");
+		// 		exit;
+		// 	}
+		// 	if($value->phone==$phone){
+		// 		echo js_arr("re_phone");
+		// 		exit;
+		// 	}
+		// }
 
 		$arr=array(
 			"name"=>$name,
