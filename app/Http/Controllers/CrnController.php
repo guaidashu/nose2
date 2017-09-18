@@ -99,7 +99,7 @@ class CrnController extends Controller
 			'zybj' => $zybj
 			);
 		// 插入数据库 并且获取操作返回值
-		$data=DB::table('crn')->insert($arr);
+		$data=DB::table('crn')->where('phone', $phone)->update($arr);
 		//成功返回ok ，否则返回failed
 		if($data){
 			echo js_arr("ok");
