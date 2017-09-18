@@ -49,6 +49,8 @@
 								  '<li style="background-color:transparent;"><a href="#">性别：'+data.text.sex+'</a></li>';
 						if(data.text.qq && data.text.allow==1){
 							str = str + '<li style="background-color:transparent;"><a href="#">已确认入会</a></li>';
+						}else if(data.text.qq){
+							str = str + '<li style="background-color:transparent;"><a href="#">你还没有缴费并进行确认噢</a></li>';
 						}else{
 							$(".qq").css("display", "block");
 							$(".fie_show").html('<button data-id="'+data.text.id+'" type="button" class="handle_btn_confirm am-btn am-btn-primary am-btn-block">确认提交</button>');
