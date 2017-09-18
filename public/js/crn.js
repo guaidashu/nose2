@@ -12,7 +12,9 @@
 		// this.test();
 		this.body.delegate(".handle_btn", "click", function(){
 			if(self.submit){
-				self.insert();
+				yy_init("报名已经结束了噢");
+				return;
+				// self.insert();
 			}
 		});
 		this.body.delegate(".validate_btn", "click", function(){

@@ -28,6 +28,8 @@ class CrnController extends Controller
 
 	public function handle()
 	{
+		echo js_arr("failed");
+		exit;
 		// 判断是否提交次数已到
 		if($_SESSION['validate_count']>=3){
 			echo js_arr("validate");
