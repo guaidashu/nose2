@@ -43,7 +43,6 @@
 					if(data.id != 0){
 						var str = '<li style="background-color:transparent;"><a href="#">姓名：'+data.text.name+'</a></li>'+
 								  '<li style="background-color:transparent;"><a href="#">电话：'+data.text.phone+'</a></li>'+
-								  '<li style="background-color:transparent;"><a href="#">邮箱：'+data.text.email+'</a></li>'+
 								  '<li style="background-color:transparent;"><a href="#">学习方向：'+data.text.major+'</a></li>'+
 								  '<li style="background-color:transparent;"><a href="#">专业班级：'+data.text.zybj+'</a></li>'+
 								  '<li style="background-color:transparent;"><a href="#">性别：'+data.text.sex+'</a></li>';
