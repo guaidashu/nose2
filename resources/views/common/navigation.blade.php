@@ -63,14 +63,14 @@
                       <div class="header_contacts--item ca_contacts_item_3">
                                             <div class="contact_mini">
                                                 <i style="color:#7c6aa6" class="contact-icon am-icon-phone"></i>
-                                                <strong>13739497421</strong>
+                                                <strong>18882021307</strong>
                                                 <span>周一~周五, 8:00 - 20:00</span>
                                             </div>
                                         </div>
                       <div class="header_contacts--item ca_contacts_item_2">
                                             <div class="contact_mini">
                                                 <i style="color:#7c6aa6" class="contact-icon am-icon-envelope-o"></i>
-                                                <strong>a1023767856@163.com</strong>
+                                                <strong>zhaung25712@163.com</strong>
                                                 <span>随时欢迎您的来信！</span>
                                             </div>
                                         </div>
