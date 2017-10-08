@@ -14,7 +14,7 @@ function debug($arr, $exit=false)
 	}else{
 		echo $arr;
 	}
-	echo "<pre/>";
+	echo "</pre>";
 	echo "<hr />";
 	if($exit){
 		exit;
