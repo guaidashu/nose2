@@ -34,10 +34,10 @@
             <i class="am-icon-youtube-play"></i>
             <i class="am-icon-rss"></i>
             @if(empty($name))
-              <a href="#">登录</a>
-              <a href="#">注册</a>
+              <a href="{{url('login/index.html')}}">登录</a>
             @else
               <a href="#">{{$name}}</a>
+              <a class="ca_exit cursor_pointer">退出</a>
             @endif
           </div>
         </div>
@@ -132,7 +132,7 @@
         </ul>
         <!-- sub-menu end-->
       </li>
-      <li><a href="{{url('crn/index.html')}}">协会招新</a></li>
+      <li><a href="{{url('crn/changeInfo.html')}}">方向修改</a></li>
       <li><a href="{{url('about/index.html')}}">关于我们</a></li>
       <!-- <li><a href="html/contact.html">联系我们</a></li> -->
     </ul>
@@ -207,7 +207,7 @@
                       </li>
                   </ul>
               </li>
-              <li class=""><a href="{{url('crn/index.html')}}" class="" >协会招新</a></li>
+              <li class=""><a href="{{url('crn/changeInfo.html')}}" class="" >方向修改</a></li>
               <li class=""><a href="{{url('about/index.html')}}" class="" >关于我们</a></li>
               <li class=""><a href="http://wpa.qq.com/msgrd?v=3&uin=1023767856&site=qq&menu=yes" target="_blank" class="" >联系我们</a></li>
               <li class="am-parent">
@@ -234,10 +234,11 @@
                 </div>
               </li>
               @if(empty($name))
-                <li class=""><a href="#" class="">登录</a></li>
-                <li class=""><a href="#" class="">注册</a></li>
+                <li class=""><a href="{{url('login/index.html')}}" class="">登录</a></li>
+                <!-- <li class=""><a href="#" class="">注册</a></li> -->
               @else
                 <li class=""><a href="#" class="">{{$name}}</a></li>
+                <li class=""><a class="ca_exit cursor_pointer">退出</a></li>
               @endif
           </ul>
 

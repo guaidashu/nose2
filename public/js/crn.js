@@ -23,6 +23,17 @@
 		this.body.delegate(".change_redirect_btn", "click", function(){
 			self.changeInfo();
 		});
+		this.body.delegate(".change_password_btn", "click", function(){
+			self.changePassword();
+		});
+
+		this.body.delegate("#doc-vld-533", "blur", function(){
+			if(document.getElementById("doc-vld-532").value != document.getElementById("doc-vld-533").value){
+				yy_init("两次密码不一样噢");
+				return;
+			}
+		});
+
 	};
 	crn_function.prototype={
 		test:function()
@@ -52,7 +63,7 @@
 			zybj = $.trim(zybj);
 			var content=document.getElementById("doc-vld-ta-2").value;
 			content=$.trim(content);
-			var arr = ['Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它'];
+			var arr = ['Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', 'C++', '其它'];
 			var sexArr = ['男', '女'];
 			var major = document.getElementById("doc-select-2").value;
 			if(name.length<2 || !email || !phone || !year || !xh || !zybj || !sex){
@@ -169,34 +180,88 @@
 		changeInfo:function()
 		{
 			var self = this;
-			var arr = ['Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它'];
-			var username = document.getElementById("doc-vld-530").value;
-			username = $.trim(username);
-			var password = document.getElementById("doc-vld-531").value;
-			password = $.trim(password);
+			var arr = ['Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', 'C++', '其它'];
 			var major = document.getElementById("doc-select-2").value;
 			major = $.trim(major);
 			major = arr[major];
-			if(!username || !password){
-				yy_init("请输入帐号或密码");
+			if(self.validateCount >= 3){
+				validate_show();
 				return;
 			}
+			$(".change_redirect_btn").addClass("am-disabled");
 			$.ajax({
 				url:"/crn/changeInfoHandle.html",
 				type:"POST",
 				dataType:"json",
-				data:{"username":username, "password":password, "major":major},
+				data:{"major":major},
 				success:function(data){
 					if(data.text == "ok"){
 						yy_init("修改成功");
+						$(".ca_major").html(major);
 					}else{
 						yy_init(data.text);
 					}
+					self.getValidateCount();
+					$(".change_redirect_btn").removeClass("am-disabled");
 				},
 				error:function(data, status, e){
 					console.log(e);
+					self.getValidateCount();
+					$(".change_redirect_btn").removeClass("am-disabled");
 				}
 			});
+		},
+		changePassword:function()
+		{
+			var self = this;
+			var phone = document.getElementById("doc-vld-530").value;
+			phone = $.trim(phone);
+			var password = document.getElementById("doc-vld-531").value;
+			password = $.trim(password);
+			var newPwd = document.getElementById("doc-vld-532").value;
+			newPwd = $.trim(newPwd);
+			var rePwd = document.getElementById("doc-vld-533").value;
+			rePwd = $.trim(rePwd);
+			if(!phone || !password || !newPwd || !rePwd){
+				yy_init("请完善信息");
+				return;
+			}
+			if(newPwd != rePwd){
+				yy_init("两次密码不一样噢");
+				return;
+			}
+			if(self.validateCount>=3){
+				validate_show();
+				return;
+			}
+			$(".change_password_btn").addClass("am-disabled");
+			$.ajax({
+				url:"/login/changePasswordHandle.html",
+				type:"POST",
+				dataType:"json",
+				data:{"phone":phone, "password":password, "newPwd":newPwd},
+				success:function(data){
+					if(data.text == "ok"){
+						yy_init("修改成功");
+						document.getElementById("doc-vld-530").value = "";
+						document.getElementById("doc-vld-531").value = "";
+						document.getElementById("doc-vld-532").value = "";
+						document.getElementById("doc-vld-533").value = "";
+					}else if(data.text == "error_password"){
+						yy_init("密码错误");
+					}else if(data.text == "error_user"){
+						yy_init("不存在此用户");
+					}else{
+						yy_init("未知错误");
+					}
+					$(".change_password_btn").removeClass("am-disabled");
+				},
+				error:function(data, status, e){
+					console.log(e);
+					$(".change_password_btn").removeClass("am-disabled");
+				}
+			});
+			self.getValidateCount();
 		}
 	}
 	window['crn_function']=crn_function;

@@ -18,9 +18,9 @@ Route::get('index/index.html', 'IndexController@index');
 // Route::get('test', 'IndexController@test');
 
 // 协会招新页面
-Route::get('crn', 'CrnController@index');
-Route::get('crn/index.html', 'CrnController@index');
-Route::post('crn/handle.html', 'CrnController@handle');
+// Route::get('crn', 'CrnController@index');
+// Route::get('crn/index.html', 'CrnController@index');
+// Route::post('crn/handle.html', 'CrnController@handle');
 	// 个人信息修改
 	Route::get('crn/changeInfo.html', 'CrnController@changeInfo');
 	Route::post('crn/changeInfoHandle.html', 'CrnController@changeInfoHandle');
@@ -82,6 +82,16 @@ Route::get('project/index.html', 'ProjectController@index');
 // 关于我们页面模块
 Route::get('about', 'AboutController@index');
 Route::get('about/index.html', 'AboutController@index');
+
+// 会员登录界面
+Route::get('login/index.html', 'LoginController@index');
+Route::get('login', 'LoginController@index');
+Route::post('login/loginHandle.html', 'LoginController@loginHandle');
+	// 修改密码
+	Route::get('login/changePassword.html', 'LoginController@changePassword');
+	Route::post('login/changePasswordHandle.html', 'LoginController@changePasswordHandle');
+	// 退出登录
+	Route::get('login/loginExit.html', 'LoginController@loginExit');
 
 // 验证码
 Route::get('validate.html', 'ValidateController@validate');

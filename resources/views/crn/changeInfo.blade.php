@@ -17,19 +17,26 @@
 	    <form class="am-form" data-am-validator>
 	      <fieldset class="am-form-set">
 	        <legend>修改学习方向</legend>
-	        <div class="am-form-group">
-		      <label for="doc-vld-530">帐号</label>
+	        <!-- <div class="am-form-group">
+		      <label for="doc-vld-530">学号</label>
 		      <input type="text" id="doc-vld-530" name="xh" class="js-pattern-mobile"
 		             placeholder="输入学号，若是不知道，可在此网站进行查询" required/>
-		    </div>
-		    <div class="am-form-group">
+		    </div> -->
+		    <!-- <div class="am-form-group">
 		      <label for="doc-vld-531">密码</label>
 		      <input type="password" id="doc-vld-531" name="password" class="js-pattern-mobile"
-		             placeholder="输入学号，若是不知道，可在此网站进行查询" required/>
-		    </div>
+		             placeholder="输入密码,默认为123" required/>
+		    </div> -->
+		    <ul class="am-list" style="margin:0px;margin-bottom:15px;">
+@if(!empty($major))
+			<li style="background-color:transparent;border:none;"><a href="#">学习方向：<span class="ca_major">{{$major}}</span></a></li>
+@else
+			<li style="background-color:transparent;border:none;"><a href="#">学习方向：<span class="ca_major">暂无或者系统错误</span></a></li>
+@endif
+			</ul>
 	        <div class="am-form-group">
 			  <label for="doc-select-2">学习方向</label>
-			  <select name="year" id="doc-select-2">
+			  <select name="year" class="cursor_pointer" id="doc-select-2">
 				<option value="0">Office基础</option>
 				<option value="1">C语言二级考试</option>
 			    <option value="2">网页前端</option>
@@ -39,7 +46,8 @@
 			    <option value="6">游戏开发</option>
 			    <option value="7">网络安全</option>
 			    <option value="8">算法设计</option>
-			    <option value="9">其它</option>
+			    <option value="9">C++</option>
+			    <option value="10">其它</option>
 			  </select>
 			  <span class="am-form-caret"></span>
 			</div>

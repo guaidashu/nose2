@@ -46,7 +46,7 @@ class CrnController extends Controller
 		$zybj = htmlspecialchars($_POST['zybj']);
 		$sex = htmlspecialchars($_POST['sex']);
 
-		$majorArr = array('Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它');
+		$majorArr = array('Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', 'C++', '其它');
 		$sexArr = array('男', '女');
 		if(strlen($name)<2 || !$phone || !$email || !$year || !$major || !$sex || !$zybj || !$xh){
 			echo js_arr("填写的内容不符合规范噢");
@@ -139,37 +139,45 @@ class CrnController extends Controller
 
 	public function changeInfo()
 	{
-		return view('crn/changeInfo', ['name'=>$_SESSION['ca_username']]);
+		if(empty($_SESSION['ca_username'])){
+			return redirect('login/index.html');
+		}
+		$data = DB::table('crn')->where('phone', $_SESSION['ca_phone'])->get();
+		$major = null;
+		if(empty($data[0])){
+			return redirect('login/index.html');
+		}else{
+			$major = $data[0]->major;
+		}
+		return view('crn/changeInfo', ['name'=>$_SESSION['ca_username'], 'major'=>$major]);
 	}
 
 	public function changeInfoHandle()
 	{
+		if(empty($_SESSION['ca_username'])){
+			echo js_arr("小biqi");
+			exit;
+		}
+		if($_SESSION['validate_count'] >= 3){
+			echo js_arr("validate");
+			exit;
+		}
 		// $username = "15101020615";
 		// $major = "Office基础";
 		// $password = "wyysdsa!";
-		$username = htmlspecialchars($_POST['username']);
-		$password = htmlspecialchars($_POST['password']);
 		$major = htmlspecialchars($_POST['major']);
-		if(!numCheck($username)){
-			echo js_arr("请输入正确用户名");
-			exit;
-		}
-		$majorArr = array('Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', '其它');
+		$majorArr = array('Office基础', 'C语言二级考试', '网页前端', '网站后端', 'Java程序设计', 'Android开发', '游戏开发', '网络安全', '算法设计', 'C++', '其它');
 		if(!in_array($major, $majorArr)){
 			echo js_arr("请填写学习方向");
 			exit;
 		}
-		$data = DB::table('crn')->where('xh', $username)->get();
-		if(empty($data)){
-			echo js_arr("没有账号信息");
-			exit;
-		}
-		if($data[0]->password == $password){
-			DB::table('crn')->where('xh', $username)->update(['major'=>$major]);
+		$data = DB::table('crn')->where('phone', $_SESSION['ca_phone'])->update(['major'=>$major]);
+		if($data){
 			echo js_arr("ok");
 		}else{
-			echo js_arr("密码错误");
+			echo js_arr("failed");
 		}
+		$_SESSION['validate_count'] += 1;
 	}
 
 	// 确认入会页面
