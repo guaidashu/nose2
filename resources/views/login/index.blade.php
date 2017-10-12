@@ -27,7 +27,7 @@
 		<div class="log_user_container">
 			<label id="log_user_label" for="log_user">
 			</label>
-			<input type="text" name="name" id="log_user" placeholder="邮箱/手机号" /> 
+			<input type="text" name="name" id="log_user" placeholder="学号" /> 
 		</div>
 		<!-- 密码 -->
 		<div class="log_password_container">

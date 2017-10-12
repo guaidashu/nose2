@@ -18,9 +18,9 @@
 	      <fieldset class="am-form-set">
 	        <legend>修改密码</legend>
 	        <div class="am-form-group">
-		      <label for="doc-vld-530">手机号</label>
+		      <label for="doc-vld-530">学号</label>
 		      <input type="text" id="doc-vld-530" name="xh" class="js-pattern-mobile"
-		             placeholder="输入手机号" required/>
+		             placeholder="输入学号" required/>
 		    </div>
 		    <div class="am-form-group">
 		      <label for="doc-vld-531">旧密码</label>

@@ -47,7 +47,7 @@ class LoginCOntroller extends Controller
 		$username = htmlspecialchars($_POST['username']);
 		$password = htmlspecialchars($_POST['password']);
 
-		$data = DB::table('crn')->where('phone', $username)->get();
+		$data = DB::table('crn')->where('xh', $username)->get();
 		if(!empty($data[0])){
 			if($data[0]->password == md5($password)){
 				$_SESSION['ca_username'] = $data[0]->name;
@@ -96,10 +96,10 @@ class LoginCOntroller extends Controller
 			exit;
 		}
 
-		$data = DB::table('crn')->where('phone', $phone)->get();
+		$data = DB::table('crn')->where('xh', $phone)->get();
 		if(!empty($data[0])){
 			if($data[0]->password == md5($password)){
-				$data = DB::table('crn')->where("phone", $phone)->update(['password'=>md5($newPwd)]);
+				$data = DB::table('crn')->where("xh", $phone)->update(['password'=>md5($newPwd)]);
 				if($data){
 					echo js_arr("ok");
 				}
