@@ -56,7 +56,7 @@ class PmController extends Controller
 	public function confirmGetInfo()
 	{
 		$name = htmlspecialchars($_POST['name']);
-		$data = DB::table('crn')->where('name', $name)->get();
+		$data = DB::table('crn')->where('xh', $name)->get();
 		if(empty($data)){
 			echo js_arr("没有此人数据", 0);
 			exit;

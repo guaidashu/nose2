@@ -35,7 +35,7 @@
 				<tr>
 				  <td>{{$value->name}}</td>
 				  <td>{{$value->major}}</td>
-				  <td><a class="cursor_pointer ca_admin_algorithm_more" data-name="{{$value->name}}" data-year="{{$value->year}}" data-date="{{date('Y-m-d',strtotime($value->date))}}" data-phone="{{$value->phone}}" data-email="{{$value->email}}" data-more="{{$value->content}}">更多</a></td>
+				  <td><a class="cursor_pointer ca_admin_algorithm_more" data-name="{{$value->name}}" data-phone="{{$value->phone}}" data-contacts="{{$value->contacts}}" data-xh="{{$value->xh}}" data-major="{{$value->major}}" data-zybj="{{$value->zybj}}" data-contel="{{$value->contel}}" data-qq="{{$value->qq}}">更多</a></td>
 				  <td><a class="cursor_pointer ca_admin_algorithm_delete" data-id="{{$value->id}}">删除</a></td>
 				</tr>
 					@endforeach

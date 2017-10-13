@@ -6,11 +6,14 @@ create table `crn`(
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
 	`name` varchar(10) NOT NULL COMMENT '姓名',
 	`phone` varchar(11) NOT NULL COMMENT '电话号码',
-	`date` datetime NOT NULL COMMENT '提交时间',
- 	`email` varchar(40) NOT NULL COMMENT 'email邮箱',
-	`year` int(4) NOT NULL COMMENT '入学年份',
-	`status` int(1) NOT NULL DEFAULT 0 COMMENT '用来判断是否入选，1为入选，0为未处理，2为未入选',
-	`content` text NOT NULL COMMENT '自我描述',
+  `major` varchar(25) NOT NULL COMMENT '学习方向',
+  `xh` varchar(11) NOT NULL COMMENT '学号', 
+  `allow` int(1) NOT NULL DEFAULT 1 COMMENT '是否入会',
+  `zybj` varchar(60) NOT NULL COMMENT '专业班级',
+  `password` varchar(255) NOT NULL DEFAULT '202cb962ac59075b964b07152d234b70' COMMENT '密码',
+	`qq` varchar(11) NOT NULL COMMENT 'qq号',
+	`contacts` varchar(20) NOT NULL  COMMENT '联系人',
+  `contel` varchar(11) NOT NULL COMMENT '联系人电话',
 	PRIMARY KEY(`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 

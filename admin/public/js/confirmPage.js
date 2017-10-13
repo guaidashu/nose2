@@ -43,10 +43,12 @@
 					if(data.id != 0){
 						var str = '<li style="background-color:transparent;"><a href="#">姓名：'+data.text.name+'</a></li>'+
 								  '<li style="background-color:transparent;"><a href="#">电话：'+data.text.phone+'</a></li>'+
-								  '<li style="background-color:transparent;"><a href="#">邮箱：'+data.text.email+'</a></li>'+
 								  '<li style="background-color:transparent;"><a href="#">学习方向：'+data.text.major+'</a></li>'+
+								  '<li style="background-color:transparent;"><a href="#">学号：'+data.text.xh+'</a></li>'+
 								  '<li style="background-color:transparent;"><a href="#">专业班级：'+data.text.zybj+'</a></li>'+
-								  '<li style="background-color:transparent;"><a href="#">性别：'+data.text.sex+'</a></li>';
+								  '<li style="background-color:transparent;"><a href="#">联系人：'+data.text.contacts+'</a></li>'+
+								  '<li style="background-color:transparent;"><a href="#">联系人电话：'+data.text.contel+'</a></li>'+
+								  '<li style="background-color:transparent;"><a href="#">qq号：'+data.text.qq+'</a></li>';
 						if(data.text.qq){
 							str = str + '<li style="background-color:transparent;"><a href="#">已确认入会</a></li>';
 						}else{

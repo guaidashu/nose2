@@ -83,19 +83,21 @@
 		{
 			var self=this;
 			var name=id.attr("data-name");
-			var year=id.attr("data-year");
+			var major=id.attr("data-major");
 			// var subject=id.attr("data-subject");
-			var date=id.attr("data-date");
+			var xh=id.attr("data-xh");
 			var phone=id.attr("data-phone");
-			var email=id.attr("data-email");
-			var content=id.attr("data-more");
+			var zybj=id.attr("data-zybj");
+			var contacts=id.attr("data-contacts");
+			var contel = id.attr("data-contel");
+			var qq = id.attr("data-qq");
 			var str="姓名："+name
-					+"<br />入学年份："+year
-					// +"<br />专业："+subject
+					+"<br />专业班级："+zybj
+					+"<br />学习方向："+major
 					+"<br />电话："+phone
-					+"<br/ >邮箱："+email
-					+"<br />提交时间："+date
-					+"<br />个人简介："+content
+					+"<br/ >联系人："+contacts
+					+"<br />联系人电话："+contel
+					+"<br />qq号："+qq;
 			yy_time_init(str,"详细信息");
 		}
 	}

@@ -27,7 +27,7 @@
 				      <span class="am-input-group-btn">
 				        <button class="handle_btn am-btn am-btn-default" type="button"><span class="am-icon-search"></span> </button>
 				      </span>
-				      <input type="text" class="am-form-field" id="searchName">
+				      <input type="text" class="am-form-field" placeholder="请输入学号" id="searchName">
 				    </div>
 				  </div>
 				</div>
