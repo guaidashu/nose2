@@ -32,6 +32,7 @@
 			<li style="background-color:transparent;border:none;"><a href="#">专业班级：{{$data->zybj}}</a></li>
 			<li style="background-color:transparent;border:none;"><a href="#">电话：{{$data->phone}}</a></li>
 			<li style="background-color:transparent;border:none;"><a href="#">学号：{{$data->xh}}</a></li>
+			<li style="background-color:transparent;border:none;"><a href="#">qq号：{{$data->qq}}</a></li>
 @if(!empty($major))
 			<li style="background-color:transparent;border:none;"><a href="#">学习方向：<span class="ca_major">{{$major}}</span></a></li>
 @else
@@ -39,7 +40,6 @@
 @endif
 			<li style="background-color:transparent;border:none;"><a href="#">联系人：{{$data->contacts}}</a></li>
 			<li style="background-color:transparent;border:none;"><a href="#">联系人电话：{{$data->contel}}</a></li>
-			<li style="background-color:transparent;border:none;"><a href="#">qq号：{{$data->qq}}</a></li>
 			</ul>
 	        <div class="am-form-group">
 			  <label for="doc-select-2">学习方向</label>
