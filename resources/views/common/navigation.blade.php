@@ -132,7 +132,7 @@
         </ul>
         <!-- sub-menu end-->
       </li>
-      <li><a href="{{url('crn/changeInfo.html')}}">方向修改</a></li>
+      <li><a href="{{url('crn/changeInfo.html')}}">个人信息</a></li>
       <li><a href="{{url('about/index.html')}}">关于我们</a></li>
       <!-- <li><a href="html/contact.html">联系我们</a></li> -->
     </ul>
@@ -207,7 +207,7 @@
                       </li>
                   </ul>
               </li>
-              <li class=""><a href="{{url('crn/changeInfo.html')}}" class="" >方向修改</a></li>
+              <li class=""><a href="{{url('crn/changeInfo.html')}}" class="" >个人信息</a></li>
               <li class=""><a href="{{url('about/index.html')}}" class="" >关于我们</a></li>
               <li class=""><a href="http://wpa.qq.com/msgrd?v=3&uin=1023767856&site=qq&menu=yes" target="_blank" class="" >联系我们</a></li>
               <li class="am-parent">
