@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{URL::asset('css/crn.css')}}" />
 <title>
-修改学习方向
+个人信息
 </title>
 </head>
 <body>
@@ -16,7 +16,7 @@
 	  <div class="am-u-md-8 am-u-sm-centered">
 	    <form class="am-form" data-am-validator>
 	      <fieldset class="am-form-set">
-	        <legend>修改学习方向</legend>
+	        <legend>个人信息</legend>
 	        <!-- <div class="am-form-group">
 		      <label for="doc-vld-530">学号</label>
 		      <input type="text" id="doc-vld-530" name="xh" class="js-pattern-mobile"
@@ -28,11 +28,18 @@
 		             placeholder="输入密码,默认为123" required/>
 		    </div> -->
 		    <ul class="am-list" style="margin:0px;margin-bottom:15px;">
+			<li style="background-color:transparent;border:none;"><a href="#">姓名：{{$data->name}}</a></li>
+			<li style="background-color:transparent;border:none;"><a href="#">专业班级：{{$data->zybj}}</a></li>
+			<li style="background-color:transparent;border:none;"><a href="#">电话：{{$data->phone}}</a></li>
+			<li style="background-color:transparent;border:none;"><a href="#">学号：{{$data->xh}}</a></li>
 @if(!empty($major))
 			<li style="background-color:transparent;border:none;"><a href="#">学习方向：<span class="ca_major">{{$major}}</span></a></li>
 @else
 			<li style="background-color:transparent;border:none;"><a href="#">学习方向：<span class="ca_major">暂无或者系统错误</span></a></li>
 @endif
+			<li style="background-color:transparent;border:none;"><a href="#">联系人：{{$data->contacts}}</a></li>
+			<li style="background-color:transparent;border:none;"><a href="#">联系人电话：{{$data->contel}}</a></li>
+			<li style="background-color:transparent;border:none;"><a href="#">qq号：{{$data->qq}}</a></li>
 			</ul>
 	        <div class="am-form-group">
 			  <label for="doc-select-2">学习方向</label>

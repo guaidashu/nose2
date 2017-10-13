@@ -149,7 +149,7 @@ class CrnController extends Controller
 		}else{
 			$major = $data[0]->major;
 		}
-		return view('crn/changeInfo', ['name'=>$_SESSION['ca_username'], 'major'=>$major]);
+		return view('crn/changeInfo', ['name'=>$_SESSION['ca_username'], 'major'=>$major, 'data'=>$data[0]]);
 	}
 
 	public function changeInfoHandle()
