@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta name="keywords" content="四川理工学院计算机技术协会" />
+<meta name="description" content="四川理工学院计算机技术协会官方网站。我们的存在，便是为了培养更多的优秀技术人员，同时更好的服务大家" />
+<meta name="baidu-site-verification" content="AkBZGgIzhe" />
 @include('./../common/head')
 
 <link rel="stylesheet" type="text/css" href="{{URL::asset('css/index.css')}}" />
