@@ -136,6 +136,7 @@ function getCookie($url)
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_USERAGENT, "baiduspider");
     // 使curl 返回并不输出，而是返回字符串
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -169,6 +170,7 @@ function getVerify($url, $cookie, $imgName, $referer = null)
     if(!empty($referer)){
         curl_setopt($ch, CURLOPT_REFERER, $referer);
     }
+    curl_setopt($ch, CURLOPT_USERAGENT, "baiduspider");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
     // 设置连接时间
@@ -192,6 +194,7 @@ function curlLogin($url, $post, $cookie, $referer = null)
     if(!empty($referer)){
         curl_setopt($ch, CURLOPT_REFERER, $referer);
     }
+    curl_setopt($ch, CURLOPT_USERAGENT, "baiduspider");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
@@ -208,6 +211,8 @@ function getInfo($url, $cookie=null)
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, 0);
+    // 伪造百度useragent
+    curl_setopt($ch, CURLOPT_USERAGENT, "baiduspider");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_COOKIE, $cookie);
@@ -225,6 +230,7 @@ function getInfoRefer($url, $refer = null, $cookie = null)
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_USERAGENT, "baiduspider");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
     curl_setopt($ch, CURLOPT_REFERER, $refer);
     curl_setopt($ch, CURLOPT_COOKIE, $cookie);
