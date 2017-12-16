@@ -839,6 +839,11 @@ class ActController extends Controller
 		$ID = htmlspecialchars($_POST['ID']);
 		$registration = htmlspecialchars($_POST['registration']);
 		$name = htmlspecialchars($_POST['name']);
+		$data = DB::table("registration")->where("id_card", $ID)->get();
+		if(!empty($data[0])){
+			echo js_arr("exists");
+			exit;
+		}
 
 		$arr = array(
 			"id_card" => $ID,

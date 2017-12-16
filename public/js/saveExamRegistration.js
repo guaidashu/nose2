@@ -36,6 +36,8 @@
 				success:function(data){
 					if(data.text == "ok"){
 						yy_init("保存成功");
+					}else if(data.text == "exists"){
+						yy_init("该身份证号已经被保存，请联系管理员或者等待修改系统上线");
 					}else{
 						yy_init("保存失败，请稍后再试");
 					}

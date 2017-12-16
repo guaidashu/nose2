@@ -106,7 +106,7 @@ function yy_init(content){//弹出框调用以及初始化
 	var str=$('<div class="yy_envelop">'+
              '</div>'+
              '<div class="yy_alert" id="yy_alert">'+
-			 '<div class="yy_alert_remind">小提示'+
+			 '<div class="yy_alert_remind">南音小姐姐的提示'+
 			 '<div class="yy_alert_close cursor_pointer"></div>'+
 			 '</div>'+
 			 '<div class="yy_alert_content">'+
