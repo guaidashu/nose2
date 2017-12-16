@@ -20,6 +20,7 @@
 	        <div class="am-form-group">
 			  <label for="doc-select-2">选择学年</label>
 			  <select name="year" id="doc-select-2">
+			  	  <option value="2016-2017">2017-2018</option>
 				  <option value="2016-2017">2016-2017</option>
 				  <option value="2015-2016">2015-2016</option>
 				  <option value="2014-2015">2014-2015</option>
@@ -36,8 +37,8 @@
 			<div class="am-form-group">
 			  <label for="doc-select-3">选择学期</label>
 			  <select name="year" id="doc-select-3">
+			  	  <option value="1">1</option>
 				  <option value="2">2</option>
-				  <option value="1">1</option>
 			  </select>
 			  <span class="am-form-caret"></span>
 			</div>
