@@ -706,7 +706,7 @@ class ActController extends Controller
 		return view('act/jwxtGrade', ['name'=>$_SESSION['ca_username'], 'username'=>$name, 'info'=>$arr]);
 	}
 
-	// 
+	// 获取绩点
 	public function jwxtJD()
 	{
 		if(empty($_SESSION['userGrade'])){
@@ -781,7 +781,7 @@ class ActController extends Controller
 		}
 	}
 
-	// 辅导员查询
+	// 辅导员查询(未启用)
 	public function getFudaoyuan()
 	{
 		return view("act/getFudaoyuan", ['name'=>$_SESSION['ca_username']]);
@@ -824,5 +824,32 @@ class ActController extends Controller
 		$phone = $result[8];
 		$str = "辅导员名字：".$name."\n辅导员电话：".$phone;
 		echo js_arr($str, 6);
+	}
+
+
+	public function saveExamRegistration()
+	{
+		if(empty($_POST)){
+			return view("act/saveExamRegistration", ['name'=>$_SESSION['ca_username']]);
+		}
+		if(empty($_POST['ID']) || empty($_POST['registration']) || empty($_POST['name'])){
+			echo js_arr("failed");
+			exit;
+		}
+		$ID = htmlspecialchars($_POST['ID']);
+		$registration = htmlspecialchars($_POST['registration']);
+		$name = htmlspecialchars($_POST['name']);
+
+		$arr = array(
+			"id_card" => $ID,
+			"registration" => $registration,
+			"name" => $name
+		);
+		$data = DB::table("registration")->insert($arr);
+		if($data){
+			echo js_arr("ok");
+		}else{
+			echo js_arr("failed");
+		}
 	}
 }

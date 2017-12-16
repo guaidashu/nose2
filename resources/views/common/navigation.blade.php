@@ -125,6 +125,7 @@
           <!-- <li class="menu-item"><a href="{{url('act/algorithm.html')}}">算法入门报名</a></li> -->
           <li class="menu-item"><a href="{{url('act/grade.html')}}">成绩查询</a></li>
           <li class="menu-item"><a href="{{url('act/findClass.html')}}">学号查询</a></li>
+          <li class="menu-item"><a href="{{url('act/saveExamRegistration.html')}}">四六级准考证备忘</a></li>
           <li class="menu-item"><a href="{{url('act/findGrade.html')}}">四六级成绩查询</a></li>
           <li class="menu-item"><a href="{{url('act/getGradeNum.html')}}">四六级准考证查询</a></li>
           <li class="menu-item"><a href="{{url('act/findBookMsg.html')}}">图书借阅信息</a></li>
@@ -192,6 +193,9 @@
                       </li>
                       <li class="">
                         <a href="{{url('act/findClass.html')}}" class="" >学号查询</a>
+                      </li>
+                      <li class="">
+                        <a href="{{url('act/saveExamRegistration.html')}}">四六级准考证备忘</a>
                       </li>
                       <li class="">
                         <a href="{{url('act/findGrade.html')}}">四六级成绩查询</a>

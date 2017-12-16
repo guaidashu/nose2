@@ -79,3 +79,13 @@ CREATE TABLE `count_person` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+
+/* 四六级的准考证号存储 */
+CREATE TABLE `registration` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `registration` bigint(20) NOT NULL DEFAULT '0',
+  `id_card` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+

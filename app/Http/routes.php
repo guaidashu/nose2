@@ -65,6 +65,9 @@ Route::get('index/index.html', 'IndexController@index');
 	Route::get('act/jwxtGrade.html', 'ActController@jwxtGrade');
 	Route::get('act/gradeExit.html', 'ActController@gradeExit');
 	Route::get('act/jwxtJD.html', 'ActController@jwxtJD');
+
+	// 四六级准考证号存储
+	Route::any('act/saveExamRegistration.html', 'ActController@saveExamRegistration');
 	// 获取新生所有信息
 	// Route::get('act/getData.html', 'ActController@getNewStudentData');
 
