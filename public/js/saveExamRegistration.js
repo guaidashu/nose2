@@ -59,7 +59,7 @@
 
 function numCheck(num)
 {
-	var pattern = /^([0-9]){18}$/;
+	var pattern = /^([a-zA-X0-9]){18}$/;
 	if(!pattern.test(num)){
 		return false;
 	}else{

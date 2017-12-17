@@ -25,7 +25,7 @@
 
 		    <div class="am-form-group">
 		      <label for="doc-vld-528">准考证号</label>
-		      <input type="password" id="doc-vld-528" name="phone" class="js-pattern-mobile"
+		      <input type="text" id="doc-vld-528" name="phone" class="js-pattern-mobile"
 		             placeholder="身份证后六位数(第一次登录可不填)" required/>
 		    </div>
 
