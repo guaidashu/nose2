@@ -694,6 +694,7 @@ class ActController extends Controller
 			$result = str_replace(array(" ","　","\t","\n","\r","&nbsp;"),array("","","","","",""),$result);
 			$result = explode("{tr}", $result);
 			$num = count($result)-1;
+			$arr = array();
 			foreach ($result as $key => $value) {
 				if($key == 0 || $key == $num){
 					continue;
