@@ -28,6 +28,11 @@
 				yy_init("有内容未完善");
 				return;
 			}
+
+			if(!numCheck(ID)){
+				yy_init("请输入正确的18位身份证号噢");
+				return;
+			}
 			$.ajax({
 				url:"/act/saveExamRegistration.html",
 				type:"POST",
@@ -51,3 +56,13 @@
 	}
 	window['saveExamRegistration_function'] = saveExamRegistration_function;
 })(jQuery);
+
+function numCheck(num)
+{
+	var pattern = /^([0-9]){18}$/;
+	if(!pattern.test(num)){
+		return false;
+	}else{
+		return true;
+	}
+}
