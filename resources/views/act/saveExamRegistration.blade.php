@@ -26,13 +26,13 @@
 		    <div class="am-form-group">
 		      <label for="doc-vld-528">准考证号</label>
 		      <input type="text" id="doc-vld-528" name="phone" class="js-pattern-mobile"
-		             placeholder="身份证后六位数(第一次登录可不填)" required/>
+		             placeholder="请输入准考证号" required/>
 		    </div>
 
 		    <div class="am-form-group">
 			  <label for="doc-subject-1">姓名</label>
 			  <input type="text" id="doc-subject-1" name="subject" class="js-pattern-mobile"
-		             placeholder="请输入验证码" required />
+		             placeholder="请输入姓名" required />
 			  <span class="am-form-caret"></span>
 			</div>
 
