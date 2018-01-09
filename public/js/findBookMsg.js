@@ -60,7 +60,6 @@
 			}
 			if(!password){
 				password = username;
-				return;
 			}
 			if(!validate){
 				yy_init("请输入验证码");
