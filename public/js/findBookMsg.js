@@ -59,7 +59,7 @@
 				return;
 			}
 			if(!password){
-				yy_init("请输入密码");
+				password = username;
 				return;
 			}
 			if(!validate){

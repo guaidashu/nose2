@@ -25,7 +25,7 @@
 
 		     <div class="am-form-group">
 		      <label for="doc-vld-name-2">密码</label>
-		      <input type="password" name="password" id="doc-vld-name-2" minlength="2" placeholder="密码默认为123" />
+		      <input type="password" name="password" id="doc-vld-name-2" minlength="2" placeholder="密码默认为学号噢，未曾更改可不填" />
 		    </div>
 
 		    <div class="am-form-group">
