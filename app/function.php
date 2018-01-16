@@ -215,7 +215,9 @@ function getInfo($url, $cookie=null)
     curl_setopt($ch, CURLOPT_USERAGENT, "baiduspider");
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('CLIENT-IP:'.$ip, 'X-FORWARDED-FOR:'.$ip)); 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+    if($cookie){
+        curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+    }
     $result = curl_exec($ch);
     curl_close($ch);
     return $result;

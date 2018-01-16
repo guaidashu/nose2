@@ -56,7 +56,7 @@
 		    <div class="am-form-group">
 			  <label for="doc-subject-1">验证码</label>
 			  <input type="text" id="doc-subject-1" name="validate" class="js-pattern-mobile"
-		             placeholder="请输入验证码" required />
+		             placeholder="请输入验证码(可不填，若错误多点击几次即可)" required />
 			  <span class="am-form-caret"></span>
 			</div>
 

@@ -63,6 +63,9 @@
 			password = $.trim(password);
 			var validate = document.getElementById("doc-subject-1").value;
 			validate = $.trim(validate);
+			if(!validate){
+				validate = 1;
+			}
 			if(!item){
 				yy_init("你娃娃怕是要搞事情噢");
 				return;
@@ -76,10 +79,6 @@
 			}
 			if(!password){
 				yy_init("请输入密码");
-				return;
-			}
-			if(!validate){
-				yy_init("请输入验证码");
 				return;
 			}
 			if(!numCheck(username)){

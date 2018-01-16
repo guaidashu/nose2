@@ -100,6 +100,11 @@ Route::post('login/loginHandle.html', 'LoginController@loginHandle');
 Route::get('validate.html', 'ValidateController@validate');
 Route::get('getValidateCount.html', "ValidateController@getValidateCount");
 Route::post('validateCheck.html', 'ValidateController@validateCheck');
+
+// 测试页面
+Route::get("test/curlValidate.html", "TestController@curlValidate");
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

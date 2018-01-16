@@ -617,6 +617,14 @@ class ActController extends Controller
 		$referer = "http://61.139.105.138/default2.aspx";
 		// 首先是模拟登录
 		$url = "http://61.139.105.138/default2.aspx";
+		if($validate == 1){
+			$urlValidate = "http://validate.tan90.club:8080/test.jsp";
+			$result = getInfo($urlValidate);
+			$result = str_replace(array(" ","　","\t","\n","\r","&nbsp;"),array("","","","","",""),$result);
+			$result = json_decode($result);
+			$_SESSION['cookieGrade'] = $result->cookie;
+			$validate = $result->validate;
+		}
 		$cookie = $_SESSION['cookieGrade'];
 		// 获取隐藏字段 
 		$hidden = $this->getHiddenView($url, $cookie);

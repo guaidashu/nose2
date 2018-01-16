@@ -93,6 +93,15 @@ class TestController extends Controller
 		// echo $result;
 	}
 
+	public function curlValidate()
+	{
+		$url = "http://validate.tan90.club:8080/test.jsp";
+		$result = getInfo($url);
+		$result = str_replace(array(" ","　","\t","\n","\r","&nbsp;"),array("","","","","",""),$result);
+		$result = json_decode($result);
+		debug($result->validate);
+	}
+
 	public function testFrame()
 	{
 		return view('test/test');
