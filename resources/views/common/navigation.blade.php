@@ -105,8 +105,8 @@
         <!-- sub-menu start-->
         <ul class="sub-menu">
           <li class="menu-item"><a href="http://sh.wyysdsa.cn/" target="_blank">超级作业</a></li>
-          <li class="menu-item"><a href="http://www.wyysdsa.com/stucontrol/" target="_blank">查寝系统</a></li>
-          <li class="menu-item"><a href="http://www.wyysdsa.cn:1965" target="_blank">川理在线</a></li>
+          <li class="menu-item"><a href="http://stu.wyysdsa.com/" target="_blank">查寝系统</a></li>
+          <li class="menu-item"><a href="https://suse.xsdhy.com/" target="_blank">川理在线</a></li>
         </ul>
         <!-- sub-menu end-->
       </li>
